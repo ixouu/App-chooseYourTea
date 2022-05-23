@@ -1,0 +1,650 @@
+$primaryColor : rgba(34, 61, 125);
+$secondaryColor : #DC2244;
+$thirdColor : #003C00;
+$fontColor : #f1f1f1;
+$contentFontSize : 26px;
+
+// input color 
+
+
+@font-face{
+  font-family: 'Proxima';
+  src : url(../assets/fonts/proximalight/Proxima\ Nova\ Alt\ Light.otf);
+}
+
+@mixin inputBtn {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: $contentFontSize;
+
+}
+
+@mixin block{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Proxima', sans-serif;
+    font-size: $contentFontSize;
+}
+
+#wrapper{
+  position: absolute;
+  left : 50%;
+  top : 50%;
+  width: 980px;
+  min-height: 600px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  #appBlock{
+    width: 980px;
+    min-height: 500px;
+    border: 2px solid grey;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px grey;
+    background-color: $primaryColor;
+    color: $fontColor;
+    position: relative;
+
+    .logo{
+      width: 140px;
+      height: 140px;
+      background-color: #f1f1f1;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 10px;
+      top : 10px;
+      
+    }
+
+    .logoAnim{
+      animation: logoRotate 3s linear 1s running, paused normal;
+    }
+
+    .selectedOption{
+      font-size: 13px;
+      position: absolute;
+      top : 0;
+      left : 20%;
+      margin-top: 10px;
+    }
+
+    .appHome{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+
+      .startBtn{
+        background-color: $secondaryColor;
+        color: $fontColor;
+        border: none;
+        font-size: $contentFontSize;
+        border-radius: 10px;
+        padding: 10px 20px 10px 20px;
+        cursor: pointer;
+        
+        &:hover{
+          transform: scale(1.1);
+          transition: 200ms;
+        }
+      }
+      
+      p{
+        display: block;
+      }
+    }
+    .teaOrInfusion{
+      @include block;
+      form{
+        display: flex;
+        flex-direction: row;
+        input{
+          display: none;
+        }
+        #teaChoice + ::before{
+            @include inputBtn;
+            content:'Thé';
+            background-color: $thirdColor;
+          }
+          #teaChoice:checked + ::before{
+            border: 4px solid #419C5B;
+            font-weight: 600;
+            transform: scale(1.1)
+            }
+          #infusionChoice + ::before{
+            content:'Infusion';
+            background-color: #F2525D;
+            @include inputBtn;
+          }
+          #infusionChoice:checked + ::before{
+          border: 4px solid #7D382A;
+          font-weight: 600;
+          transform: scale(1.1)
+          }
+      }
+
+    }
+    .teaTaste{
+      @include block;
+      form{
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 130px);
+        grid-template-rows: repeat(2, 50px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px; 
+        width: 60%;
+        height: 150px;
+        input{
+          display: none;
+        }
+      #teaTaste__fruitty+ ::before{
+        grid-area: 1 / 1 / 2 / 2;
+        @include inputBtn;
+        content:'Fruitté';
+        background-color: #B39D6F;
+      }
+      #teaTaste__fruitty:checked + ::before{
+        border: 4px solid #736F1F;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaTaste__spicy+ ::before{
+        grid-area: 1 / 2 / 2 / 3;
+        @include inputBtn;
+        content:'Epicé';
+        background-color: #F2843A;
+      }
+      #teaTaste__spicy:checked + ::before{
+        border: 4px solid #753F1C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaTaste__floral+ ::before{
+        grid-area: 1 / 3 / 2 / 4;
+        @include inputBtn;
+        content:'Florale';
+        background-color: #F28DDC;
+      }
+      #teaTaste__floral:checked + ::before{
+        border: 4px solid #75446A;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaTaste__gourmet+ ::before{
+        grid-area: 2 / 1 / 3 / 2;
+        @include inputBtn;
+        content:'Gourmand';
+        background-color: #F25C57;
+      }
+      #teaTaste__gourmet:checked + ::before{
+        border: 4px solid #7A2F2C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaTaste__nature+ ::before{
+        grid-area: 2 / 2 / 3 / 3; 
+        @include inputBtn;
+        content:'Nature';
+        background-color: #42994E;
+      }
+      #teaTaste__nature:checked + ::before{
+        border: 4px solid #6E9678;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaTaste__idontknow+ ::before{
+        grid-area: 2 / 3 / 3 / 4;
+        @include inputBtn;
+        content:'Tous';
+        background-color: #B3C5F2;
+      }
+      #teaTaste__idontknow:checked + ::before{
+        border: 4px solid #6D7894;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+    
+  }
+  .teaColor{
+    @include block;
+    form{
+      display: flex;
+      flex-direction: row;
+      input{
+        display: none;
+      }
+      #teaColorChoice__black+ ::before{
+        @include inputBtn;
+        content:'Noir';
+        background-color: #313634;
+      }
+      #teaColorChoice__black:checked + ::before{
+        border: 4px solid #f1f1f1;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaColorChoice__blue+ ::before{
+        @include inputBtn;
+        content:'Bleu';
+        background-color: #45A0F5;
+      }
+      #teaColorChoice__blue:checked + ::before{
+        border: 4px solid #11283D;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaColorChoice__white+ ::before{
+        @include inputBtn;
+        content:'Blanc';
+        background-color: #f1f1f1;
+        color:black;
+      }
+      #teaColorChoice__white:checked + ::before{
+        border: 4px solid black;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaColorChoice__puerh+ ::before{
+        @include inputBtn;
+        content:'Puerh';
+        background-color: #9E5F18;
+      }
+      #teaColorChoice__puerh:checked + ::before{
+        border: 4px solid #42280A;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #teaColorChoice__green+ ::before{
+        @include inputBtn;
+        content:'Vert';
+        background-color: #147533;
+      }
+      #teaColorChoice__green:checked + ::before{
+        border: 4px solid #093617;
+        font-weight: 600;
+        transform: scale(1.1);
+        }  
+      #teaColorChoice__idontknow+ ::before{
+        @include inputBtn;
+        content:'Tous';
+        background-color: $secondaryColor;
+      }
+      #teaColorChoice__idontknow:checked + ::before{
+        border: 4px solid white;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+  }
+  .infusionTaste{
+    @include block;
+    form{
+      display: flex;
+      flex-direction: row;
+      input{
+        display: none;
+      }
+      #infusionTaste__infusion+ ::before{
+        @include inputBtn;
+        content:'Infusions';
+        background-color: #F2525D;
+      }
+      #infusionTaste__infusion:checked + ::before{
+        border: 4px solid #7D382A;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionTaste__roibos+ ::before{
+        @include inputBtn;
+        content:'Roibos';
+        background-color: #F5540F;
+      }
+      #infusionTaste__roibos:checked + ::before{
+        border: 4px solid #421704;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionTaste__wellness+ ::before{
+        @include inputBtn;
+        content:'Bien-être';
+        background-color: #F5B36C;
+      }
+      #infusionTaste__wellness:checked + ::before{
+        border: 4px solid #42301D;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+  }
+  .infusionFlavor{
+    @include block;
+    form{
+      display: flex;
+      flex-direction: row;
+      input{
+        display: none;
+      }
+      #infusionFlavor__gourmet+ ::before{
+        @include inputBtn;
+        content:'Gourmand';
+        background-color: #F25C57;
+      }
+      #infusionFlavor__gourmet:checked + ::before{
+        border: 4px solid #7A2F2C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionFlavor__spicy+ ::before{
+        @include inputBtn;
+        content:'Epicé';
+        background-color: #F2843A;
+      }
+      #infusionFlavor__spicy:checked + ::before{
+        border: 4px solid #753F1C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionFlavor__floral+ ::before{
+        @include inputBtn;
+        content:'Florale';
+        background-color: #F28DDC;
+      }
+      #infusionFlavor__floral:checked + ::before{
+        border: 4px solid #75446A;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionFlavor__fruitty+ ::before{
+        @include inputBtn;
+        content:'Fruitté';
+        background-color: #B39D6F;
+      }
+      #infusionFlavor__fruitty:checked + ::before{
+        border: 4px solid #736F1F;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #infusionFlavor__nature+ ::before{
+        @include inputBtn;
+        content:'Nature';
+        background-color: #42994E;
+      }
+      #infusionFlavor__nature:checked + ::before{
+        border: 4px solid #6E9678;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+  }
+  .roibosFlavor{
+    @include block;
+    form{
+      display: flex;
+      flex-direction: row;
+      input{
+        display: none;
+      }
+      #roibosFlavor__nature+ ::before{
+        @include inputBtn;
+        content:'Nature';
+        background-color: #42994E;
+      }
+      #roibosFlavor__nature:checked + ::before{
+        border: 4px solid #6E9678;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #roibosFlavor__spicy+ ::before{
+        @include inputBtn;
+        content:'Epicé';
+        background-color: #F2843A;
+      }
+      #roibosFlavor__spicy:checked + ::before{
+        border: 4px solid #753F1C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #roibosFlavor__fruitty+ ::before{
+        @include inputBtn;
+        content:'Fruitté';
+        background-color: #B39D6F;
+      }
+      #roibosFlavor__fruitty:checked + ::before{
+        border: 4px solid #736F1F;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+  }
+  .wellnessFlavor{
+    @include block;
+    form{
+      display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(3, 130px);
+        grid-template-rows: repeat(2, 70px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px; 
+        width: 60%;
+        height: 150px;
+      input{
+        display: none;
+      }
+      #wellnessFlavor__breath+ ::before{
+        grid-area: 1 / 1 / 2 / 2;
+        @include inputBtn;
+        content:'Respirer';
+        background-color: #B39D6F;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__breath:checked + ::before{
+        border: 4px solid #736F1F;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #wellnessFlavor__lightLegs+ ::before{
+        grid-area: 1 / 2 / 2 / 3;
+        @include inputBtn;
+        content:'Jambes légères';
+        background-color: #F2843A;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__lightLegs:checked + ::before{
+        border: 4px solid #753F1C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #wellnessFlavor__toSleep+ ::before{
+        grid-area: 1 / 3 / 2 / 4;
+        @include inputBtn;
+        content:'Pour dormir';
+        background-color: #F28DDC;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__toSleep:checked + ::before{
+        border: 4px solid #75446A;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #wellnessFlavor__breastfeeding+ ::before{
+        grid-area: 2 / 1 / 3 / 2;
+        @include inputBtn;
+        content:'Alaitement';
+        background-color: #F25C57;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__breastfeeding:checked + ::before{
+        border: 4px solid #7A2F2C;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #wellnessFlavor__looseWeight+ ::before{
+        grid-area: 2 / 2 / 3 / 3; 
+        @include inputBtn;
+        content:'Perte de poids';
+        background-color: #42994E;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__looseWeight:checked + ::before{
+        border: 4px solid #6E9678;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+      #wellnessFlavor__digestive+ ::before{
+        grid-area: 2 / 3 / 3 / 4;
+        @include inputBtn;
+        content:'Digestif';
+        background-color: #B3C5F2;
+        height: 70px;
+        text-align: center;
+      }
+      #wellnessFlavor__digestive:checked + ::before{
+        border: 4px solid #6D7894;
+        font-weight: 600;
+        transform: scale(1.1);
+        }
+    }
+  }
+
+  }
+  .app__results{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .app__results--object{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin : 40px 20px 80px 20px;
+
+      img{
+        border-radius: 5px;
+      }
+      .app__results-objectText{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 10px 0 10px 20px;
+        p{
+          font-size: 20px;
+        }
+      }
+
+    }
+  }
+}
+
+.btnNext {
+  width: 40px;
+  height: 40px;
+  background-color : transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2vh;
+  right: 1vw;
+  border : none;
+
+  img{
+    margin-top: 5px;
+    width: 30px;
+    color: white;
+  }
+}
+.btnNext:hover{
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color :#007500;
+}
+
+.btnPrevious {
+  width: 40px;
+  height: 40px;
+  background-color : transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2vh;
+  left: 1vw;
+  border : none;
+
+  img{
+    margin-top: 5px;
+    width: 30px;
+  }
+}
+.btnPrevious:hover{
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color :$secondaryColor;
+}
+
+.btnReload{
+  width: 40px;
+  height: 40px;
+  background-color : transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 2vh;
+  right: 1vw;
+  border : none;
+
+  img{
+    margin-right: 10px;
+    width: 30px;
+  }
+}
+.btnReload:hover{
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color :red;
+}
+
+@keyframes logoRotate {
+  to{
+    transform: rotateY(360deg);
+  }
+}

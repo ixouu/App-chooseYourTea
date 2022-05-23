@@ -1,0 +1,888 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Proxima";
+  src: url(../assets/fonts/proximalight/Proxima\ Nova\ Alt\ Light.otf);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Proxima", sans-serif;
+  font-size: 26px;
+}
+
+#wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 980px;
+  min-height: 600px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#wrapper #appBlock {
+  width: 980px;
+  min-height: 500px;
+  border: 2px solid grey;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 5px grey;
+  background-color: rgb(34, 61, 125);
+  color: #f1f1f1;
+  position: relative;
+}
+#wrapper #appBlock .logo {
+  width: 140px;
+  height: 140px;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+#wrapper #appBlock .logoAnim {
+  animation: logoRotate 3s linear 1s running, paused normal;
+}
+#wrapper #appBlock .selectedOption {
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  left: 20%;
+  margin-top: 10px;
+}
+#wrapper #appBlock .appHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .appHome .startBtn {
+  background-color: #DC2244;
+  color: #f1f1f1;
+  border: none;
+  font-size: 26px;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+#wrapper #appBlock .appHome .startBtn:hover {
+  transform: scale(1.1);
+  transition: 200ms;
+}
+#wrapper #appBlock .appHome p {
+  display: block;
+}
+#wrapper #appBlock .teaOrInfusion {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .teaOrInfusion form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .teaOrInfusion form input {
+  display: none;
+}
+#wrapper #appBlock .teaOrInfusion form #teaChoice + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Thé";
+  background-color: #003C00;
+}
+#wrapper #appBlock .teaOrInfusion form #teaChoice:checked + ::before {
+  border: 4px solid #419C5B;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaOrInfusion form #infusionChoice + ::before {
+  content: "Infusion";
+  background-color: #F2525D;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+}
+#wrapper #appBlock .teaOrInfusion form #infusionChoice:checked + ::before {
+  border: 4px solid #7D382A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .teaTaste form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 130px);
+  grid-template-rows: repeat(2, 50px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: 60%;
+  height: 150px;
+}
+#wrapper #appBlock .teaTaste form input {
+  display: none;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__fruitty + ::before {
+  grid-area: 1/1/2/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Fruitté";
+  background-color: #B39D6F;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__fruitty:checked + ::before {
+  border: 4px solid #736F1F;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste form #teaTaste__spicy + ::before {
+  grid-area: 1/2/2/3;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Epicé";
+  background-color: #F2843A;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__spicy:checked + ::before {
+  border: 4px solid #753F1C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste form #teaTaste__floral + ::before {
+  grid-area: 1/3/2/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Florale";
+  background-color: #F28DDC;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__floral:checked + ::before {
+  border: 4px solid #75446A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste form #teaTaste__gourmet + ::before {
+  grid-area: 2/1/3/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Gourmand";
+  background-color: #F25C57;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__gourmet:checked + ::before {
+  border: 4px solid #7A2F2C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste form #teaTaste__nature + ::before {
+  grid-area: 2/2/3/3;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Nature";
+  background-color: #42994E;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__nature:checked + ::before {
+  border: 4px solid #6E9678;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaTaste form #teaTaste__idontknow + ::before {
+  grid-area: 2/3/3/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Tous";
+  background-color: #B3C5F2;
+}
+#wrapper #appBlock .teaTaste form #teaTaste__idontknow:checked + ::before {
+  border: 4px solid #6D7894;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .teaColor form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .teaColor form input {
+  display: none;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__black + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Noir";
+  background-color: #313634;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__black:checked + ::before {
+  border: 4px solid #f1f1f1;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__blue + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Bleu";
+  background-color: #45A0F5;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__blue:checked + ::before {
+  border: 4px solid #11283D;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__white + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Blanc";
+  background-color: #f1f1f1;
+  color: black;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__white:checked + ::before {
+  border: 4px solid black;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__puerh + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Puerh";
+  background-color: #9E5F18;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__puerh:checked + ::before {
+  border: 4px solid #42280A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__green + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Vert";
+  background-color: #147533;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__green:checked + ::before {
+  border: 4px solid #093617;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__idontknow + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Tous";
+  background-color: #DC2244;
+}
+#wrapper #appBlock .teaColor form #teaColorChoice__idontknow:checked + ::before {
+  border: 4px solid white;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionTaste {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .infusionTaste form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .infusionTaste form input {
+  display: none;
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__infusion + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Infusions";
+  background-color: #F2525D;
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__infusion:checked + ::before {
+  border: 4px solid #7D382A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__roibos + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Roibos";
+  background-color: #F5540F;
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__roibos:checked + ::before {
+  border: 4px solid #421704;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__wellness + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Bien-être";
+  background-color: #F5B36C;
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__wellness:checked + ::before {
+  border: 4px solid #42301D;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFlavor {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .infusionFlavor form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .infusionFlavor form input {
+  display: none;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__gourmet + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Gourmand";
+  background-color: #F25C57;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__gourmet:checked + ::before {
+  border: 4px solid #7A2F2C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__spicy + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Epicé";
+  background-color: #F2843A;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__spicy:checked + ::before {
+  border: 4px solid #753F1C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__floral + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Florale";
+  background-color: #F28DDC;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__floral:checked + ::before {
+  border: 4px solid #75446A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__fruitty + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Fruitté";
+  background-color: #B39D6F;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__fruitty:checked + ::before {
+  border: 4px solid #736F1F;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__nature + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Nature";
+  background-color: #42994E;
+}
+#wrapper #appBlock .infusionFlavor form #infusionFlavor__nature:checked + ::before {
+  border: 4px solid #6E9678;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .roibosFlavor {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .roibosFlavor form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .roibosFlavor form input {
+  display: none;
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__nature + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Nature";
+  background-color: #42994E;
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__nature:checked + ::before {
+  border: 4px solid #6E9678;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__spicy + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Epicé";
+  background-color: #F2843A;
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__spicy:checked + ::before {
+  border: 4px solid #753F1C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__fruitty + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Fruitté";
+  background-color: #B39D6F;
+}
+#wrapper #appBlock .roibosFlavor form #roibosFlavor__fruitty:checked + ::before {
+  border: 4px solid #736F1F;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .wellnessFlavor form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 130px);
+  grid-template-rows: repeat(2, 70px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: 60%;
+  height: 150px;
+}
+#wrapper #appBlock .wellnessFlavor form input {
+  display: none;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breath + ::before {
+  grid-area: 1/1/2/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Respirer";
+  background-color: #B39D6F;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breath:checked + ::before {
+  border: 4px solid #736F1F;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__lightLegs + ::before {
+  grid-area: 1/2/2/3;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Jambes légères";
+  background-color: #F2843A;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__lightLegs:checked + ::before {
+  border: 4px solid #753F1C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__toSleep + ::before {
+  grid-area: 1/3/2/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Pour dormir";
+  background-color: #F28DDC;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__toSleep:checked + ::before {
+  border: 4px solid #75446A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breastfeeding + ::before {
+  grid-area: 2/1/3/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Alaitement";
+  background-color: #F25C57;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breastfeeding:checked + ::before {
+  border: 4px solid #7A2F2C;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__looseWeight + ::before {
+  grid-area: 2/2/3/3;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Perte de poids";
+  background-color: #42994E;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__looseWeight:checked + ::before {
+  border: 4px solid #6E9678;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__digestive + ::before {
+  grid-area: 2/3/3/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Digestif";
+  background-color: #B3C5F2;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__digestive:checked + ::before {
+  border: 4px solid #6D7894;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper .app__results {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#wrapper .app__results .app__results--object {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 20px 80px 20px;
+}
+#wrapper .app__results .app__results--object img {
+  border-radius: 5px;
+}
+#wrapper .app__results .app__results--object .app__results-objectText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0 10px 20px;
+}
+#wrapper .app__results .app__results--object .app__results-objectText p {
+  font-size: 20px;
+}
+
+.btnNext {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2vh;
+  right: 1vw;
+  border: none;
+}
+.btnNext img {
+  margin-top: 5px;
+  width: 30px;
+  color: white;
+}
+
+.btnNext:hover {
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color: #007500;
+}
+
+.btnPrevious {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 2vh;
+  left: 1vw;
+  border: none;
+}
+.btnPrevious img {
+  margin-top: 5px;
+  width: 30px;
+}
+
+.btnPrevious:hover {
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color: #DC2244;
+}
+
+.btnReload {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 2vh;
+  right: 1vw;
+  border: none;
+}
+.btnReload img {
+  margin-right: 10px;
+  width: 30px;
+}
+
+.btnReload:hover {
+  transition: 200ms;
+  transform: scale(1.5);
+  background-color: red;
+}
+
+@keyframes logoRotate {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
