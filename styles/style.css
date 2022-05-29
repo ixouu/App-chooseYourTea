@@ -927,7 +927,7 @@ body {
 }
 
 .btnNext:hover {
-  transition: 200ms;
+  transition: all 200ms ease-out;
   transform: scale(1.5);
   background-color: #007500;
 }
@@ -944,6 +944,7 @@ body {
 }
 .btnPrevious img {
   margin-top: 5px;
+  margin-left: -5px;
   width: 30px;
 }
 
@@ -962,6 +963,7 @@ body {
   top: 2vh;
   right: 1vw;
   border: none;
+  transition: all 0.4s ease-out;
 }
 .btnReload img {
   margin-right: 10px;
@@ -970,8 +972,28 @@ body {
 
 .btnReload:hover {
   transition: 200ms;
-  transform: scale(1.5);
+  transform: scale(1.1);
   background-color: red;
+}
+
+.btnReload--result {
+  width: 170px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 5px;
+  position: absolute;
+  top: 2vh;
+  right: 1vw;
+  border: none;
+  transition: all 0.4s ease-out;
+  background-color: red;
+  display: flex;
+  align-items: center;
+}
+.btnReload--result p {
+  color: #f1f1f1;
+  font-size: 18px;
+  display: inline-block;
 }
 
 @keyframes logoRotate {
