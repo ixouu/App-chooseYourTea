@@ -255,7 +255,7 @@ body {
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaTaste form #teaTaste__idontknow + ::before {
+#wrapper #appBlock .teaTaste form #teaTaste__all + ::before {
   grid-area: 2/3/3/4;
   width: 130px;
   height: 50px;
@@ -269,12 +269,12 @@ body {
   content: "Tous";
   background-color: #B3C5F2;
 }
-#wrapper #appBlock .teaTaste form #teaTaste__idontknow:checked + ::before {
+#wrapper #appBlock .teaTaste form #teaTaste__all:checked + ::before {
   border: 4px solid #6D7894;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor {
+#wrapper #appBlock .teaColorChoice {
   display: none;
   align-items: center;
   justify-content: center;
@@ -282,14 +282,21 @@ body {
   width: 100%;
   height: 100%;
 }
-#wrapper #appBlock .teaColor form {
-  display: flex;
-  flex-direction: row;
+#wrapper #appBlock .teaColorChoice form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 130px);
+  grid-template-rows: repeat(3, 70px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: 60%;
+  height: 150px;
 }
-#wrapper #appBlock .teaColor form input {
+#wrapper #appBlock .teaColorChoice form input {
   display: none;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__black + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__black + ::before {
+  grid-area: 1/1/2/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -302,12 +309,13 @@ body {
   content: "Noir";
   background-color: #313634;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__black:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__black:checked + ::before {
   border: 4px solid #f1f1f1;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__blue + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__blue + ::before {
+  grid-area: 1/2/2/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -320,12 +328,13 @@ body {
   content: "Bleu";
   background-color: #45A0F5;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__blue:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__blue:checked + ::before {
   border: 4px solid #11283D;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__white + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__white + ::before {
+  grid-area: 1/3/2/4;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -339,12 +348,13 @@ body {
   background-color: #f1f1f1;
   color: black;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__white:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__white:checked + ::before {
   border: 4px solid black;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__puerh + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__puerh + ::before {
+  grid-area: 2/1/3/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -357,12 +367,13 @@ body {
   content: "Puerh";
   background-color: #9E5F18;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__puerh:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__puerh:checked + ::before {
   border: 4px solid #42280A;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__green + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__green + ::before {
+  grid-area: 2/2/3/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -375,12 +386,13 @@ body {
   content: "Vert";
   background-color: #147533;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__green:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__green:checked + ::before {
   border: 4px solid #093617;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__idontknow + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__null + ::before {
+  grid-area: 2/3/3/4;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -390,11 +402,100 @@ body {
   margin-right: 20px;
   border-radius: 10px;
   font-size: 26px;
-  content: "Tous";
+  content: "null";
   background-color: #DC2244;
 }
-#wrapper #appBlock .teaColor form #teaColorChoice__idontknow:checked + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__all:checked + ::before {
   border: 4px solid white;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__all + ::before {
+  grid-area: 3/1/4/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Afficher tous les thés";
+  background-color: #DC2244;
+  width: 430px;
+}
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__all:checked + ::before {
+  border: 4px solid white;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFamily {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#wrapper #appBlock .infusionFamily form {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper #appBlock .infusionFamily form input {
+  display: none;
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__infusion + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Infusions";
+  background-color: #F2525D;
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__infusion:checked + ::before {
+  border: 4px solid #7D382A;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__rooibos + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Rooibos";
+  background-color: #F5540F;
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__rooibos:checked + ::before {
+  border: 4px solid #421704;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__wellness + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Bien-être";
+  background-color: #F5B36C;
+}
+#wrapper #appBlock .infusionFamily form #infusionFamily__wellness:checked + ::before {
+  border: 4px solid #42301D;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -413,76 +514,7 @@ body {
 #wrapper #appBlock .infusionTaste form input {
   display: none;
 }
-#wrapper #appBlock .infusionTaste form #infusionTaste__infusion + ::before {
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Infusions";
-  background-color: #F2525D;
-}
-#wrapper #appBlock .infusionTaste form #infusionTaste__infusion:checked + ::before {
-  border: 4px solid #7D382A;
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .infusionTaste form #infusionTaste__roibos + ::before {
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Roibos";
-  background-color: #F5540F;
-}
-#wrapper #appBlock .infusionTaste form #infusionTaste__roibos:checked + ::before {
-  border: 4px solid #421704;
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .infusionTaste form #infusionTaste__wellness + ::before {
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Bien-être";
-  background-color: #F5B36C;
-}
-#wrapper #appBlock .infusionTaste form #infusionTaste__wellness:checked + ::before {
-  border: 4px solid #42301D;
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .infusionFlavor {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-#wrapper #appBlock .infusionFlavor form {
-  display: flex;
-  flex-direction: row;
-}
-#wrapper #appBlock .infusionFlavor form input {
-  display: none;
-}
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__gourmet + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__gourmet + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -495,12 +527,12 @@ body {
   content: "Gourmand";
   background-color: #F25C57;
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__gourmet:checked + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__gourmet:checked + ::before {
   border: 4px solid #7A2F2C;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__spicy + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__spicy + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -513,12 +545,12 @@ body {
   content: "Epicé";
   background-color: #F2843A;
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__spicy:checked + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__spicy:checked + ::before {
   border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__floral + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__floral + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -531,12 +563,12 @@ body {
   content: "Florale";
   background-color: #F28DDC;
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__floral:checked + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__floral:checked + ::before {
   border: 4px solid #75446A;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__fruitty + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__fruitty + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -549,12 +581,12 @@ body {
   content: "Fruitté";
   background-color: #B39D6F;
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__fruitty:checked + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__fruitty:checked + ::before {
   border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__nature + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__nature + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -567,12 +599,30 @@ body {
   content: "Nature";
   background-color: #42994E;
 }
-#wrapper #appBlock .infusionFlavor form #infusionFlavor__nature:checked + ::before {
+#wrapper #appBlock .infusionTaste form #infusionTaste__nature:checked + ::before {
   border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .roibosFlavor {
+#wrapper #appBlock .infusionTaste form #infusionTaste__all + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Toutes les infusions";
+  background-color: #42994E;
+}
+#wrapper #appBlock .infusionTaste form #infusionTaste__all:checked + ::before {
+  border: 4px solid #6E9678;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .rooibosTaste {
   display: none;
   align-items: center;
   justify-content: center;
@@ -580,14 +630,14 @@ body {
   width: 100%;
   height: 100%;
 }
-#wrapper #appBlock .roibosFlavor form {
+#wrapper #appBlock .rooibosTaste form {
   display: flex;
   flex-direction: row;
 }
-#wrapper #appBlock .roibosFlavor form input {
+#wrapper #appBlock .rooibosTaste form input {
   display: none;
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__nature + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__nature + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -600,12 +650,12 @@ body {
   content: "Nature";
   background-color: #42994E;
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__nature:checked + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__nature:checked + ::before {
   border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__spicy + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__spicy + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -618,12 +668,12 @@ body {
   content: "Epicé";
   background-color: #F2843A;
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__spicy:checked + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__spicy:checked + ::before {
   border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__fruitty + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty + ::before {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -636,12 +686,30 @@ body {
   content: "Fruitté";
   background-color: #B39D6F;
 }
-#wrapper #appBlock .roibosFlavor form #roibosFlavor__fruitty:checked + ::before {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty:checked + ::before {
   border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor {
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__All + ::before {
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "All";
+  background-color: #B39D6F;
+}
+#wrapper #appBlock .rooibosTaste form #rooibosTaste__All:checked + ::before {
+  border: 4px solid #736F1F;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessTaste {
   display: none;
   align-items: center;
   justify-content: center;
@@ -649,20 +717,20 @@ body {
   width: 100%;
   height: 100%;
 }
-#wrapper #appBlock .wellnessFlavor form {
+#wrapper #appBlock .wellnessTaste form {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 130px);
-  grid-template-rows: repeat(2, 70px);
+  grid-template-rows: repeat(3, 70px);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   width: 60%;
   height: 150px;
 }
-#wrapper #appBlock .wellnessFlavor form input {
+#wrapper #appBlock .wellnessTaste form input {
   display: none;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breath + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__breath + ::before {
   grid-area: 1/1/2/2;
   width: 130px;
   height: 50px;
@@ -678,12 +746,12 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breath:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__breath:checked + ::before {
   border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__lightLegs + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs + ::before {
   grid-area: 1/2/2/3;
   width: 130px;
   height: 50px;
@@ -699,12 +767,12 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__lightLegs:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs:checked + ::before {
   border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__toSleep + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep + ::before {
   grid-area: 1/3/2/4;
   width: 130px;
   height: 50px;
@@ -720,12 +788,12 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__toSleep:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep:checked + ::before {
   border: 4px solid #75446A;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breastfeeding + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding + ::before {
   grid-area: 2/1/3/2;
   width: 130px;
   height: 50px;
@@ -741,12 +809,12 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__breastfeeding:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding:checked + ::before {
   border: 4px solid #7A2F2C;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__looseWeight + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__looseWeight + ::before {
   grid-area: 2/2/3/3;
   width: 130px;
   height: 50px;
@@ -762,12 +830,12 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__looseWeight:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__looseWeight:checked + ::before {
   border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__digestive + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__digestive + ::before {
   grid-area: 2/3/3/4;
   width: 130px;
   height: 50px;
@@ -783,16 +851,41 @@ body {
   height: 70px;
   text-align: center;
 }
-#wrapper #appBlock .wellnessFlavor form #wellnessFlavor__digestive:checked + ::before {
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__digestive:checked + ::before {
+  border: 4px solid #6D7894;
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__all + ::before {
+  grid-area: 3/1/4/4;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 10px;
+  font-size: 26px;
+  content: "Afficher toutes les infusions bien-etre";
+  background-color: #B3C5F2;
+  width: 430px;
+  height: 70px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__all:checked + ::before {
   border: 4px solid #6D7894;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper .app__results {
+  width: 980px;
+  height: 600px;
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: scroll;
 }
 #wrapper .app__results .app__results--object {
   display: flex;
@@ -803,6 +896,8 @@ body {
 }
 #wrapper .app__results .app__results--object img {
   border-radius: 5px;
+  z-index: 200;
+  max-width: 300px;
 }
 #wrapper .app__results .app__results--object .app__results-objectText {
   display: flex;
