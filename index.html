@@ -20,7 +20,7 @@
                     <img src="./assets/images/logo.webp" alt="L'arbre à thé">
                 </div>
                 <h2>Quel thé (ou infusion) buvez-vous ?</h2>
-                <button class="btn startBtn">Commencer !</button>
+                <button class="btn startBtn">Commencer</button>
             </div>
             <!-- Tea or infusion choice -->
             <div class="teaOrInfusion">
@@ -36,7 +36,7 @@
                         <p></p>
                     </label>
                     <label>
-                        <input id="infusionChoice" type="radio" name="choice" value="infusion">
+                        <input id="infusionChoice" type="radio"  name="choice" value="infusion">
                         <p></p>
                     </label>
                     <button class="btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
@@ -140,10 +140,6 @@
                         <p></p>
                     </label>
                     <label>
-                        <input type="radio" name="teaColorChoice" value="null" id="teaColorChoice__null">
-                        <p></p>
-                    </label>
-                    <label>
                         <input type="radio" name="teaColorChoice" value="TeaAll" id="teaColorChoice__all">
                         <p></p>
                     </label>
@@ -163,7 +159,7 @@
                 <span>Quelle gout préférez-vous ?</span>
                 <form class="infusionTaste__form">
                     <label>
-                        <input type="radio" name="infusionTaste" value="infusionGourmet" id="infusionTaste__gourmet" checked>
+                        <input type="radio" name="infusionTaste" frenchName="Gourmand" value="infusionGourmet" id="infusionTaste__gourmet" checked>
                         <p></p>
                     </label>
                     <label>
@@ -243,7 +239,7 @@
                         <p></p>
                     </label>
                     <label>
-                        <input type="radio" name="wellnessTaste" value="breastfeeding" id="wellnessTaste__breastfeeding">
+                        <input type="radio" name="wellnessTaste" value="breastFeeding" id="wellnessTaste__breastfeeding">
                         <p></p>
                     </label>
                     <label>
@@ -276,10 +272,16 @@
                 </form>
             </div>
         </div>
+        <div class="progressBlock">
+            <p class="progressBlock__title">Votre sélection :</p>
+            <p class="progressBlock__Progress progressBlock__Progress1"></p>
+            <p class="progressBlock__Progress progressBlock__Progress2"></p>
+            <p class="progressBlock__Progress progressBlock__Progress3"></p>
+        </div>
     </div>  
-
+<script src="./assets/js/data.js"></script>
 <script src="./assets/js/script.js"></script>
-<script src="./assets/js/objects.js"></script>
+
 </body>
 </html>
 

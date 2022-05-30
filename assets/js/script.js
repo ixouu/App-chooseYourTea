@@ -1,22 +1,3 @@
-const appHome = document.querySelector(".appHome");
-const teaOrInfusion = document.querySelector(".teaOrInfusion");
-const teaTaste = document.querySelector(".teaTaste");
-const teaColorChoice = document.querySelector(".teaColorChoice");
-const infusionFamily = document.querySelector(".infusionFamily");
-const infusionTaste = document.querySelector(".infusionTaste");
-const rooibosTaste = document.querySelector(".rooibosTaste");
-const wellnessTaste = document.querySelector(".wellnessTaste");
-const previousBtn = document.querySelector(".previous");
-const btnReload = document.querySelector('.btnReload');
-const results = document.querySelector('.app__results');
-const startBtn = document.querySelector(".startBtn");
-const ResultsPreviousBtn = document.querySelector('.results__button--previous');
-const resultBtnReload = document.querySelector('.results__button--reload');
-
-let customerChoice = [];
-
-
-
 startBtn.addEventListener('click', () => {
 
     teaOrInfusion.style.display = "flex";
@@ -31,15 +12,18 @@ const teaOrinfusionBtnPrevious = document.querySelector('.teaOrInfusion__button-
 
 teaOrinfusionBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
-    switch (teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value) {
+    const UserChoice = teaOrInfusionForm.querySelector(`input[name="choice"]:checked`)
+    switch (UserChoice.value) {
         case value = 'tea':
             teaOrInfusion.style.display = 'none';
             teaTaste.style.display = 'flex';
-            customerChoice.push(teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value);
+            customerChoice.push(UserChoice.value);
+            Drink.progress(tea);
             break;
         case value = 'infusion':
             teaOrInfusion.style.display = 'none';
             infusionFamily.style.display = 'flex';
+            Drink.progress(infusion);
             break;
     }
     console.log(customerChoice);
@@ -58,37 +42,44 @@ const teaTasteForm = document.querySelector('.teaTaste__form');
 const teaTasteBtnNext = document.querySelector('.teaTaste__button--submit');
 const teaTasteBtnPrevious = document.querySelector('.teaTaste__button--previous');
 
-
 teaTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
     customerChoice.push(teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value);
-    switch (teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value) {
+    
+
+        switch (teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value) {
         case value = 'fruitty':
             teaTaste.style.display = "none";
             teaColorChoice.style.display = "flex";
+            Taste.progress(fruitty);
             break;
         case value = 'spicy':
             teaTaste.style.display = "none";
             teaColorChoice.style.display = "flex";
+            Taste.progress(spicy);
             break;
         case value = 'floral':
             teaTaste.style.display = "none";
             teaColorChoice.style.display = "flex";
+            Taste.progress(floral);
             break;
         case value = 'gourmet':
             teaTaste.style.display = "none";
             teaColorChoice.style.display = "flex";
+            Taste.progress(gourmet);
             break;
         case value = 'nature':
             teaTaste.style.display = "none";
             teaColorChoice.style.display = "flex";
+            Taste.progress(nature);
             break;
         case value = 'teaTasteAll':
             teaTaste.style.display = "none";
             results.style.display = "flex";
             resultAllDrinksFunction(arrayAllTea);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(all);
             break;
     };
     console.log(customerChoice)
@@ -115,14 +106,17 @@ infusionFamilyBtnNext.addEventListener('click', (e) => {
         case value = 'infusion':
             infusionFamily.style.display = "none";
             infusionTaste.style.display = "flex";
+            Drink.progress(infusion);
             break;
         case value = 'rooibos':
             infusionFamily.style.display = "none";
             rooibosTaste.style.display = "flex";
+            Drink.progress(rooibos);
             break;
         case value = 'wellness':
             infusionFamily.style.display = "none";
             wellnessTaste.style.display = "flex";
+            Drink.progress(wellness);
             break;
     }
     console.log(customerChoice);
@@ -154,36 +148,42 @@ teaColorChoiceBtnNext.addEventListener('click', (e) => {
             results.style.display = "flex";
             findTea(customerChoice[1], customerChoice[2]);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(black);
             break;
         case value = 'blue':
             teaColorChoice.style.display = "none";
             results.style.display = "flex";
             findTea(customerChoice[1], customerChoice[2]);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(blue);
             break;
         case value = 'white':
             teaColorChoice.style.display = "none";
             results.style.display = "flex";
             findTea(customerChoice[1], customerChoice[2]);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(white);
             break;
         case value = 'puerh':
             teaColorChoice.style.display = "none";
             results.style.display = "flex";
             findTea(customerChoice[1], customerChoice[2]);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(puerh);
             break;
         case value = 'green':
             teaColorChoice.style.display = "none";
             results.style.display = "flex";
             findTea(customerChoice[1], customerChoice[2]);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(green);
             break;
         case value = 'TeaAll':
             teaColorChoice.style.display = "none";
             results.style.display = "flex";
             resultAllDrinksFunction(arrayAllTea);
             setTimeout(reloadBtnExpand, 4000);
+            Color.progress(colorAll);
             break;
     }
     console.log(customerChoice);
@@ -210,6 +210,7 @@ infusionTasteBtnNext.addEventListener('click', (e) => {
             infusionTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
+            Taste.progress(gourmet);
             setTimeout(reloadBtnExpand, 4000);
             break;
         case value = 'infusionSpicy':
@@ -217,30 +218,35 @@ infusionTasteBtnNext.addEventListener('click', (e) => {
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(spicy);
             break;
         case value = 'infusionFloral':
             infusionTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(foral);
             break;
         case value = 'infusionFruitty':
             infusionTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(fruitty);
             break;
         case value = 'infusionNature':
             infusionTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(nature);
             break;
         case value = 'infusionAll':
             infusionTaste.style.display = "none";
             results.style.display = "flex";
             resultAllDrinksFunction(arrayAllInfusion);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(all);
             break;
     }
     console.log(customerChoice)
@@ -269,24 +275,28 @@ rooibosTasteBtnNext.addEventListener('click', (e) => {
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(nature)
             break;
         case value = 'rooibosSpicy':
             rooibosTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(spicy);
             break;
         case value = 'rooibosFruitty':
             rooibosTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(fruitty);
             break;
         case value = 'rooibosAll':
             rooibosTaste.style.display = "none";
             results.style.display = "flex";
             resultAllDrinksFunction(arrayAllRooibos);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(all);
             break;
     }
     console.log(customerChoice);
@@ -315,42 +325,49 @@ wellnessTasteBtnNext.addEventListener('click', (e) => {
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(breath);
             break;
         case value = 'lightLegs':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(lightLegs);
             break;
         case value = 'toSleep':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(toSleep);
             break;
-        case value = 'breastfeeding':
+        case value = 'breastFeeding':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(breastFeeding);
             break;
         case value = 'looseWeight':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(looseWeight);
             break;
         case value = 'digestive':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             findInfusion(customerChoice[0], customerChoice[1]);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(digestive);
             break;
         case value = 'all':
             wellnessTaste.style.display = "none";
             results.style.display = "flex";
             resultAllDrinksFunction(arrayAllWellness);
             setTimeout(reloadBtnExpand, 4000);
+            Taste.progress(wellnessAll);
             break;
     }
     console.log(customerChoice);
@@ -400,7 +417,7 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
     }
-    else if (customerChoice[1] === "rooibosNature" || customerChoice[1] === 'rooibosSpicy' || customerChoice[1] === 'rooibosFruitty' || customerChoice[1] === 'rooibosAll' || customerChoice[1] === 'rooibosAll') {
+    else if (customerChoice[1] === "rooibosNature" || customerChoice[1] === 'rooibosSpicy' || customerChoice[1] === 'rooibosFruitty' || customerChoice[1] === 'rooibosAll') {
         results.style.display = "none";
         rooibosTaste.style.display = "flex";
         customerChoice.pop();
@@ -415,9 +432,6 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         resultBtnReload.classList.remove('btnReload--result');
         
     };
-
-    // let newResult = document.querySelectorAll('.app__results--object');
-    // results.removeChild(newResult);
     
     function removeElementsByClass(className){
         const elements = document.getElementsByClassName(className);
@@ -443,8 +457,59 @@ btnReload.addEventListener('click', (e) => {
     results.style.display = "none";
     appHome.style.display = 'flex';
     resultBtnReload.classList.remove('btnReload--result');
-    removeElementsByClass('reloadText');
+    progress1.textContent = " ";
+    progress2.textContent = " ";
+    progress3.textContent = " ";
+    progress1.style.backgroundColor = 'transparent';
+    progress2.style.backgroundColor = 'transparent';
+    progress3.style.backgroundColor = 'transparent';
+    resultBtnReload.removeElementsByClass('reloadText');
 });
 
+
+// Type functions
+function addContent(type) {
+    let newDiv = document.createElement('div');
+    let newContent = document.innerHTML = type.content;
+    newDiv.classList.add('app__results--object');
+    newDiv.innerHTML = newContent;
+    results.append(newDiv);
+};
+// All drinks 
+function resultAllDrinksFunction(allContext) {
+    for (let i in allContext) {
+        let newDiv = document.createElement('div');
+        let newContent = document.innerHTML = allContext[i];
+        newDiv.classList.add('app__results--object');
+        newDiv.innerHTML = newContent;
+        results.append(newDiv);
+    }
+};
+
+
+function findTea(tastes, colors) {
+    const result = allTea.filter(obj => obj.tastes.includes(tastes) && obj.colors.includes(colors))
+        .forEach(obj => addContent(obj));
+};
+function findInfusion(family, tastes) {
+    let result = allInfusion.filter(obj => obj.family.includes(family) && obj.tastes.includes(tastes))
+        .forEach(obj => addContent(obj));
+};
+
+//appelee sur le click suivant 
+function progress01 (choice){
+    progress1.textContent = choice.name;
+    progress1.style.backgroundColor = choice.backgroundColor;
+};
+
+function progress02 (choice){
+    progress2.textContent = choice.name;
+    progress2.style.backgroundColor = choice.backgroundColor;
+};
+
+function progress03 (choice){
+    progress3.textContent = choice[0].name;
+    progress3.style.backgroundColor = choice[0].backgroundColor;
+};
 
 

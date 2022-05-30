@@ -1,8 +1,8 @@
 $primaryColor : rgba(34, 61, 125);
 $secondaryColor : #DC2244;
 $thirdColor : #003C00;
-$fontColor : #f1f1f1;
-$contentFontSize : 26px;
+$fontColor : rgba(34, 61, 125);
+$contentFontSize : 18px;
 
 // input color 
 
@@ -20,9 +20,10 @@ $contentFontSize : 26px;
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: $contentFontSize;
-
+  box-shadow : 5px 5px 5px grey;
+  color: white;
 }
 
 @mixin block{
@@ -63,15 +64,15 @@ body{
   #appBlock{
     width: 980px;
     min-height: 500px;
-    border: 2px solid grey;
+    border: 1px solid grey;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 5px 5px grey;
-    background-color: $primaryColor;
-    color: $fontColor;
+    background-color: #f1f1f1;
+    color: $primaryColor;
     position: relative;
 
     .logo{
@@ -86,10 +87,6 @@ body{
       left: 10px;
       top : 10px;
       
-    }
-
-    .logoAnim{
-      animation: logoRotate 3s linear 1s running, paused normal;
     }
 
     .selectedOption{
@@ -109,17 +106,21 @@ body{
       height: 100%;
 
       .startBtn{
-        background-color: $secondaryColor;
-        color: $fontColor;
+        color: #f1f1f1;
+        border-radius: 50px;
         border: none;
         font-size: $contentFontSize;
-        border-radius: 10px;
         padding: 10px 20px 10px 20px;
         cursor: pointer;
+        position: relative;
+        background-color: $secondaryColor;
+        animation : pulse 1.4s infinite;
+        box-shadow: 0 0 0 0 $secondaryColor;
         
         &:hover{
           transform: scale(1.1);
-          transition: 200ms;
+          // transition: 200ms;
+          animation: none;
         }
       }
       
@@ -138,22 +139,21 @@ body{
         #teaChoice + ::before{
             @include inputBtn;
             content:'Thé';
-            background-color: $thirdColor;
+            background-color: #42994E;
           }
           #teaChoice:checked + ::before{
-            border: 4px solid #419C5B;
             font-weight: 600;
-            transform: scale(1.1)
+            transform: scale(1.1);
             }
+            
           #infusionChoice + ::before{
             content:'Infusion';
-            background-color: #F2525D;
             @include inputBtn;
+            background-color: #F25C57;
           }
           #infusionChoice:checked + ::before{
-          border: 4px solid #7D382A;
           font-weight: 600;
-          transform: scale(1.1)
+          transform: scale(1.1);
           }
       }
 
@@ -179,7 +179,6 @@ body{
         background-color: #B39D6F;
       }
       #teaTaste__fruitty:checked + ::before{
-        border: 4px solid #736F1F;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -190,7 +189,6 @@ body{
         background-color: #F2843A;
       }
       #teaTaste__spicy:checked + ::before{
-        border: 4px solid #753F1C;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -201,7 +199,6 @@ body{
         background-color: #F28DDC;
       }
       #teaTaste__floral:checked + ::before{
-        border: 4px solid #75446A;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -212,7 +209,6 @@ body{
         background-color: #F25C57;
       }
       #teaTaste__gourmet:checked + ::before{
-        border: 4px solid #7A2F2C;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -223,7 +219,6 @@ body{
         background-color: #42994E;
       }
       #teaTaste__nature:checked + ::before{
-        border: 4px solid #6E9678;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -234,7 +229,6 @@ body{
         background-color: #B3C5F2;
       }
       #teaTaste__all:checked + ::before{
-        border: 4px solid #6D7894;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -247,7 +241,7 @@ body{
       display: grid;
         justify-content: center;
         grid-template-columns: repeat(3, 130px);
-        grid-template-rows: repeat(3, 70px);
+        grid-template-rows: repeat(2, 50px);
         grid-column-gap: 20px;
         grid-row-gap: 20px; 
         width: 60%;
@@ -262,7 +256,6 @@ body{
         background-color: #313634;
       }
       #teaColorChoice__black:checked + ::before{
-        border: 4px solid #f1f1f1;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -273,7 +266,6 @@ body{
         background-color: #45A0F5;
       }
       #teaColorChoice__blue:checked + ::before{
-        border: 4px solid #11283D;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -285,7 +277,6 @@ body{
         color:black;
       }
       #teaColorChoice__white:checked + ::before{
-        border: 4px solid black;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -296,7 +287,6 @@ body{
         background-color: #9E5F18;
       }
       #teaColorChoice__puerh:checked + ::before{
-        border: 4px solid #42280A;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -307,30 +297,16 @@ body{
         background-color: #147533;
       }
       #teaColorChoice__green:checked + ::before{
-        border: 4px solid #093617;
         font-weight: 600;
         transform: scale(1.1);
         }  
-      #teaColorChoice__null+ ::before{
+      #teaColorChoice__all+ ::before{
         grid-area: 2 / 3 / 3 / 4;
         @include inputBtn;
-        content:'null';
+        content:'Tous les thés';
         background-color: $secondaryColor;
       }
       #teaColorChoice__all:checked + ::before{
-        border: 4px solid white;
-        font-weight: 600;
-        transform: scale(1.1);
-        }
-      #teaColorChoice__all+ ::before{
-        grid-area: 3 / 1 / 4 / 4;
-        @include inputBtn;
-        content:'Afficher tous les thés';
-        background-color: $secondaryColor;
-        width: 430px;
-      }
-      #teaColorChoice__all:checked + ::before{
-        border: 4px solid white;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -350,7 +326,6 @@ body{
         background-color: #F2525D;
       }
       #infusionFamily__infusion:checked + ::before{
-        border: 4px solid #7D382A;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -360,7 +335,6 @@ body{
         background-color: #F5540F;
       }
       #infusionFamily__rooibos:checked + ::before{
-        border: 4px solid #421704;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -370,7 +344,6 @@ body{
         background-color: #F5B36C;
       }
       #infusionFamily__wellness:checked + ::before{
-        border: 4px solid #42301D;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -379,68 +352,74 @@ body{
   .infusionTaste{
     @include block;
     form{
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(3, 130px);
+      grid-template-rows: repeat(2, 50px);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px; 
+      width: 60%;
+      height: 150px;
       input{
         display: none;
       }
       #infusionTaste__gourmet+ ::before{
+        grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Gourmand';
         background-color: #F25C57;
       }
       #infusionTaste__gourmet:checked + ::before{
-        border: 4px solid #7A2F2C;
         font-weight: 600;
         transform: scale(1.1);
         }
       #infusionTaste__spicy+ ::before{
+        grid-area: 1 / 2 / 2 / 3;
         @include inputBtn;
         content:'Epicé';
         background-color: #F2843A;
       }
       #infusionTaste__spicy:checked + ::before{
-        border: 4px solid #753F1C;
         font-weight: 600;
         transform: scale(1.1);
         }
       #infusionTaste__floral+ ::before{
+        grid-area: 1 / 3 / 2 / 4;
         @include inputBtn;
         content:'Florale';
         background-color: #F28DDC;
       }
       #infusionTaste__floral:checked + ::before{
-        border: 4px solid #75446A;
         font-weight: 600;
         transform: scale(1.1);
         }
       #infusionTaste__fruitty+ ::before{
+        grid-area: 2 / 1 / 3 / 2;
         @include inputBtn;
         content:'Fruitté';
         background-color: #B39D6F;
       }
       #infusionTaste__fruitty:checked + ::before{
-        border: 4px solid #736F1F;
         font-weight: 600;
         transform: scale(1.1);
         }
       #infusionTaste__nature+ ::before{
+        grid-area: 2 / 2 / 3 / 3; 
         @include inputBtn;
         content:'Nature';
         background-color: #42994E;
       }
       #infusionTaste__nature:checked + ::before{
-        border: 4px solid #6E9678;
         font-weight: 600;
         transform: scale(1.1);
         }
       #infusionTaste__all+ ::before{
+        grid-area: 2 / 3 / 3 / 4; 
         @include inputBtn;
-        content:'Toutes les infusions';
+        content:'Toutes';
         background-color: #42994E;
       }
       #infusionTaste__all:checked + ::before{
-        border: 4px solid #6E9678;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -449,64 +428,70 @@ body{
   .rooibosTaste{
     @include block;
     form{
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(2, 130px);
+      grid-template-rows: repeat(2, 70px);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px; 
+      width: 60%;
+      height: 150px;
       input{
         display: none;
       }
       #rooibosTaste__nature+ ::before{
+        grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Nature';
         background-color: #42994E;
       }
       #rooibosTaste__nature:checked + ::before{
-        border: 4px solid #6E9678;
         font-weight: 600;
         transform: scale(1.1);
         }
       #rooibosTaste__spicy+ ::before{
+        grid-area: 1 / 2 / 2 / 3;
         @include inputBtn;
         content:'Epicé';
         background-color: #F2843A;
       }
       #rooibosTaste__spicy:checked + ::before{
-        border: 4px solid #753F1C;
         font-weight: 600;
         transform: scale(1.1);
         }
       #rooibosTaste__fruitty+ ::before{
+        grid-area: 2 / 1 / 3 / 2;
         @include inputBtn;
         content:'Fruitté';
         background-color: #B39D6F;
       }
       #rooibosTaste__fruitty:checked + ::before{
-        border: 4px solid #736F1F;
         font-weight: 600;
         transform: scale(1.1);
         }
-        #rooibosTaste__All+ ::before{
-          @include inputBtn;
-          content:'All';
-          background-color: #B39D6F;
+      #rooibosTaste__All+ ::before{
+        grid-area: 2 / 2 / 3 / 3;
+        @include inputBtn;
+        content:'Tous';
+        background-color: #F25C57;
+      }
+      #rooibosTaste__All:checked + ::before{
+        font-weight: 600;
+        transform: scale(1.1);
         }
-        #rooibosTaste__All:checked + ::before{
-          border: 4px solid #736F1F;
-          font-weight: 600;
-          transform: scale(1.1);
-          }
     }
   }
   .wellnessTaste{
     @include block;
     form{
       display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(3, 130px);
-        grid-template-rows: repeat(3, 70px);
-        grid-column-gap: 20px;
-        grid-row-gap: 20px; 
-        width: 60%;
-        height: 150px;
+      justify-content: center;
+      grid-template-columns: repeat(3, 130px);
+      grid-template-rows: repeat(3, 70px);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px; 
+      width: 60%;
+      height: 150px;
       input{
         display: none;
       }
@@ -519,7 +504,6 @@ body{
         text-align: center;
       }
       #wellnessTaste__breath:checked + ::before{
-        border: 4px solid #736F1F;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -532,7 +516,6 @@ body{
         text-align: center;
       }
       #wellnessTaste__lightLegs:checked + ::before{
-        border: 4px solid #753F1C;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -545,7 +528,6 @@ body{
         text-align: center;
       }
       #wellnessTaste__toSleep:checked + ::before{
-        border: 4px solid #75446A;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -558,7 +540,6 @@ body{
         text-align: center;
       }
       #wellnessTaste__breastfeeding:checked + ::before{
-        border: 4px solid #7A2F2C;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -571,7 +552,6 @@ body{
         text-align: center;
       }
       #wellnessTaste__looseWeight:checked + ::before{
-        border: 4px solid #6E9678;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -584,21 +564,19 @@ body{
         text-align: center;
       }
       #wellnessTaste__digestive:checked + ::before{
-        border: 4px solid #6D7894;
         font-weight: 600;
         transform: scale(1.1);
         }
       #wellnessTaste__all+ ::before{
         grid-area: 3 / 1 / 4 / 4;
         @include inputBtn;
-        content:'Afficher toutes les infusions bien-etre';
+        content:'Toutes les infusions bien-etre';
         background-color: #B3C5F2;
         width: 430px;
         height: 70px;
         text-align: center;
       }
       #wellnessTaste__all:checked + ::before{
-        border: 4px solid #6D7894;
         font-weight: 600;
         transform: scale(1.1);
         }
@@ -615,18 +593,38 @@ body{
     justify-content: flex-start;
     overflow: scroll;
 
+    .reloadText{
+      color: white;
+    }
 
     .app__results--object{
+      width: 80%;
+      height: 200px;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       margin : 40px 20px 80px 20px;
-
+      .app__results-objectBtnPrice{
+        display: flex;
+        flex-direction: row;
+        p{
+          margin-left: 10px;
+        }
+      }
+      .img__wrapper{
+        overflow: hidden;
+        width: 200px;
+        height: 200px;
+      }
       img{
         border-radius: 5px;
-        z-index: 200;
-        max-width: 300px;
+        max-width: 200px;
+        transition: all 300ms ease-out;
+        &:hover{
+          transform: scale(1.1);
+          
+        }
       }
       .app__results-objectText{
         display: flex;
@@ -634,13 +632,129 @@ body{
         align-items: flex-start;
         justify-content: center;
         margin: 10px 0 10px 20px;
-        
-        p{
+        h4{
           font-size: 20px;
+          text-transform: capitalize;
+          display: block;
+          margin: 0;
         }
+        p{
+          font-size: 16px;
+          width: 400px;
+          text-align: justify;
+          display: block;
+        }
+        button {
+          width: 130px;
+          height: 50px;
+          position: relative;
+          background: linear-gradient(0deg, #3CBD57 0%, #277A39 100%);
+          line-height: 48px;
+          padding: 0;
+          border: none;
+          border-radius: 5px;
+          
+          }
+        button span {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: 100%;
+          color: #f1f1f1;
+          font-size: $contentFontSize;
+          font-family:'Proxima', sans-serif;
+        }
+        button:before,
+        button:after {
+          position: absolute;
+          content: "";
+          right: 0;
+          bottom: 0;
+          background: #3CBD57;
+          box-shadow:
+            -7px -7px 20px 0px rgba(255,255,255,.9),
+            -4px -4px 5px 0px rgba(255,255,255,.9),
+            7px 7px 20px 0px rgba(0,0,0,.2),
+            4px 4px 5px 0px rgba(0,0,0,.3);
+          transition: all 0.3s ease;
+        }
+        button:before{
+            height: 0%;
+            width: 2px;
+        }
+        button:after {
+          width: 0%;
+          height: 2px;
+        }
+        button:hover{
+          color: #3CBD57;
+          background: transparent;
+        }
+        button:hover:before {
+          height: 100%;
+        }
+        button:hover:after {
+          width: 100%;
+        }
+        button span:hover{
+          color: #277A39
+        }
+        button span:before,
+        button span:after {
+          position: absolute;
+          content: "";
+          left: 0;
+          top: 0;
+          background: #3CBD57;
+          box-shadow:
+            -7px -7px 20px 0px rgba(255,255,255,.9),
+            -4px -4px 5px 0px rgba(255,255,255,.9),
+            7px 7px 20px 0px rgba(0,0,0,.2),
+            4px 4px 5px 0px rgba(0,0,0,.3);
+          transition: all 0.3s ease;
+        }
+        button span:before {
+          width: 2px;
+          height: 0%;
+        }
+        button span:after {
+          height: 2px;
+          width: 0%;
+        }
+        button span:hover:before {
+          height: 100%;
+        }
+        button span:hover:after {
+          width: 100%;
+        }       
       }
-
     }
+  }
+}
+
+.progressBlock{
+  display: flex;
+  flex-direction: row;
+  p{
+    display: block;
+    font-size: 16px;
+    color : #f1f1f1;
+    text-align: center;
+  }
+  .progressBlock__Progress{
+    width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .progressBlock__title{
+    color: $primaryColor;
+    font-weight: 700;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -706,7 +820,12 @@ body{
 .btnReload:hover{
   transition: 200ms;
   transform: scale(1.1);
-  background-color :red;
+  background-color :#F25C57;
+
+}
+
+.btnReload:hover img{
+  fill: white;
 }
 
 .btnReload--result{
@@ -719,7 +838,7 @@ body{
   right: 1vw;
   border : none;
   transition : all 0.4s ease-out;
-  background-color:red;
+  background-color:#F25C57;
   display: flex;
   align-items: center;
   p{
@@ -729,9 +848,17 @@ body{
   }
 }
 
-@keyframes logoRotate {
-  to{
-    transform: rotateY(360deg);
+@keyframes pulse{
+  0% {
+    transform : scale(.95);
+  }
+  90% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba($secondaryColor, 0);
+  }
+    100% {
+    transform: scale(.95);
+    box-shadow: 0 0 0 0 rgba($secondaryColor, 0);
   }
 }
 

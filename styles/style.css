@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Proxima", sans-serif;
-  font-size: 26px;
+  font-size: 18px;
 }
 
 #wrapper {
@@ -31,15 +31,15 @@ body {
 #wrapper #appBlock {
   width: 980px;
   min-height: 500px;
-  border: 2px solid grey;
+  border: 1px solid grey;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 5px 5px 5px grey;
-  background-color: rgb(34, 61, 125);
-  color: #f1f1f1;
+  background-color: #f1f1f1;
+  color: rgb(34, 61, 125);
   position: relative;
 }
 #wrapper #appBlock .logo {
@@ -53,9 +53,6 @@ body {
   position: absolute;
   left: 10px;
   top: 10px;
-}
-#wrapper #appBlock .logoAnim {
-  animation: logoRotate 3s linear 1s running, paused normal;
 }
 #wrapper #appBlock .selectedOption {
   font-size: 13px;
@@ -73,17 +70,20 @@ body {
   height: 100%;
 }
 #wrapper #appBlock .appHome .startBtn {
-  background-color: #DC2244;
   color: #f1f1f1;
+  border-radius: 50px;
   border: none;
-  font-size: 26px;
-  border-radius: 10px;
+  font-size: 18px;
   padding: 10px 20px 10px 20px;
   cursor: pointer;
+  position: relative;
+  background-color: #DC2244;
+  animation: pulse 1.4s infinite;
+  box-shadow: 0 0 0 0 #DC2244;
 }
 #wrapper #appBlock .appHome .startBtn:hover {
   transform: scale(1.1);
-  transition: 200ms;
+  animation: none;
 }
 #wrapper #appBlock .appHome p {
   display: block;
@@ -111,19 +111,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Thé";
-  background-color: #003C00;
+  background-color: #42994E;
 }
 #wrapper #appBlock .teaOrInfusion form #teaChoice:checked + ::before {
-  border: 4px solid #419C5B;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .teaOrInfusion form #infusionChoice + ::before {
   content: "Infusion";
-  background-color: #F2525D;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -131,11 +131,13 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  background-color: #F25C57;
 }
 #wrapper #appBlock .teaOrInfusion form #infusionChoice:checked + ::before {
-  border: 4px solid #7D382A;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -169,13 +171,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Fruitté";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__fruitty:checked + ::before {
-  border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -188,13 +191,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Epicé";
   background-color: #F2843A;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__spicy:checked + ::before {
-  border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -207,13 +211,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Florale";
   background-color: #F28DDC;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__floral:checked + ::before {
-  border: 4px solid #75446A;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -226,13 +231,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Gourmand";
   background-color: #F25C57;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__gourmet:checked + ::before {
-  border: 4px solid #7A2F2C;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -245,13 +251,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Nature";
   background-color: #42994E;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__nature:checked + ::before {
-  border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -264,13 +271,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Tous";
   background-color: #B3C5F2;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__all:checked + ::before {
-  border: 4px solid #6D7894;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -286,7 +294,7 @@ body {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 130px);
-  grid-template-rows: repeat(3, 70px);
+  grid-template-rows: repeat(2, 50px);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   width: 60%;
@@ -304,13 +312,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Noir";
   background-color: #313634;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__black:checked + ::before {
-  border: 4px solid #f1f1f1;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -323,13 +332,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Bleu";
   background-color: #45A0F5;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__blue:checked + ::before {
-  border: 4px solid #11283D;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -342,14 +352,15 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Blanc";
   background-color: #f1f1f1;
   color: black;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__white:checked + ::before {
-  border: 4px solid black;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -362,13 +373,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Puerh";
   background-color: #9E5F18;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__puerh:checked + ::before {
-  border: 4px solid #42280A;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -381,17 +393,18 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Vert";
   background-color: #147533;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__green:checked + ::before {
-  border: 4px solid #093617;
   font-weight: 600;
   transform: scale(1.1);
 }
-#wrapper #appBlock .teaColorChoice form #teaColorChoice__null + ::before {
+#wrapper #appBlock .teaColorChoice form #teaColorChoice__all + ::before {
   grid-area: 2/3/3/4;
   width: 130px;
   height: 50px;
@@ -400,33 +413,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "null";
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Tous les thés";
   background-color: #DC2244;
 }
 #wrapper #appBlock .teaColorChoice form #teaColorChoice__all:checked + ::before {
-  border: 4px solid white;
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .teaColorChoice form #teaColorChoice__all + ::before {
-  grid-area: 3/1/4/4;
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Afficher tous les thés";
-  background-color: #DC2244;
-  width: 430px;
-}
-#wrapper #appBlock .teaColorChoice form #teaColorChoice__all:checked + ::before {
-  border: 4px solid white;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -453,13 +447,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Infusions";
   background-color: #F2525D;
 }
 #wrapper #appBlock .infusionFamily form #infusionFamily__infusion:checked + ::before {
-  border: 4px solid #7D382A;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -471,13 +466,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Rooibos";
   background-color: #F5540F;
 }
 #wrapper #appBlock .infusionFamily form #infusionFamily__rooibos:checked + ::before {
-  border: 4px solid #421704;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -489,13 +485,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Bien-être";
   background-color: #F5B36C;
 }
 #wrapper #appBlock .infusionFamily form #infusionFamily__wellness:checked + ::before {
-  border: 4px solid #42301D;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -508,13 +505,20 @@ body {
   height: 100%;
 }
 #wrapper #appBlock .infusionTaste form {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 130px);
+  grid-template-rows: repeat(2, 50px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: 60%;
+  height: 150px;
 }
 #wrapper #appBlock .infusionTaste form input {
   display: none;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__gourmet + ::before {
+  grid-area: 1/1/2/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -522,17 +526,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Gourmand";
   background-color: #F25C57;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__gourmet:checked + ::before {
-  border: 4px solid #7A2F2C;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__spicy + ::before {
+  grid-area: 1/2/2/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -540,17 +546,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Epicé";
   background-color: #F2843A;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__spicy:checked + ::before {
-  border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__floral + ::before {
+  grid-area: 1/3/2/4;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -558,17 +566,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Florale";
   background-color: #F28DDC;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__floral:checked + ::before {
-  border: 4px solid #75446A;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__fruitty + ::before {
+  grid-area: 2/1/3/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -576,17 +586,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Fruitté";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__fruitty:checked + ::before {
-  border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__nature + ::before {
+  grid-area: 2/2/3/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -594,17 +606,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Nature";
   background-color: #42994E;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__nature:checked + ::before {
-  border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__all + ::before {
+  grid-area: 2/3/3/4;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -612,13 +626,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Toutes les infusions";
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Toutes";
   background-color: #42994E;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__all:checked + ::before {
-  border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -631,13 +646,20 @@ body {
   height: 100%;
 }
 #wrapper #appBlock .rooibosTaste form {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: repeat(2, 70px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  width: 60%;
+  height: 150px;
 }
 #wrapper #appBlock .rooibosTaste form input {
   display: none;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__nature + ::before {
+  grid-area: 1/1/2/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -645,17 +667,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Nature";
   background-color: #42994E;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__nature:checked + ::before {
-  border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__spicy + ::before {
+  grid-area: 1/2/2/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -663,17 +687,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Epicé";
   background-color: #F2843A;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__spicy:checked + ::before {
-  border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty + ::before {
+  grid-area: 2/1/3/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -681,17 +707,19 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Fruitté";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty:checked + ::before {
-  border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__All + ::before {
+  grid-area: 2/2/3/3;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -699,13 +727,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "All";
-  background-color: #B39D6F;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Tous";
+  background-color: #F25C57;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__All:checked + ::before {
-  border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -739,15 +768,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Respirer";
   background-color: #B39D6F;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__breath:checked + ::before {
-  border: 4px solid #736F1F;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -760,15 +790,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Jambes légères";
   background-color: #F2843A;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs:checked + ::before {
-  border: 4px solid #753F1C;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -781,15 +812,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Pour dormir";
   background-color: #F28DDC;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep:checked + ::before {
-  border: 4px solid #75446A;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -802,15 +834,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Alaitement";
   background-color: #F25C57;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding:checked + ::before {
-  border: 4px solid #7A2F2C;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -823,15 +856,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Perte de poids";
   background-color: #42994E;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__looseWeight:checked + ::before {
-  border: 4px solid #6E9678;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -844,15 +878,16 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
   content: "Digestif";
   background-color: #B3C5F2;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__digestive:checked + ::before {
-  border: 4px solid #6D7894;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -865,16 +900,17 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
-  border-radius: 10px;
-  font-size: 26px;
-  content: "Afficher toutes les infusions bien-etre";
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Toutes les infusions bien-etre";
   background-color: #B3C5F2;
   width: 430px;
   height: 70px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__all:checked + ::before {
-  border: 4px solid #6D7894;
   font-weight: 600;
   transform: scale(1.1);
 }
@@ -887,17 +923,37 @@ body {
   justify-content: flex-start;
   overflow: scroll;
 }
+#wrapper .app__results .reloadText {
+  color: white;
+}
 #wrapper .app__results .app__results--object {
+  width: 80%;
+  height: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 40px 20px 80px 20px;
+}
+#wrapper .app__results .app__results--object .app__results-objectBtnPrice {
+  display: flex;
+  flex-direction: row;
+}
+#wrapper .app__results .app__results--object .app__results-objectBtnPrice p {
+  margin-left: 10px;
+}
+#wrapper .app__results .app__results--object .img__wrapper {
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
 }
 #wrapper .app__results .app__results--object img {
   border-radius: 5px;
-  z-index: 200;
-  max-width: 300px;
+  max-width: 200px;
+  transition: all 300ms ease-out;
+}
+#wrapper .app__results .app__results--object img:hover {
+  transform: scale(1.1);
 }
 #wrapper .app__results .app__results--object .app__results-objectText {
   display: flex;
@@ -906,8 +962,117 @@ body {
   justify-content: center;
   margin: 10px 0 10px 20px;
 }
-#wrapper .app__results .app__results--object .app__results-objectText p {
+#wrapper .app__results .app__results--object .app__results-objectText h4 {
   font-size: 20px;
+  text-transform: capitalize;
+  display: block;
+  margin: 0;
+}
+#wrapper .app__results .app__results--object .app__results-objectText p {
+  font-size: 16px;
+  width: 400px;
+  text-align: justify;
+  display: block;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button {
+  width: 130px;
+  height: 50px;
+  position: relative;
+  background: linear-gradient(0deg, #3CBD57 0%, #277A39 100%);
+  line-height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #f1f1f1;
+  font-size: 18px;
+  font-family: "Proxima", sans-serif;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:before,
+#wrapper .app__results .app__results--object .app__results-objectText button:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: #3CBD57;
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9), 7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:before {
+  height: 0%;
+  width: 2px;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:after {
+  width: 0%;
+  height: 2px;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:hover {
+  color: #3CBD57;
+  background: transparent;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:hover:before {
+  height: 100%;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button:hover:after {
+  width: 100%;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:hover {
+  color: #277A39;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:before,
+#wrapper .app__results .app__results--object .app__results-objectText button span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: #3CBD57;
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9), 7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:before {
+  width: 2px;
+  height: 0%;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:after {
+  height: 2px;
+  width: 0%;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:hover:before {
+  height: 100%;
+}
+#wrapper .app__results .app__results--object .app__results-objectText button span:hover:after {
+  width: 100%;
+}
+
+.progressBlock {
+  display: flex;
+  flex-direction: row;
+}
+.progressBlock p {
+  display: block;
+  font-size: 16px;
+  color: #f1f1f1;
+  text-align: center;
+}
+.progressBlock .progressBlock__Progress {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progressBlock .progressBlock__title {
+  color: rgb(34, 61, 125);
+  font-weight: 700;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnNext {
@@ -973,7 +1138,11 @@ body {
 .btnReload:hover {
   transition: 200ms;
   transform: scale(1.1);
-  background-color: red;
+  background-color: #F25C57;
+}
+
+.btnReload:hover img {
+  fill: white;
 }
 
 .btnReload--result {
@@ -986,19 +1155,27 @@ body {
   right: 1vw;
   border: none;
   transition: all 0.4s ease-out;
-  background-color: red;
+  background-color: #F25C57;
   display: flex;
   align-items: center;
 }
 .btnReload--result p {
-  color: #f1f1f1;
+  color: rgb(34, 61, 125);
   font-size: 18px;
   display: inline-block;
 }
 
-@keyframes logoRotate {
-  to {
-    transform: rotateY(360deg);
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  90% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba(220, 34, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(220, 34, 68, 0);
   }
 }
 
