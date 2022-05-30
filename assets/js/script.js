@@ -1,22 +1,3 @@
-const appHome = document.querySelector(".appHome");
-const teaOrInfusion = document.querySelector(".teaOrInfusion");
-const teaTaste = document.querySelector(".teaTaste");
-const teaColorChoice = document.querySelector(".teaColorChoice");
-const infusionFamily = document.querySelector(".infusionFamily");
-const infusionTaste = document.querySelector(".infusionTaste");
-const rooibosTaste = document.querySelector(".rooibosTaste");
-const wellnessTaste = document.querySelector(".wellnessTaste");
-const previousBtn = document.querySelector(".previous");
-const btnReload = document.querySelector('.btnReload');
-const results = document.querySelector('.app__results');
-const startBtn = document.querySelector(".startBtn");
-const ResultsPreviousBtn = document.querySelector('.results__button--previous');
-const resultBtnReload = document.querySelector('.results__button--reload');
-
-let customerChoice = [];
-
-
-
 startBtn.addEventListener('click', () => {
 
     teaOrInfusion.style.display = "flex";
@@ -31,16 +12,16 @@ const teaOrinfusionBtnPrevious = document.querySelector('.teaOrInfusion__button-
 
 teaOrinfusionBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
-    switch (teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value) {
-        case value = 'tea':
-            teaOrInfusion.style.display = 'none';
-            teaTaste.style.display = 'flex';
-            customerChoice.push(teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value);
-            break;
-        case value = 'infusion':
-            teaOrInfusion.style.display = 'none';
-            infusionFamily.style.display = 'flex';
-            break;
+    teaOrInfusion.style.display = 'none';
+    teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value;
+    if (value = 'tea') {
+        teaTaste.style.display = 'flex';
+        customerChoice.push(teaOrInfusionForm.querySelector(`input[name="choice"]:checked`).value);
+        userObject = new Tea('tea')
+    }
+    else if (value = 'infusion') {
+        infusionFamily.style.display = 'flex';
+        userObject = new Infusion('infusion')
     }
     console.log(customerChoice);
 });
@@ -63,35 +44,18 @@ teaTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
     customerChoice.push(teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value);
-    switch (teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value) {
-        case value = 'fruitty':
-            teaTaste.style.display = "none";
-            teaColorChoice.style.display = "flex";
-            break;
-        case value = 'spicy':
-            teaTaste.style.display = "none";
-            teaColorChoice.style.display = "flex";
-            break;
-        case value = 'floral':
-            teaTaste.style.display = "none";
-            teaColorChoice.style.display = "flex";
-            break;
-        case value = 'gourmet':
-            teaTaste.style.display = "none";
-            teaColorChoice.style.display = "flex";
-            break;
-        case value = 'nature':
-            teaTaste.style.display = "none";
-            teaColorChoice.style.display = "flex";
-            break;
-        case value = 'teaTasteAll':
-            teaTaste.style.display = "none";
-            results.style.display = "flex";
-            resultAllDrinksFunction(arrayAllTea);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
+    teaTasteForm.querySelector(`input[name="teaTaste"]:checked`).value;
+    teaTaste.style.display = "none";
+    if (allTeaTastes.includes(value)) {
+        teaColorChoice.style.display = "flex";
+        userObject.taste = value
+    }
+    else if (value = 'teaTasteAll') {
+        results.style.display = "flex";
+        userObject.resultAllDrinksFunction(arrayAllTea);
+        setTimeout(reloadBtnExpand, 4000);
     };
-    console.log(customerChoice)
+    console.log(customerChoice);
 });
 
 teaTasteBtnPrevious.addEventListener('click', (e) => {
@@ -102,7 +66,7 @@ teaTasteBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-// Infusion taste 
+// Infusion taste
 const infusionFamilyForm = document.querySelector('.infusionFamily__form');
 const infusionFamilyBtnNext = document.querySelector('.infusionFamily__button--submit');
 const infusionFamilyBtnPrevious = document.querySelector('.infusionFamily__button--previous')
@@ -136,7 +100,7 @@ infusionFamilyBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-//tea Color 
+//tea Color
 const teaColorChoiceForm = document.querySelector('.teaColorChoice__form');
 const teaColorChoiceBtnNext = document.querySelector('.teaColorChoice__button--submit');
 const teaColorChoiceBtnPrevious = document.querySelector('.teaColorChoice__button--previous');
@@ -148,44 +112,18 @@ teaColorChoiceBtnNext.addEventListener('click', (e) => {
     if (teaColorChoiceForm.querySelector(`input[name="teaColorChoice"]:checked`).value != '') {
         teaColorChoice.style.display = "none";
     };
-    switch (teaColorChoiceForm.querySelector(`input[name="teaColorChoice"]:checked`).value) {
-        case value = 'black':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            findTea(customerChoice[1], customerChoice[2]);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
-        case value = 'blue':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            findTea(customerChoice[1], customerChoice[2]);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
-        case value = 'white':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            findTea(customerChoice[1], customerChoice[2]);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
-        case value = 'puerh':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            findTea(customerChoice[1], customerChoice[2]);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
-        case value = 'green':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            findTea(customerChoice[1], customerChoice[2]);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
-        case value = 'TeaAll':
-            teaColorChoice.style.display = "none";
-            results.style.display = "flex";
-            resultAllDrinksFunction(arrayAllTea);
-            setTimeout(reloadBtnExpand, 4000);
-            break;
+    if (allTeaColors.includes(value)) {
+        teaColorChoice.style.display = "none";
+        results.style.display = "flex";
+        findTea(customerChoice[1], customerChoice[2]);
+        setTimeout(reloadBtnExpand, 4000);
     }
+    else if (value = 'TeaAll') {
+        teaColorChoice.style.display = "none";
+        results.style.display = "flex";
+        resultAllDrinksFunction(arrayAllTea);
+        setTimeout(reloadBtnExpand, 4000);
+    };
     console.log(customerChoice);
 });
 
@@ -197,7 +135,7 @@ teaColorChoiceBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-//infusion flavors 
+//infusion flavors
 const infusionTasteForm = document.querySelector('.infusionTaste__form');
 const infusionTasteBtnNext = document.querySelector('.infusionTaste__button--submit');
 const infusionTasteBtnPrevious = document.querySelector('.infusionTaste__button--previous');
@@ -254,7 +192,7 @@ infusionTasteBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-//roibos flavors 
+//roibos flavors
 const rooibosTasteForm = document.querySelector('.rooibosTaste__form');
 const rooibosTasteBtnNext = document.querySelector('.rooibosTaste__button--submit');
 const rooibosTasteBtnPrevious = document.querySelector('.rooibosTaste__button--previous');
@@ -300,7 +238,7 @@ rooibosTasteBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-//wellness flavors 
+//wellness flavors
 const wellnessTasteForm = document.querySelector('.wellnessTaste__form');
 const wellnessTasteBtnNext = document.querySelector('.wellnessTaste__button--submit');
 const wellnessTasteBtnPrevious = document.querySelector('.wellnessTaste__button--previous');
@@ -406,19 +344,19 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
-        
+
     } else if (customerChoice[0] === "wellness") {
         results.style.display = "none";
         wellnessTaste.style.display = "flex";
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
-        
+
     };
 
     // let newResult = document.querySelectorAll('.app__results--object');
     // results.removeChild(newResult);
-    
+
     function removeElementsByClass(className){
         const elements = document.getElementsByClassName(className);
         while(elements.length > 0){
@@ -427,7 +365,7 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
     }
     removeElementsByClass('app__results--object');
     removeElementsByClass('reloadText');
-    
+
 });
 //reload Btn
 btnReload.addEventListener('click', (e) => {
