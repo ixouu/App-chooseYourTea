@@ -28,9 +28,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+#wrapper h1 {
+  font-family: "Playfair Display", serif;
+}
 #wrapper #appBlock {
   width: 980px;
-  min-height: 620px;
+  height: 620px;
   border: 1px solid grey;
   border-radius: 30px;
   display: flex;
@@ -38,7 +41,7 @@ body {
   justify-content: center;
   align-items: center;
   box-shadow: 5px 5px 5px grey;
-  background-color: #f1f1f1;
+  background-color: #FFFFFF;
   color: rgb(34, 61, 125);
   position: relative;
   padding-top: 40px;
@@ -46,7 +49,6 @@ body {
 #wrapper #appBlock .logo {
   width: 140px;
   height: 140px;
-  background-color: #f1f1f1;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -69,6 +71,7 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  margin-bottom: 100px;
 }
 #wrapper #appBlock .appHome .startBtn {
   color: #f1f1f1;
@@ -92,12 +95,13 @@ body {
 #wrapper #appBlock .teaOrInfusion {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
 #wrapper #appBlock .teaOrInfusion form {
+  margin-top: 150px;
   display: flex;
   flex-direction: row;
 }
@@ -118,10 +122,11 @@ body {
   color: white;
   content: "Thé";
   background-color: #42994E;
+  margin-right: 30px;
 }
 #wrapper #appBlock .teaOrInfusion form #teaChoice:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaOrInfusion form #infusionChoice + ::before {
   content: "Infusion";
@@ -140,24 +145,28 @@ body {
 }
 #wrapper #appBlock .teaOrInfusion form #infusionChoice:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .teaTaste h2 {
+  margin-top: 90px;
+}
 #wrapper #appBlock .teaTaste form {
+  margin-top: 30px;
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(2, 50px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
   width: 60%;
   height: 150px;
 }
@@ -182,7 +191,7 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__fruitty:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste form #teaTaste__spicy + ::before {
   grid-area: 1/2/2/3;
@@ -202,7 +211,7 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__spicy:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste form #teaTaste__floral + ::before {
   grid-area: 1/3/2/4;
@@ -222,7 +231,7 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__floral:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste form #teaTaste__gourmet + ::before {
   grid-area: 2/1/3/2;
@@ -242,7 +251,7 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__gourmet:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste form #teaTaste__nature + ::before {
   grid-area: 2/2/3/3;
@@ -262,7 +271,7 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__nature:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaTaste form #teaTaste__all + ::before {
   grid-area: 2/3/3/4;
@@ -282,24 +291,28 @@ body {
 }
 #wrapper #appBlock .teaTaste form #teaTaste__all:checked + ::before {
   font-weight: 600;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 #wrapper #appBlock .teaColorChoice {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .teaColorChoice h2 {
+  margin-top: 90px;
+}
 #wrapper #appBlock .teaColorChoice form {
+  margin-top: 30px;
   display: grid;
   justify-content: center;
   align-items: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(2, 50px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
   width: 60%;
   height: 150px;
 }
@@ -430,12 +443,16 @@ body {
 #wrapper #appBlock .infusionFamily {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .infusionFamily h2 {
+  margin-top: 100px;
+}
 #wrapper #appBlock .infusionFamily form {
+  margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
@@ -502,18 +519,22 @@ body {
 #wrapper #appBlock .infusionTaste {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .infusionTaste h2 {
+  margin-top: 100px;
+}
 #wrapper #appBlock .infusionTaste form {
+  margin-top: 30px;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(2, 50px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
   width: 60%;
   height: 150px;
 }
@@ -643,18 +664,21 @@ body {
 #wrapper #appBlock .rooibosTaste {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .rooibosTaste h2 {
+  margin-top: 100px;
+}
 #wrapper #appBlock .rooibosTaste form {
+  margin-top: 30px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  grid-template-rows: repeat(2, 70px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(4, 130px);
+  grid-template-rows: 70px;
+  grid-column-gap: 30px;
   width: 60%;
   height: 150px;
 }
@@ -702,7 +726,7 @@ body {
   transform: scale(1.1);
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty + ::before {
-  grid-area: 2/1/3/2;
+  grid-area: 1/3/2/4;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -722,7 +746,7 @@ body {
   transform: scale(1.1);
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__All + ::before {
-  grid-area: 2/2/3/3;
+  grid-area: 1/4/2/5;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -744,21 +768,26 @@ body {
 #wrapper #appBlock .wellnessTaste {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
+#wrapper #appBlock .wellnessTaste h2 {
+  margin-top: 20px;
+}
 #wrapper #appBlock .wellnessTaste form {
+  padding-top: 30px;
   display: grid;
   justify-content: center;
   align-items: center;
+  align-content: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(3, 70px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
   width: 60%;
-  height: 150px;
+  height: auto;
 }
 #wrapper #appBlock .wellnessTaste form input {
   display: none;
@@ -910,7 +939,7 @@ body {
   color: white;
   content: "Toutes les infusions bien-etre";
   background-color: #B3C5F2;
-  width: 430px;
+  width: 400px;
   height: 70px;
   text-align: center;
 }
@@ -920,7 +949,7 @@ body {
 }
 #wrapper .app__results {
   width: 980px;
-  height: 600px;
+  height: 620px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -953,7 +982,7 @@ body {
 }
 #wrapper .app__results .app__results--object img {
   border-radius: 5px;
-  max-width: 200px;
+  width: 200px;
   transition: all 300ms ease-out;
 }
 #wrapper .app__results .app__results--object img:hover {
@@ -974,7 +1003,7 @@ body {
 }
 #wrapper .app__results .app__results--object .app__results-objectText p {
   font-size: 16px;
-  width: 400px;
+  width: 380px;
   text-align: justify;
   display: block;
 }
@@ -982,7 +1011,7 @@ body {
   width: 130px;
   height: 50px;
   position: relative;
-  background: linear-gradient(0deg, #3CBD57 0%, #277A39 100%);
+  background: linear-gradient(0deg, rgba(34, 61, 125, 0.8) 0%, rgb(34, 61, 125) 100%);
   line-height: 48px;
   padding: 0;
   border: none;
@@ -1003,7 +1032,7 @@ body {
   content: "";
   right: 0;
   bottom: 0;
-  background: #3CBD57;
+  background: rgb(34, 61, 125);
   box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9), 7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -1016,7 +1045,7 @@ body {
   height: 2px;
 }
 #wrapper .app__results .app__results--object .app__results-objectText button:hover {
-  color: #3CBD57;
+  color: rgb(34, 61, 125);
   background: transparent;
 }
 #wrapper .app__results .app__results--object .app__results-objectText button:hover:before {
@@ -1026,7 +1055,7 @@ body {
   width: 100%;
 }
 #wrapper .app__results .app__results--object .app__results-objectText button span:hover {
-  color: #277A39;
+  color: rgb(34, 61, 125);
 }
 #wrapper .app__results .app__results--object .app__results-objectText button span:before,
 #wrapper .app__results .app__results--object .app__results-objectText button span:after {
@@ -1034,7 +1063,7 @@ body {
   content: "";
   left: 0;
   top: 0;
-  background: #3CBD57;
+  background: rgb(34, 61, 125);
   box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9), -4px -4px 5px 0px rgba(255, 255, 255, 0.9), 7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -1054,8 +1083,10 @@ body {
 }
 
 .slider {
-  overflow: scroll;
   width: 80%;
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .progressBlock {
@@ -1091,25 +1122,33 @@ body {
 }
 
 .btnNext {
-  width: 40px;
-  height: 40px;
+  width: 140px;
+  height: 50px;
   background-color: transparent;
-  border-radius: 50%;
+  border-radius: 5px;
   position: absolute;
   bottom: 2vh;
-  right: 1vw;
+  left: 42%;
   border: none;
+  background-color: #007500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-out;
+}
+.btnNext span {
+  color: white;
+  align-content: center;
+  font-family: "Proxima";
+  font-size: 18px;
 }
 .btnNext img {
-  margin-top: 5px;
-  width: 30px;
-  color: white;
+  padding-left: 10px;
+  width: 35px;
 }
 
 .btnNext:hover {
-  transition: all 200ms ease-out;
-  transform: scale(1.5);
-  background-color: #007500;
+  transform: scale(1.1);
 }
 
 .btnPrevious {
@@ -1151,23 +1190,17 @@ body {
 }
 
 .btnReload:hover {
-  transition: 200ms;
   transform: scale(1.1);
-  background-color: #F25C57;
-}
-
-.btnReload:hover img {
-  fill: white;
 }
 
 .btnReload--result {
-  width: 170px;
+  width: 160px;
   height: 40px;
   background-color: transparent;
   border-radius: 5px;
   position: absolute;
   top: 2vh;
-  right: 1vw;
+  right: 20px;
   border: none;
   transition: all 0.4s ease-out;
   display: flex;

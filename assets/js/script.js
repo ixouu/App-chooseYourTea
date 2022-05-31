@@ -135,7 +135,7 @@ infusionFamilyBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
-    console.log(customerChoice)
+    console.log(customerChoice);
 });
 
 //tea Color 
@@ -206,7 +206,6 @@ teaColorChoiceBtnPrevious.addEventListener('click', (e) => {
     progressTaste.innerHTML = '';
     progressTaste.style.backgroundColor = 'transparent';
     customerChoice.pop();
-    clearTimeout(reloadBtnExpand);
     resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
@@ -273,7 +272,6 @@ infusionTasteBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
-    clearTimeout(reloadBtnExpand);
     resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
@@ -327,7 +325,6 @@ rooibosTasteBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
-    clearTimeout(reloadBtnExpand);
     resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
@@ -402,6 +399,7 @@ wellnessTasteBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
+    resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
 
@@ -420,14 +418,15 @@ function reloadBtnExpand(){
 
 ResultsPreviousBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    clearTimeout(reloadBtnExpand);
+    resultBtnReload.classList.remove('btnReload--result');
     if (customerChoice[2] === 'black' || customerChoice[2] === 'blue' || customerChoice[2] === 'white' || customerChoice[2] === 'puerh' || customerChoice[2] === 'green' || customerChoice[2] === 'TeaAll') {
         results.style.display = "none";
         teaColorChoice.style.display = 'flex';
         customerChoice.pop();
         progressColor.innerHTML = '';
         progressColor.style.backgroundColor = 'transparent';
-        clearTimeout(reloadBtnExpand);
-        resultBtnReload.classList.remove('btnReload--result');
+        ;
     }
     else if (customerChoice[1] === "infusionGourmet" || customerChoice[1] === 'infusionSpicy' || customerChoice[1] === 'infusionFloral' || customerChoice[1] === 'infusionFruitty' || customerChoice[1] === 'infusionNature' || customerChoice[1] === 'infusionAll') {
         results.style.display = "none";
@@ -435,8 +434,6 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         progressTaste.innerHTML = '';
         progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
-        clearTimeout(reloadBtnExpand);
-        resultBtnReload.classList.remove('btnReload--result');
     }
     else if (customerChoice[1] === "fruitty" || customerChoice[1] === 'spicy' || customerChoice[1] === 'floral' || customerChoice[1] === 'gourmet' || customerChoice[1] === 'nature' || customerChoice[1] === 'teaTasteAll') {
         results.style.display = "none";
@@ -444,8 +441,6 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         progressTaste.innerHTML = '';
         progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
-        clearTimeout(reloadBtnExpand);
-        resultBtnReload.classList.remove('btnReload--result');
     }
     else if (customerChoice[1] === "rooibosNature" || customerChoice[1] === 'rooibosSpicy' || customerChoice[1] === 'rooibosFruitty' || customerChoice[1] === 'rooibosAll') {
         results.style.display = "none";
@@ -453,18 +448,13 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         progressTaste.innerHTML = '';
         progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
-        clearTimeout(reloadBtnExpand);
-        resultBtnReload.classList.remove('btnReload--result');
         
     } else if (customerChoice[0] === "wellness") {
         results.style.display = "none";
         wellnessTaste.style.display = "flex";
         progressTaste.innerHTML = '';
         progressTaste.style.backgroundColor = 'transparent';
-        customerChoice.pop();
-        clearTimeout(reloadBtnExpand);
-        resultBtnReload.classList.remove('btnReload--result');
-        
+        customerChoice.pop();       
     };
     
     function removeElementsByClass(className){
