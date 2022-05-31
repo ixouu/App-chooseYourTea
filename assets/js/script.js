@@ -203,7 +203,11 @@ teaColorChoiceBtnPrevious.addEventListener('click', (e) => {
     teaColorChoice.style.display = "none";
     progressColor.innerHTML = '';
     progressColor.style.backgroundColor = 'transparent';
+    progressTaste.innerHTML = '';
+    progressTaste.style.backgroundColor = 'transparent';
     customerChoice.pop();
+    clearTimeout(reloadBtnExpand);
+    resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
 
@@ -269,6 +273,8 @@ infusionTasteBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
+    clearTimeout(reloadBtnExpand);
+    resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
 
@@ -321,6 +327,8 @@ rooibosTasteBtnPrevious.addEventListener('click', (e) => {
     progressChoice.innerHTML = '';
     progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
+    clearTimeout(reloadBtnExpand);
+    resultBtnReload.classList.remove('btnReload--result');
     console.log(customerChoice)
 });
 
@@ -412,7 +420,7 @@ function reloadBtnExpand(){
 
 ResultsPreviousBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    if (customerChoice[2] === 'black' || customerChoice[2] === 'blue' || customerChoice[1] === 'white' || customerChoice[2] === 'puerh' || customerChoice[2] === 'green' || customerChoice[2] === 'TeaAll') {
+    if (customerChoice[2] === 'black' || customerChoice[2] === 'blue' || customerChoice[2] === 'white' || customerChoice[2] === 'puerh' || customerChoice[2] === 'green' || customerChoice[2] === 'TeaAll') {
         results.style.display = "none";
         teaColorChoice.style.display = 'flex';
         customerChoice.pop();
@@ -500,7 +508,7 @@ function addContent(type) {
     let newContent = document.innerHTML = type.content;
     newDiv.classList.add('app__results--object');
     newDiv.innerHTML = newContent;
-    results.append(newDiv);
+    slider.append(newDiv);
 };
 // All drinks 
 function resultAllDrinksFunction(allContext) {
@@ -509,7 +517,7 @@ function resultAllDrinksFunction(allContext) {
         let newContent = document.innerHTML = allContext[i];
         newDiv.classList.add('app__results--object');
         newDiv.innerHTML = newContent;
-        results.append(newDiv);
+        slider.append(newDiv);
     }
 };
 
@@ -521,22 +529,6 @@ function findTea(tastes, colors) {
 function findInfusion(family, tastes) {
     let result = allInfusion.filter(obj => obj.family.includes(family) && obj.tastes.includes(tastes))
         .forEach(obj => addContent(obj));
-};
-
-//appelee sur le click suivant 
-function progress01 (choice){
-    progress1.textContent = choice.name;
-    progress1.style.backgroundColor = choice.backgroundColor;
-};
-
-function progress02 (choice){
-    progress2.textContent = choice.name;
-    progress2.style.backgroundColor = choice.backgroundColor;
-};
-
-function progress03 (choice){
-    progress3.textContent = choice[0].name;
-    progress3.style.backgroundColor = choice[0].backgroundColor;
 };
 
 

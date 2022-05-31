@@ -21,7 +21,7 @@ body {
   left: 50%;
   top: 50%;
   width: 980px;
-  min-height: 600px;
+  min-height: 620px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ body {
 }
 #wrapper #appBlock {
   width: 980px;
-  min-height: 500px;
+  min-height: 620px;
   border: 1px solid grey;
   border-radius: 30px;
   display: flex;
@@ -41,6 +41,7 @@ body {
   background-color: #f1f1f1;
   color: rgb(34, 61, 125);
   position: relative;
+  padding-top: 40px;
 }
 #wrapper #appBlock .logo {
   width: 140px;
@@ -152,6 +153,7 @@ body {
 #wrapper #appBlock .teaTaste form {
   display: grid;
   justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(2, 50px);
   grid-column-gap: 20px;
@@ -293,6 +295,7 @@ body {
 #wrapper #appBlock .teaColorChoice form {
   display: grid;
   justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(2, 50px);
   grid-column-gap: 20px;
@@ -749,6 +752,7 @@ body {
 #wrapper #appBlock .wellnessTaste form {
   display: grid;
   justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(3, 70px);
   grid-column-gap: 20px;
@@ -921,13 +925,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow: scroll;
+  margin-top: 40px;
 }
 #wrapper .app__results .reloadText {
-  color: white;
+  color: #DC2244;
 }
 #wrapper .app__results .app__results--object {
-  width: 80%;
+  width: 100%;
   height: 200px;
   display: flex;
   flex-direction: row;
@@ -1049,11 +1053,16 @@ body {
   width: 100%;
 }
 
+.slider {
+  overflow: scroll;
+  width: 80%;
+}
+
 .progressBlock {
   display: none;
   flex-direction: row;
   position: absolute;
-  bottom: 0;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -1161,12 +1170,11 @@ body {
   right: 1vw;
   border: none;
   transition: all 0.4s ease-out;
-  background-color: #F25C57;
   display: flex;
   align-items: center;
 }
 .btnReload--result p {
-  color: rgb(34, 61, 125);
+  color: #F25C57;
   font-size: 18px;
   display: inline-block;
 }

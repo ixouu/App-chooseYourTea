@@ -38,6 +38,7 @@ const progressBlock = document.querySelector('.progressBlock');
 const progressChoice = document.querySelector('.progressBlock__ProgressChoice');
 const progressTaste = document.querySelector('.progressBlock__ProgressTaste');
 const progressColor = document.querySelector('.progressBlock__ProgressColor');
+const slider = document.querySelector('.slider')
 
 let customerChoice = [];
 
@@ -99,7 +100,7 @@ const wellnessAll = new Taste('Toutes', '#B3C5F2');
 
 const black = new Color('Noir','#313634', '#f1f1f1');
 const blue = new Color('Bleu', '#45A0F5', null);
-const white = new Color('Blanc','#f1f1f1','black');
+const white = new Color('Blanc','#FFFFFF','black');
 const puerh = new Color('Puerh','#9E5F18', null);
 const green = new Color('Vert','#147533', null);
 const colorAll = new Color('Tous','#147533', null);
