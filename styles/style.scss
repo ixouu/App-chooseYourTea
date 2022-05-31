@@ -733,8 +733,12 @@ body{
 }
 
 .progressBlock{
-  display: flex;
+  display: none;
   flex-direction: row;
+  position: absolute;
+  bottom : 0;
+  left: 50%;
+  transform: translateX(-50%);
   p{
     display: block;
     font-size: 16px;
@@ -742,11 +746,14 @@ body{
     text-align: center;
   }
   .progressBlock__Progress{
-    width: 120px;
+    min-width: 120px;
+    width: auto;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
+
   }
   .progressBlock__title{
     color: $primaryColor;

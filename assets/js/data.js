@@ -34,9 +34,10 @@ const results = document.querySelector('.app__results');
 const startBtn = document.querySelector(".startBtn");
 const ResultsPreviousBtn = document.querySelector('.results__button--previous');
 const resultBtnReload = document.querySelector('.results__button--reload');
-const progress1 = document.querySelector('.progressBlock__Progress1');
-const progress2 = document.querySelector('.progressBlock__Progress2');
-const progress3 = document.querySelector('.progressBlock__Progress3');
+const progressBlock = document.querySelector('.progressBlock');
+const progressChoice = document.querySelector('.progressBlock__ProgressChoice');
+const progressTaste = document.querySelector('.progressBlock__ProgressTaste');
+const progressColor = document.querySelector('.progressBlock__ProgressColor');
 
 let customerChoice = [];
 
@@ -44,13 +45,13 @@ let customerChoice = [];
 class Drink {
     constructor(name, backgroundColor) {
         this.name = name;
-        this.backgroundColor = backgroundColor
+        this.backgroundColor = backgroundColor;
     }
 
 
    static progress(choice) {
-        progress1.textContent = choice.name;
-        progress1.style.backgroundColor = choice.backgroundColor;
+        progressChoice.textContent = choice.name;
+        progressChoice.style.backgroundColor = choice.backgroundColor;
     };
 
 };
@@ -60,8 +61,8 @@ class Taste extends Drink {
         super(name, backgroundColor);}
 
     static progress(choice) {
-        progress2.textContent = choice.name;
-        progress2.style.backgroundColor = choice.backgroundColor;
+        progressTaste.textContent = choice.name;
+        progressTaste.style.backgroundColor = choice.backgroundColor;
     };
 
 };
@@ -71,14 +72,14 @@ class Color extends Drink {
         this.fontColor = fontColor;
     }
     static progress(choice) {
-        progress3.textContent = choice.name;
-        progress3.style.backgroundColor = choice.backgroundColor;
-        progress3.style.color = choice.fontColor;
+        progressColor.textContent = choice.name;
+        progressColor.style.backgroundColor = choice.backgroundColor;
+        progressColor.style.color = choice.fontColor;
     };
 };
 
-const tea = new Drink("thé",'#42994E');
-const infusion = new Drink("Infusion", '#F25C57');
+const tea = new Drink("Thé",'#42994E');
+const infusion = new Drink("Infusion",'#F25C57');
 const rooibos = new Drink("Rooïbos",'#F5540F');
 const wellness = new Drink("Bien-être",'#F5B36C');
 
@@ -90,7 +91,7 @@ const nature = new Taste('Nature', '#42994E');
 const all = new Taste('Tous', '#42994E');
 const breath = new Taste('Respirer', '#B39D6F');
 const lightLegs = new Taste('Jambes légères','#F2843A');
-const toSleep = new Taste('Pour dormir','F28DDC');
+const toSleep = new Taste('Pour dormir','#F28DDC');
 const breastFeeding = new Taste('Alaitement','#F25C57');
 const looseWeight = new Taste('Perte de poids','#42994E');
 const digestive = new Taste('Digestif','#B3C5F2');
@@ -101,7 +102,7 @@ const blue = new Color('Bleu', '#45A0F5', null);
 const white = new Color('Blanc','#f1f1f1','black');
 const puerh = new Color('Puerh','#9E5F18', null);
 const green = new Color('Vert','#147533', null);
-const colorAll = new Color('Tous les thés','$secondaryColor', null);
+const colorAll = new Color('Tous','#147533', null);
 
 
 const allTea = [

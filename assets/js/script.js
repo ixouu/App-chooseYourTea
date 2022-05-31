@@ -10,19 +10,22 @@ const teaOrInfusionForm = document.querySelector('.teaOrInfusion__form');
 const teaOrinfusionBtnNext = document.querySelector('.teaOrInfusion__button--submit');
 const teaOrinfusionBtnPrevious = document.querySelector('.teaOrInfusion__button--previous');
 
+
 teaOrinfusionBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
-    const UserChoice = teaOrInfusionForm.querySelector(`input[name="choice"]:checked`)
+    const UserChoice = teaOrInfusionForm.querySelector(`input[name="choice"]:checked`);
     switch (UserChoice.value) {
         case value = 'tea':
             teaOrInfusion.style.display = 'none';
             teaTaste.style.display = 'flex';
+            progressBlock .style.display = 'flex';
             customerChoice.push(UserChoice.value);
             Drink.progress(tea);
             break;
         case value = 'infusion':
             teaOrInfusion.style.display = 'none';
             infusionFamily.style.display = 'flex';
+            progressBlock .style.display = 'flex';
             Drink.progress(infusion);
             break;
     }
@@ -33,6 +36,7 @@ teaOrinfusionBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     teaOrInfusion.style.display = "none";
     appHome.style.display = 'flex';
+    progressBlock .style.display = 'none';
     customerChoice.pop();
     customerChoice.pop();
 })
@@ -89,6 +93,8 @@ teaTasteBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     teaOrInfusion.style.display = "flex";
     teaTaste.style.display = "none";
+    progressChoice.innerHTML = '';
+    progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -126,6 +132,8 @@ infusionFamilyBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     teaOrInfusion.style.display = "flex";
     infusionFamily.style.display = "none";
+    progressChoice.innerHTML = '';
+    progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -193,6 +201,8 @@ teaColorChoiceBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     teaTaste.style.display = "flex";
     teaColorChoice.style.display = "none";
+    progressColor.innerHTML = '';
+    progressColor.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -256,6 +266,8 @@ infusionTasteBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     infusionFamily.style.display = "flex";
     infusionTaste.style.display = "none";
+    progressChoice.innerHTML = '';
+    progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -306,6 +318,8 @@ rooibosTasteBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     infusionFamily.style.display = "flex";
     rooibosTaste.style.display = "none";
+    progressChoice.innerHTML = '';
+    progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -377,6 +391,8 @@ wellnessTasteBtnPrevious.addEventListener('click', (e) => {
     e.preventDefault();
     infusionFamily.style.display = "flex";
     wellnessTaste.style.display = "none";
+    progressChoice.innerHTML = '';
+    progressChoice.style.backgroundColor = 'transparent';
     customerChoice.pop();
     console.log(customerChoice)
 });
@@ -400,12 +416,16 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
         results.style.display = "none";
         teaColorChoice.style.display = 'flex';
         customerChoice.pop();
+        progressColor.innerHTML = '';
+        progressColor.style.backgroundColor = 'transparent';
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
     }
     else if (customerChoice[1] === "infusionGourmet" || customerChoice[1] === 'infusionSpicy' || customerChoice[1] === 'infusionFloral' || customerChoice[1] === 'infusionFruitty' || customerChoice[1] === 'infusionNature' || customerChoice[1] === 'infusionAll') {
         results.style.display = "none";
         infusionTaste.style.display = "flex";
+        progressTaste.innerHTML = '';
+        progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
@@ -413,6 +433,8 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
     else if (customerChoice[1] === "fruitty" || customerChoice[1] === 'spicy' || customerChoice[1] === 'floral' || customerChoice[1] === 'gourmet' || customerChoice[1] === 'nature' || customerChoice[1] === 'teaTasteAll') {
         results.style.display = "none";
         teaTaste.style.display = "flex";
+        progressTaste.innerHTML = '';
+        progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
@@ -420,6 +442,8 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
     else if (customerChoice[1] === "rooibosNature" || customerChoice[1] === 'rooibosSpicy' || customerChoice[1] === 'rooibosFruitty' || customerChoice[1] === 'rooibosAll') {
         results.style.display = "none";
         rooibosTaste.style.display = "flex";
+        progressTaste.innerHTML = '';
+        progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
@@ -427,6 +451,8 @@ ResultsPreviousBtn.addEventListener('click', (e) => {
     } else if (customerChoice[0] === "wellness") {
         results.style.display = "none";
         wellnessTaste.style.display = "flex";
+        progressTaste.innerHTML = '';
+        progressTaste.style.backgroundColor = 'transparent';
         customerChoice.pop();
         clearTimeout(reloadBtnExpand);
         resultBtnReload.classList.remove('btnReload--result');
@@ -457,12 +483,13 @@ btnReload.addEventListener('click', (e) => {
     results.style.display = "none";
     appHome.style.display = 'flex';
     resultBtnReload.classList.remove('btnReload--result');
-    progress1.textContent = " ";
-    progress2.textContent = " ";
-    progress3.textContent = " ";
-    progress1.style.backgroundColor = 'transparent';
-    progress2.style.backgroundColor = 'transparent';
-    progress3.style.backgroundColor = 'transparent';
+    progressBlock .style.display = 'none';
+    progressChoice.textContent = " ";
+    progressTaste.textContent = " ";
+    progressColor.textContent = " ";
+    progressChoice.style.backgroundColor = 'transparent';
+    progressColor.style.backgroundColor = 'transparent';
+    progressTaste.style.backgroundColor = 'transparent';
     resultBtnReload.removeElementsByClass('reloadText');
 });
 
