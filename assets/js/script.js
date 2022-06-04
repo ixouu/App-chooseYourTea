@@ -5,12 +5,6 @@ startBtn.addEventListener('click', () => {
 });
 
 // TEA OR INFUSION
-
-const teaOrInfusionForm = document.querySelector('.teaOrInfusion__form');
-const teaOrinfusionBtnNext = document.querySelector('.teaOrInfusion__button--submit');
-const teaOrinfusionBtnPrevious = document.querySelector('.teaOrInfusion__button--previous');
-
-
 teaOrinfusionBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
     const UserChoice = teaOrInfusionForm.querySelector(`input[name="choice"]:checked`);
@@ -42,10 +36,6 @@ teaOrinfusionBtnPrevious.addEventListener('click', (e) => {
 })
 
 //TEA TASTE
-const teaTasteForm = document.querySelector('.teaTaste__form');
-const teaTasteBtnNext = document.querySelector('.teaTaste__button--submit');
-const teaTasteBtnPrevious = document.querySelector('.teaTaste__button--previous');
-
 teaTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -100,10 +90,6 @@ teaTasteBtnPrevious.addEventListener('click', (e) => {
 });
 
 // Infusion taste 
-const infusionFamilyForm = document.querySelector('.infusionFamily__form');
-const infusionFamilyBtnNext = document.querySelector('.infusionFamily__button--submit');
-const infusionFamilyBtnPrevious = document.querySelector('.infusionFamily__button--previous')
-
 infusionFamilyBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -139,10 +125,6 @@ infusionFamilyBtnPrevious.addEventListener('click', (e) => {
 });
 
 //tea Color 
-const teaColorChoiceForm = document.querySelector('.teaColorChoice__form');
-const teaColorChoiceBtnNext = document.querySelector('.teaColorChoice__button--submit');
-const teaColorChoiceBtnPrevious = document.querySelector('.teaColorChoice__button--previous');
-
 teaColorChoiceBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -211,10 +193,6 @@ teaColorChoiceBtnPrevious.addEventListener('click', (e) => {
 });
 
 //infusion flavors 
-const infusionTasteForm = document.querySelector('.infusionTaste__form');
-const infusionTasteBtnNext = document.querySelector('.infusionTaste__button--submit');
-const infusionTasteBtnPrevious = document.querySelector('.infusionTaste__button--previous');
-
 infusionTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
     customerChoice.push(infusionTasteForm.querySelector(`input[name="infusionTaste"]:checked`).value);
@@ -277,10 +255,6 @@ infusionTasteBtnPrevious.addEventListener('click', (e) => {
 });
 
 //roibos flavors 
-const rooibosTasteForm = document.querySelector('.rooibosTaste__form');
-const rooibosTasteBtnNext = document.querySelector('.rooibosTaste__button--submit');
-const rooibosTasteBtnPrevious = document.querySelector('.rooibosTaste__button--previous');
-
 rooibosTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -330,10 +304,6 @@ rooibosTasteBtnPrevious.addEventListener('click', (e) => {
 });
 
 //wellness flavors 
-const wellnessTasteForm = document.querySelector('.wellnessTaste__form');
-const wellnessTasteBtnNext = document.querySelector('.wellnessTaste__button--submit');
-const wellnessTasteBtnPrevious = document.querySelector('.wellnessTaste__button--previous');
-
 wellnessTasteBtnNext.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -403,23 +373,11 @@ wellnessTasteBtnPrevious.addEventListener('click', (e) => {
     console.log(customerChoice)
 });
 
-//results__button--reload
-
-function reloadBtnExpand(){
-    resultBtnReload.classList.add ('btnReload--result');
-    let newText = document.createElement('p');
-    newText.classList.add('reloadText')
-    newText.innerHTML = 'Recommencer';
-    resultBtnReload.appendChild(newText);
-};
-
-
 //results__button--previous
-
 ResultsPreviousBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    clearTimeout(reloadBtnExpand);
     resultBtnReload.classList.remove('btnReload--result');
+    clearTimeout(reloadBtnExpand);
     if (customerChoice[2] === 'black' || customerChoice[2] === 'blue' || customerChoice[2] === 'white' || customerChoice[2] === 'puerh' || customerChoice[2] === 'green' || customerChoice[2] === 'TeaAll') {
         results.style.display = "none";
         teaColorChoice.style.display = 'flex';
@@ -522,3 +480,12 @@ function findInfusion(family, tastes) {
 };
 
 
+//results__button--reload
+
+function reloadBtnExpand(){
+    resultBtnReload.classList.add ('btnReload--result');
+    let newText = document.createElement('p');
+    newText.classList.add('reloadText')
+    newText.innerHTML = 'Recommencer';
+    resultBtnReload.appendChild(newText);
+};
