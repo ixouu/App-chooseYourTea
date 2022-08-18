@@ -185,7 +185,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Fruitté";
+  content: "Fruité";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__fruitty:checked + ::before {
@@ -225,7 +225,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Florale / Végétale";
+  content: "Floral / Végétal";
   background-color: #F28DDC;
 }
 #wrapper #appBlock .teaTaste form #teaTaste__floral:checked + ::before {
@@ -489,7 +489,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Rooibos";
+  content: "Rooïbos";
   background-color: #F5540F;
 }
 #wrapper #appBlock .infusionFamily form #infusionFamily__rooibos:checked + ::before {
@@ -593,7 +593,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Florale";
+  content: "Floral";
   background-color: #F28DDC;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__floral:checked + ::before {
@@ -613,7 +613,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Fruitté";
+  content: "Fruité";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .infusionTaste form #infusionTaste__fruitty:checked + ::before {
@@ -757,7 +757,7 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Fruitté";
+  content: "Fruité";
   background-color: #B39D6F;
 }
 #wrapper #appBlock .rooibosTaste form #rooibosTaste__fruitty:checked + ::before {
@@ -796,17 +796,15 @@ body {
   margin-top: 20px;
 }
 #wrapper #appBlock .wellnessTaste form {
-  padding-top: 30px;
   display: grid;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  grid-template-columns: repeat(3, 130px);
-  grid-template-rows: repeat(3, 70px);
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, 70px);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  overflow-y: scroll;
   width: 60%;
-  height: auto;
+  height: 50%;
 }
 #wrapper #appBlock .wellnessTaste form input {
   display: none;
@@ -824,9 +822,10 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Respirer";
+  content: "Faciliter la respiration";
   background-color: #B39D6F;
-  height: 70px;
+  width: 400px;
+  height: 40px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__breath:checked + ::before {
@@ -834,50 +833,6 @@ body {
   transform: scale(1.1);
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs + ::before {
-  grid-area: 1/2/2/3;
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 5px;
-  font-size: 18px;
-  box-shadow: 5px 5px 5px grey;
-  color: white;
-  content: "Jambes légères";
-  background-color: #F2843A;
-  height: 70px;
-  text-align: center;
-}
-#wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs:checked + ::before {
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep + ::before {
-  grid-area: 1/3/2/4;
-  width: 130px;
-  height: 50px;
-  display: inline-block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  border-radius: 5px;
-  font-size: 18px;
-  box-shadow: 5px 5px 5px grey;
-  color: white;
-  content: "Pour dormir";
-  background-color: #F28DDC;
-  height: 70px;
-  text-align: center;
-}
-#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep:checked + ::before {
-  font-weight: 600;
-  transform: scale(1.1);
-}
-#wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding + ::before {
   grid-area: 2/1/3/2;
   width: 130px;
   height: 50px;
@@ -890,9 +845,56 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Alaitement";
+  content: "Favoriser la circulation veineuse";
+  background-color: #F2843A;
+  width: 400px;
+  height: 40px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__lightLegs:checked + ::before {
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep + ::before {
+  grid-area: 3/1/4/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Mieux dormir";
+  background-color: #F28DDC;
+  width: 400px;
+  height: 40px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__toSleep:checked + ::before {
+  font-weight: 600;
+  transform: scale(1.1);
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding + ::before {
+  grid-area: 4/1/5/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Faciliter la lactation";
   background-color: #F25C57;
-  height: 70px;
+  width: 400px;
+  height: 40px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__breastfeeding:checked + ::before {
@@ -900,7 +902,7 @@ body {
   transform: scale(1.1);
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__looseWeight + ::before {
-  grid-area: 2/2/3/3;
+  grid-area: 5/1/6/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -912,9 +914,10 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Perte de poids";
+  content: "Contrôler son poids";
   background-color: #42994E;
-  height: 70px;
+  width: 400px;
+  height: 40px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__looseWeight:checked + ::before {
@@ -922,7 +925,7 @@ body {
   transform: scale(1.1);
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__digestive + ::before {
-  grid-area: 2/3/3/4;
+  grid-area: 6/1/7/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -934,17 +937,41 @@ body {
   font-size: 18px;
   box-shadow: 5px 5px 5px grey;
   color: white;
-  content: "Digestif";
+  content: "Faciliter la digestion";
   background-color: #B3C5F2;
-  height: 70px;
+  width: 400px;
+  height: 40px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #wellnessTaste__digestive:checked + ::before {
   font-weight: 600;
   transform: scale(1.1);
 }
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__sugarLess + ::before {
+  grid-area: 7/1/8/2;
+  width: 130px;
+  height: 50px;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 5px 5px 5px grey;
+  color: white;
+  content: "Maitriser son taux de sucre";
+  background-color: #B3C5F2;
+  width: 400px;
+  height: 40px;
+  text-align: center;
+}
+#wrapper #appBlock .wellnessTaste form #wellnessTaste__sugarLess:checked + ::before {
+  font-weight: 600;
+  transform: scale(1.1);
+}
 #wrapper #appBlock .wellnessTaste form #well__all + ::before {
-  grid-area: 3/1/4/4;
+  grid-area: 8/1/9/2;
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -959,7 +986,7 @@ body {
   content: "Toutes les infusions bien-etre";
   background-color: #B3C5F2;
   width: 400px;
-  height: 70px;
+  height: 40px;
   text-align: center;
 }
 #wrapper #appBlock .wellnessTaste form #well__all:checked + ::before {

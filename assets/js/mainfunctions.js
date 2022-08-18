@@ -5,15 +5,15 @@ let userChoice = [];
 let currentPage = '';
 
 // display tea of infusion Page
-function showTeaOrInfusionPage(){
+function showTeaOrInfusionPage() {
     document.querySelector(".teaOrInfusion").style.display = 'flex';
 
 }
 //******    All Tastes Page        ******//
 
 // display all flavors from tastes array
-function showAllFlavors(){
-    for (let i = 0 ; i < tastes.length; i++){
+function showAllFlavors() {
+    for (let i = 0; i < tastes.length; i++) {
         const fig = document.createElement('figure');
         const figImg = document.createElement('img');
         fig.dataset.taste = `${tastes[i].name}`
@@ -23,7 +23,7 @@ function showAllFlavors(){
         figcaption.innerText = `${tastes[i].title}`;
         fig.append(figImg, figcaption);
         allTastesDiv.append(fig);
-        fig.addEventListener('click', (e) =>{
+        fig.addEventListener('click', (e) => {
             e.preventDefault();
             findProduct(fig.dataset.taste);
             currentPage = 'app__results'
@@ -32,7 +32,7 @@ function showAllFlavors(){
 }
 
 // find the product where the taste is matching and display the result page
-function findProduct(taste){    
+function findProduct(taste) {
     tasteChoice.style.display = 'none';
     results.style.display = 'flex';
     progressBlock.style.display = 'flex';
@@ -40,19 +40,19 @@ function findProduct(taste){
     Taste.progress(taste);
     progressBar();
     allDrinks.filter(product => product.taste.includes(taste))
-    .forEach(product => {
-        addContent(product)
-    });
+        .forEach(product => {
+            addContent(product)
+        });
 }
 
 // return the total number of tastes in the Title
-function displayNumberFlavors(flavors){
-    const numberOfFlavors = flavors.length +1;
-    document.querySelector('.numberOfTastes').innerText= `Choississez le goût de votre choix parmis nos ${numberOfFlavors} goûts uniques`
+function displayNumberFlavors(flavors) {
+    const numberOfFlavors = flavors.length + 1;
+    document.querySelector('.numberOfTastes').innerText = `Choississez le goût de votre choix parmis nos ${numberOfFlavors} goûts uniques`
 }
 
 // display all Tastes page
-function showAllTastesPage(){
+function showAllTastesPage() {
     document.querySelector('.allTastes').style.display = 'flex';
     showAllFlavors();
     progressBar();
@@ -60,18 +60,60 @@ function showAllTastesPage(){
     userChoice.push('allTastes')
 }
 
+//******    Manage texts on the result page      ******//
+
 // Any products are matching, suggest other product who has the same taste
-function showSuggestProducts(taste){
-    console.log(taste)
-    document.querySelector('.results--title').remove();
+function showSuggestProducts(taste) {
     createSuggestParagraph();
+    let suggestBtn = document.createElement('button');
+    let tasteName = eval(taste).name
+    let familyName = eval(userChoice[0]).name
+    suggestBtn.classList.add('suggestBtn');
+    slider.style.overflowY = 'hidden'
+    suggestBtn.innerText = `Découvrir des ${familyName} ${tasteName}`
+    results.append(suggestBtn)
+    document.querySelector('.suggestBtn').addEventListener('click', (e) => {
+        e.preventDefault()
+        slider.style.overflowY = 'scroll'
+        userChoice.length == 3 ? userChoice.pop() : null;
+        document.querySelector('.suggestBtn').remove()
+        progressColor.innerText = '';
+        progressColor.style.backgroundColor = 'transparent';
+        console.log(userChoice)
+        allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(taste))
+        .forEach(product => {
+            showResultTitle()
+            addContent(product)
+            removeSuggestParagraph()
+        })
+    })
+    console.log('taste ' + taste )
 }
 
-function createSuggestParagraph(){
+function removeSuggestParagraph(){
+    if (document.querySelector('.result--suggestParagraph') !== null){
+    document.querySelector('.result--suggestParagraph').remove();
+    }
+}
+
+function createSuggestParagraph() {
+    
     let paragraph = document.createElement('p');
     paragraph.classList.add('result--suggestParagraph')
     paragraph.textContent = 'Aucuns produits ne corresponds à votre recherches, essayez de chercher un autre goût.'
-    slider.append(paragraph)
+    results.replaceChild(paragraph, resultTitle);
+   
+}
+
+// display the result title
+function showResultTitle(){
+    if (results.getElementsByTagName('h2').length == 0){
+        slider.insertAdjacentHTML('beforebegin', `
+        <h2 class=\'results--title\'>Voici ce que nous avons sélectionné pour vous :</h2>
+        `)
+    }else{
+    resultTitle.textContent = 'Voici ce que nous avons sélectionné pour vous :';
+    }
 }
 
 //******    add Tea cards to the result page       ******//
@@ -81,7 +123,7 @@ function addContent(product) {
     newArticle.classList.add('article');
 
     // image
-    const articleLeft= document.createElement('div');
+    const articleLeft = document.createElement('div');
     articleLeft.classList.add('article-left')
     const img = document.createElement('img');
     img.classList.add('img__wrapper')
@@ -96,7 +138,7 @@ function addContent(product) {
     <h4>${product.title}</h4>
     <p>${product.description}</p>
     `)
-    const articleRight= document.createElement('div');
+    const articleRight = document.createElement('div');
     articleRight.classList.add('article-right')
 
     //bottom text
@@ -117,179 +159,192 @@ function addContent(product) {
     newArticle.append(articleLeft, articleRight);
     slider.append(newArticle);
 
-    for (let i = 0; i < product.taste.length ; i++){
+    for (let i = 0; i < product.taste.length; i++) {
         tastes.filter(taste => taste.name.includes(`${product.taste[i]}`))
-        .forEach(element => {
-            const tasteLine = document.createElement('div');
-            tasteLine.classList.add('tasteLine')
-            const tasteImg = document.createElement('img');
-            tasteImg.setAttribute('src', `${element.imageUrl}`)
-            tasteImg.setAttribute('alt', `icone représentant ${element.title}`)
-            document.querySelectorAll('.bottom-right').forEach(e => e.append(tasteLine))
-            document.querySelectorAll('.tasteLine').forEach(e => e.append(tasteImg))
-            const imgInfo = document.createElement('span');
-            imgInfo.classList.add('img-info')
-            imgInfo.innerText = `${element.title}`;
-            document.querySelectorAll('.tasteLine').forEach(e => e.append(imgInfo));
+            .forEach(element => {
+                const tasteLine = document.createElement('div');
+                tasteLine.classList.add('tasteLine')
+                const tasteImg = document.createElement('img');
+                tasteImg.setAttribute('src', `${element.imageUrl}`)
+                tasteImg.setAttribute('alt', `icone représentant ${element.title}`)
+                document.querySelectorAll('.bottom-right').forEach(e => e.append(tasteLine))
+                document.querySelectorAll('.tasteLine').forEach(e => e.append(tasteImg))
+                const imgInfo = document.createElement('span');
+                imgInfo.classList.add('img-info')
+                imgInfo.innerText = `${element.title}`;
+                document.querySelectorAll('.tasteLine').forEach(e => e.append(imgInfo));
 
-        });
+            });
     }
 }
 
 //******    Functions aiming to find products from User choice      ******//
-function findProductsFromUserChoice(){
+function findProductsFromUserChoice() {
+    
     // if the user wants to see all the products of a color or a family 
-    if (userChoice[2] == 'infusionAll' || userChoice[2] == 'rooibosAll' || userChoice[2] == 'wellnessAll'){
+    if (userChoice[2] == 'infusionAll' || userChoice[2] == 'rooibosAll' || userChoice[2] == 'wellnessAll') {
         allDrinks.filter(product => product.family.includes(userChoice[1]))
-        .forEach(product => {
-            addContent(product)
-        })
+            .forEach(product => {
+                showResultTitle();
+                addContent(product)
+                removeSuggestParagraph();
+            })
     }
     // if the user wants to see all tea
-    if (userChoice[1] == 'teaTasteAll'){
+    if (userChoice[1] == 'teaTasteAll') {
         allDrinks.filter(product => product.family.includes(userChoice[0]))
-        .forEach(product => {
-            addContent(product)
-        })
+            .forEach(product => {
+                showResultTitle()
+                addContent(product)
+                removeSuggestParagraph()
+            })
     }
     // if the user wants to see all Tea with a taste but not a specific color 
-    if (userChoice[2] == 'teaAll'){
+    if (userChoice[2] == 'teaAll') {
         allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(userChoice[1]))
-        .forEach(product => {
-            addContent(product)
-        })
+            .forEach(product => {
+                showResultTitle()
+                addContent(product)
+                removeSuggestParagraph()
+            })
     }
     // if the user picked infusions
-    if (userChoice[1]== 'infusion' || userChoice[1]== 'rooibos' || userChoice[1]== 'wellness'){
-    // if (['infusion', 'rooibos', 'wellness'].includes(userChoice[1])){
-    const products = allDrinks.filter(product => product.family.includes(userChoice[1]) && product.tastes.includes(userChoice[2]))
-        if(products.length == 0){
+    if (userChoice[1] == 'infusion' || userChoice[1] == 'rooibos' || userChoice[1] == 'wellness') {
+        // if (['infusion', 'rooibos', 'wellness'].includes(userChoice[1])){
+        const products = allDrinks.filter(product => product.family.includes(userChoice[1]) && product.tastes.includes(userChoice[2]))
+        if (products.length == 0) {
             showSuggestProducts(userChoice[1])
-        }else {
+            
+        } else {
             products.forEach(product => {
+                showResultTitle()
                 addContent(product)
+                removeSuggestParagraph()
             })
         }
-    }else {
+    } else {
         const products = allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(userChoice[1]) && product.colors.includes(userChoice[2]));
-        console.log(products)
-        if(products.length == 0){
+        if (products.length == 0) {
             showSuggestProducts(userChoice[1])
-        }else {
+            
+        } else {
             products.forEach(product => {
+                showResultTitle()
                 addContent(product)
+                removeSuggestParagraph()
             })
         }
     }
 }
 //******    Delete products from result page       ******//
 
-function deleteAllProductFromResults(){
+function deleteAllProductFromResults() {
     document.querySelectorAll('.article').forEach(article => article.remove())
 }
 
 //******    Progress bar       ******//
 
 // aims to manage the progressBar
-function progressBar(){
-    if (userChoice.length == 0){
+function progressBar() {
+    if (userChoice.length == 0) {
         return
     }
     const progressToShow = findProgressElement(userChoice)
     return progressToShow
 }
 
-function findProgressElement(userChoice){
-    progressBlock .style.display = 'flex';
-    if (userChoice[0] !== undefined && userChoice[1] == undefined && userChoice[2] == undefined){
+function findProgressElement(userChoice) {
+    progressBlock.style.display = 'flex';
+    if (userChoice[0] !== undefined && userChoice[1] == undefined && userChoice[2] == undefined) {
         Drink.progress(eval(userChoice[0]))
-    } else if (userChoice[0] !== undefined && userChoice[1] !== undefined && userChoice[2] == undefined){
+    } else if (userChoice[0] !== undefined && userChoice[1] !== undefined && userChoice[2] == undefined) {
         Taste.progress(eval(userChoice[1]))
-    } else if (userChoice[0] !== undefined && userChoice[1] !== undefined && userChoice[2] !== undefined){
+    } else if (userChoice[0] !== undefined && userChoice[1] !== undefined && userChoice[2] !== undefined) {
         Color.progress(eval(userChoice[2]))
     }
 }
 
-function displayElementOfProgressBar(){
-    if (userChoice.length === 1){
+function displayElementOfProgressBar() {
+    if (userChoice.length === 1) {
         progressBlock.style.display = 'none'
         document.querySelectorAll('.progressBlock__Progress').forEach(e => {
-            e.style.backgroundColor ='transparent'
-            e.innerText=''
+            e.style.backgroundColor = 'transparent'
+            e.innerText = ''
         })
     }
-    if (userChoice.length === 2){
-        document.querySelector('.progressBlock__ProgressTaste').style.backgroundColor ='transparent'
-        document.querySelector('.progressBlock__ProgressTaste').innerText=''
+    if (userChoice.length === 2) {
+        document.querySelector('.progressBlock__ProgressTaste').style.backgroundColor = 'transparent'
+        document.querySelector('.progressBlock__ProgressTaste').innerText = ''
     }
-    if (userChoice.length === 3){
-        document.querySelector('.progressBlock__ProgressColor').style.backgroundColor ='transparent'
-        document.querySelector('.progressBlock__ProgressColor').innerText=''
+    if (userChoice.length === 3) {
+        document.querySelector('.progressBlock__ProgressColor').style.backgroundColor = 'transparent'
+        document.querySelector('.progressBlock__ProgressColor').innerText = ''
     }
 }
 
 function hideProgressBar() {
     progressBlock.style.display = 'none';
     document.querySelectorAll('.progressBlock__Progress').forEach(e => {
-        e.style.backgroundColor ='transparent'
-        e.innerText=''
+        e.style.backgroundColor = 'transparent'
+        e.innerText = ''
     })
 }
+
 
 progressBar()
 
 //******    Deal how pages are working together        ******//
 
 // display the good page set the name of the current Page
-function showPage (element, className){
+function showPage(element, className) {
     appHome.style.display = 'none';
     let checkedChoice = document.querySelector('input:checked')
-    if (className.includes('startBtn')){
+    if (className.includes('startBtn')) {
         showTeaOrInfusionPage()
         currentPage = 'teaOrInfusion'
     };
-    if (className.includes('tasteBtn')){
+    if (className.includes('tasteBtn')) {
         showAllTastesPage();
         currentPage = 'allTastes'
     }
-    if (className.includes('btnPrevious')){
+    if (className.includes('btnPrevious')) {
         showLastPageVisited(element)
     }
-    if (className.includes('btnNext')){
+    if (className.includes('btnNext')) {
         let choiceId = checkedChoice.id
         userChoice.push(checkedChoice.value)
-        if (choiceId.includes('teaTaste')){
+        if (choiceId.includes('teaTaste')) {
             showNextPage('teaColorChoice', element.closest('div'))
-        }else if (choiceId.includes('all')){
+        } else if (choiceId.includes('all')) {
             showNextPage('app__results', element.closest('div'))
             findProductsFromUserChoice()
         }
-        else{
+        else {
             currentPage = checkedChoice.value;
             showNextPage(checkedChoice.value, element.closest('div'))
         }
     }
-    if (className.includes('btnShowResults')){
+    if (className.includes('btnShowResults')) {
         userChoice.push(checkedChoice.value)
         showNextPage('app__results', element.closest('div'))
         findProductsFromUserChoice();
         currentPage = 'app__results'
     }
-    if (className.includes('btnReload')){
+    if (className.includes('btnReload')) {
         userChoice = [];
         slider.innerText = '';
         showNextPage('appHome', element.closest('div'))
         currentPage = 'appHome';
         hideProgressBar();
     }
-    if (checkedChoice != null){
+    if (checkedChoice != null) {
         checkedChoice.checked = false;
     }
     progressBar()
 }
 
 // undisplay the current Page and Pick the next page to display
-function showNextPage(checkedElement, currentPageshown){
+function showNextPage(checkedElement, currentPageshown) {
     const pageToShow = document.querySelector(`.${checkedElement}`)
     pageToShow.style.display = 'flex';
     currentPage = checkedElement
@@ -297,7 +352,8 @@ function showNextPage(checkedElement, currentPageshown){
 }
 
 // display the last page visited
-function showLastPageVisited(element){
+function showLastPageVisited(element) {
+    console.log(element)
     element.closest('div').style.display = 'none'
     displayElementOfProgressBar();
     switch (currentPage) {
@@ -324,73 +380,73 @@ function showLastPageVisited(element){
         case 'teaColorChoice':
             teaTaste.style.display = 'flex';
             currentPage = 'teaTaste';
-        break;
+            break;
         case 'infusion':
             infusionFamily.style.display = 'flex';
             currentPage = 'infusions'
-        break;
+            break;
         case 'rooibos':
             infusionFamily.style.display = 'flex';
             currentPage = 'infusions';
-        break;
+            break;
         case 'wellness':
             infusionFamily.style.display = 'flex';
             currentPage = 'teaColorChoice';
-        break;
-        case 'app__results': 
+            break;
+        case 'app__results':
             deleteAllProductFromResults();
-            if (userChoice[1] == 'teaTasteAll'){
+            if (userChoice[1] == 'teaTasteAll') {
                 document.querySelector('.teaTaste').style.display = 'flex';
-                currentPage  = 'teaTaste'
+                currentPage = 'teaTaste'
             }
-            if (userChoice[0] == 'tea' && userChoice[2] !== undefined){
+            if (userChoice[0] == 'tea' && userChoice[2] !== undefined) {
                 document.querySelector('.teaColorChoice').style.display = 'flex'
                 currentPage = 'teaColorChoice'
             }
-            if (userChoice[0] == 'infusions' && userChoice[1] == 'infusion'){
+            if (userChoice[0] == 'tea' && userChoice[1] !== undefined) {
+                document.querySelector('.teaTaste').style.display = 'flex'
+                currentPage = 'teaTaste'
+            }
+            if (userChoice[0] == 'infusions' && userChoice[1] == 'infusion') {
                 document.querySelector('.infusion').style.display = 'flex'
                 currentPage = 'infusion'
             }
-            if(userChoice[0] == 'infusions' && userChoice[1] == 'rooibos'){
+            if (userChoice[0] == 'infusions' && userChoice[1] == 'rooibos') {
                 document.querySelector('.rooibos').style.display = 'flex'
                 currentPage = 'rooibos'
             }
-            if(userChoice[0] == 'infusions' && userChoice[1] == 'wellness'){
+            if (userChoice[0] == 'infusions' && userChoice[1] == 'wellness') {
                 document.querySelector('.wellness').style.display = 'flex'
                 currentPage = 'wellness'
             }
-            if (userChoice[0] == 'allTastes'){
+            if (userChoice[0] == 'allTastes') {
                 tasteChoice.style.display = 'flex';
                 currentPage = 'allTastes'
             }
-        break;
+            break;
         default:
             break;
     }
     userChoice.pop();
 }
 
-// save the value of the checked input 
-function saveUserChoice(choice){
-    console.log(choice)
-}
 
 // add Eventlisterners 
-function addEventListeners (element, className){
-    if (element.nodeName == 'BUTTON'){
-    element.addEventListener('click',(e) =>{
-        e.preventDefault();
-        showPage(element, className)
-    })};
-    if (element.nodeName == 'INPUT'){
+function addEventListeners(element, className) {
+    if (element.nodeName == 'BUTTON') {
+        element.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage(element, className)
+        })
+    };
+    if (element.nodeName == 'INPUT') {
         element.addEventListener('input', (e) => {
             e.preventDefault();
-            saveUserChoice(element.value);
         })
     }
 }
 
 // listen all buttons add call the function to add Event listerner
-document.querySelectorAll('.btn').forEach( element => {
+document.querySelectorAll('.btn').forEach(element => {
     addEventListeners(element, element.className)
 })

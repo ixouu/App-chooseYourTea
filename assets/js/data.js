@@ -20,6 +20,7 @@ const progressColor = document.querySelector('.progressBlock__ProgressColor');
 const slider = document.querySelector('.slider')
 const tasteChoice = document.querySelector('.allTastes');
 const allTastesDiv = document.getElementById('allTastesIcons');
+const resultTitle = document.querySelector('.results--title')
 
 
 // Family values 
@@ -59,7 +60,7 @@ class Color extends Drink {
     };
 };
 
-const tea = new Drink("Thé",'#42994E');
+const tea = new Drink("Thés",'#42994E');
 const infusions = new Drink ('Infusions', '#F25C57')
 const infusion = new Drink("Infusion",'#F25C57');
 const rooibos = new Drink("Rooïbos",'#F5540F');
@@ -79,7 +80,8 @@ const breastFeeding = new Taste('Alaitement','#F25C57');
 const looseWeight = new Taste('Perte de poids','#42994E');
 const digestive = new Taste('Digestif','#B3C5F2');
 const wellnessAll = new Taste('Toutes', '#B3C5F2');
-const mint = new Taste('Menthe', '#147501')
+const sugarLess = new Taste ('Sucre moins', '#42994E');
+const mint = new Taste('Menthe', '#147501');
 const jasmin = new Taste ('Jasmin', '#1D5902');
 const mango = new Taste ('Mangue', '#D97904');
 const orange = new Taste ('Orange', '#F29F05');
@@ -751,7 +753,7 @@ const allDrinks = [
     },
     //looseWeight
     {
-        name: "wellnessSugarLess",
+        name: "SugarLess",
         family: 'wellness',
         tastes: ['floral','sugarLess'],
         colors: [],
