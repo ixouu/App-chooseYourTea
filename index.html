@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -20,11 +21,13 @@
                 <div class="logo">
                     <img src="./assets/images/logo.webp" alt="L'arbre à thé">
                 </div>
-                <h1> Quel thé choisir?</h1>
-                <h2>Quel thé (ou infusion) préférez-vous ?</h2>
-                <button class="btn startBtn appHomeBtn">Commencer</button>
-                <h2 class="tasteTitle">Je préfère chercher en fonction de mes goûts :</h2>
-                <button class="btn tasteBtn appHomeBtn">Touver son thé</button>
+                <h1 class="appHome-title"> Quel thé choisir?</h1>
+                <div class="appHome-main">
+                    <h2>Quel thé (ou infusion) préférez-vous ?</h2>
+                    <button class="btn startBtn appHomeBtn"> Commencer </button>
+                    <h2 class="tasteTitle">Je préfère chercher en fonction de mes goûts :</h2>
+                    <button class="btn tasteBtn appHomeBtn">Touver son thé</button>
+                </div>
             </div>
             <!-- Taste choice -->
             <div class="allTastes">
@@ -34,7 +37,7 @@
                 <h1 class="numberOfTastes"> </h1>
                 <div id="allTastesIcons">
                 </div>
-                <button class="btn btnPrevious tasteChoicePreviousBtn "><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
+                <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
             </div>
             <!-- Tea or infusion choice -->
             <div class="teaOrInfusion">
@@ -51,9 +54,12 @@
                         <input class="btn" id="infusionChoice" type="radio"  name="choice" value="infusions">
                         <p></p>
                     </label>
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious teaOrInfusion__button--previous "><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
                 </form>
+                    <button class="btn btnReload">
+                        <i class="fa-solid fa-rotate"></i>
+                        <span class="btnReload-restart">Recommencer</span>
+                    </button>
+                    <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>                </form>
                 <button class="btn btnNext teaOrInfusion__button--submit "><span>Suivant</span></button>
             </div>
             <!-- Tea taste -->
@@ -91,11 +97,13 @@
                         <input type="radio" name="teaTaste" value="teaTasteAll" id="tea__all">
                         <p></p>
                     </label>
-                    
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious teaTaste__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnNext teaTaste__button--submit"><span>Suivant</span></button>
                 </form>
+                    <button class="btn btnReload">
+                        <i class="fa-solid fa-rotate"></i>
+                        <span class="btnReload-restart">Recommencer</span>
+                    </button>
+                    <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                    <button class="btn btnNext tasteChoice__button--submit "><span>Suivant</span></button>
             </div>
             <!-- Infusion taste -->
             <div class="content_block infusionFamily infusions">
@@ -117,11 +125,13 @@
                         <input type="radio" name="infusionFamily" value="wellness" id="infusionFamily__wellness">
                         <p></p>
                     </label>
-                
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious infusionFamily__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnNext infusionFamily__button--submit"><span>Suivant</span></button>
                 </form>
+                    <button class="btn btnReload">
+                        <i class="fa-solid fa-rotate"></i>
+                        <span class="btnReload-restart">Recommencer</span>
+                    </button>
+                    <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                    <button class="btn btnNext infusionFamily__button--submit"><span>Suivant</span></button>
             </div>
             <!-- Tea color -->
             <div class="content_block teaColorChoice">
@@ -155,11 +165,13 @@
                         <input type="radio" name="teaColorChoice" value="teaAll" id="color__all">
                         <p></p>
                     </label>
-                    
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious teaColorChoice__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnShowResults teaColorChoice__button--submit"><span>Suivant</span></button>
                 </form>
+                <button class="btn btnReload">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span class="btnReload-restart">Recommencer</span>
+                </button>
+                <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                <button class="btn btnShowResults teaColorChoice__button--submit"><span>Suivant</span></button>
             </div>
 
             <!-- Infusion flavors -->
@@ -194,11 +206,13 @@
                         <input type="radio" name="infusionTaste" value="infusionAll" id="inf__all">
                         <p></p>
                     </label>
-                    
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious infusionTaste__button--previous "><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnShowResults infusionTaste__button--submit"><span>Suivant</span></button>
                 </form>
+                <button class="btn btnReload">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span class="btnReload-restart">Recommencer</span>
+                </button>
+                <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                <button class="btn btnShowResults infusionTaste__button--submit"><span>Suivant</span></button>
             </div>
             <!-- Roibos flavors -->
             <div class="content_block rooibosTaste  rooibos">
@@ -228,11 +242,13 @@
                         <input type="radio" name="rooibosTaste" value="rooibosAll" id="roob__all">
                         <p></p>
                     </label>
-
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious rooibosTaste__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnShowResults rooibosTaste__button--submit"><span>Suivant</span></button>
                 </form>
+                <button class="btn btnReload">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span class="btnReload-restart">Recommencer</span>
+                </button>
+                <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                <button class="btn btnShowResults rooibosTaste__button--submit"><span>Suivant</span></button>
             </div>
              <!-- wellness flavors -->
              <div class="content_block wellnessTaste wellness">
@@ -274,25 +290,28 @@
                         <input type="radio" name="wellnessTaste" value="wellnessAll" id="well__all">
                         <p></p>
                     </label>
-                    
-                    <button class="btn btnReload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                    <button class="btn btnPrevious wellnessTaste__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                    <button class="btn btnShowResults wellnessTaste__button--submit"><span>Suivant</span></button>
                 </form>
-
+                <button class="btn btnReload">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span class="btnReload-restart">Recommencer</span>
+                </button>
+                <button class="btn btnPrevious tasteChoicePreviousBtn "><i class="fa-solid fa-angles-left"></i></button>
+                <button class="btn btnShowResults wellnessTaste__button--submit"><span>Suivant</span></button>
             </div>
             <!-- results-->
-            <div class="app__results">
+            <div class="content_block app__results">
                 <div class="logo">
                     <img src="./assets/images/logo.webp" alt="L'arbre à thé">
                 </div>
                 <h2 class="results--title"></h2>
                 <div class="slider">
                 </div>
-                <form>
-                <button class="btn btnPrevious results__button--previous"><img src="./assets/images/previous.svg" alt="Retour en arriere"></button>
-                <button class="btn btnReload results__button--reload"><img src="./assets/images/reload.svg" alt="Recommencer"></button>
-                </form>
+                <form></form>
+                <button class="btn btnPrevious btnPrevious__ResultsPage "><i class="fa-solid fa-angles-left"></i></button>
+                <button class="btn btnReload">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span class="btnReload-restart">Recommencer</span>
+                </button>
             </div>
             <!-- progress-->
             <div class="progressBlock">

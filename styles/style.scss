@@ -3,8 +3,17 @@ $secondaryColor : #DC2244;
 $thirdColor : #003C00;
 $fontColor : rgba(34, 61, 125);
 $contentFontSize : 18px;
+$breakpoints : (
+  mobile : 450px,
+  tablettes : 1024px,
+  );
 
-// input color 
+
+@mixin mobile-only {
+  @media screen and (max-width : map-get($breakpoints, mobile)) {
+    @content
+  }
+};
 
 
 @font-face{
@@ -24,6 +33,9 @@ $contentFontSize : 18px;
   font-size: $contentFontSize;
   box-shadow : 5px 5px 5px grey;
   color: white;
+  @include mobile-only {
+    width: 100%;
+  }
 }
 
 @mixin block{
@@ -60,7 +72,11 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  @include mobile-only {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+  }
   h1{
     font-family: 'Playfair Display', serif;
   }
@@ -79,6 +95,15 @@ body{
     color: $primaryColor;
     position: relative;
     padding-top: 40px;
+    @include mobile-only {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      border: none;
+      border-radius: 0;
+      padding-top: 0;
+      box-shadow: none;
+    }
     
     .logo{
       width: 140px;
@@ -90,7 +115,9 @@ body{
       position: absolute;
       left: 10px;
       top : 10px;
-      
+      @include mobile-only{
+        position: relative;
+      }
     }
 
     .selectedOption{
@@ -101,6 +128,42 @@ body{
       margin-top: 10px;
     }
 
+    // CONTENT BLOC MOBILE 
+    .content_block{
+      @include mobile-only{
+        justify-content: flex-start;
+        h1{
+          padding: 10% 5% 0 5%;
+          font-size: 22px;
+        }
+        h2{
+          margin: 0;
+          font-size: 18px;
+          text-align: center;
+        }
+        form{
+          margin-top: 30px;
+          flex-direction: column;
+          width: 80%;
+          align-items: center;
+          position: absolute;
+          top: 50%;
+          left : 50%;
+          transform: translate(-50%, -50%);
+          height: auto;
+        }
+        label{
+          width: 100%;
+        }
+        .logo{
+          position: relative;
+          padding-top: 70px;
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+
     .appHome{
       display: flex;
       align-items: center;
@@ -109,9 +172,43 @@ body{
       width: 100%;
       height: 100%;
       margin-bottom: 100px;
+      @include mobile-only {
+        margin-bottom: 0;
+        justify-content: flex-start;
+      }
 
-      .tastTitle{
+      .appHome-main{
+        display: flex;          
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        @include mobile-only {
+          width: 90%;
+          top: 50%;
+          left: 50%;
+          text-align: center;
+          position: absolute;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .appHome-title{
+        animation: displayTitle 1s 1 forwards normal ease-out;
+        opacity: 0;
+        transform: translateX(-9999px);
+        @include mobile-only {
+          padding: 10% 5% 15% 5%;
+          font-size: 22px;
+        }
+      }
+
+      .tasteTitle{
         padding-top: 40px;
+      }
+      h2{
+        @include mobile-only {
+          font-size: 18px;
+        }
       }
       .startBtn, .tasteBtn{
         width: 200px;
@@ -124,6 +221,7 @@ body{
         cursor: pointer;
         position: relative;
         background-color: $secondaryColor;
+        box-shadow : 5px 5px 5px grey;
       }
       
       p{
@@ -132,13 +230,33 @@ body{
     }
     .teaOrInfusion{
       @include block;
-
+      h1{
+        @include mobile-only {
+            padding: 10% 5% 15% 5%;
+            font-size: 22px;
+        }
+      }
       form{
         margin-top: 150px;
         display: flex;
         flex-direction: row;
         input{
           display: none;
+        }
+        @include mobile-only {
+          margin-top: 0;
+          flex-direction: column;
+          width: 80%;
+          align-items: center;
+          position: absolute;
+          top: 50%;
+          left : 50%;
+          transform: translate(-50%, -50%);
+        }
+        label{
+          @include mobile-only {
+            width: 100%;
+          }
         }
         #teaChoice + ::before{
             @include inputBtn;
@@ -165,8 +283,31 @@ body{
     }
     .teaTaste{
       @include block;
+      @include mobile-only{
+        min-height: 100%;
+        height: auto;
+      }
+      h1{
+        @include mobile-only{
+          margin: 0;
+          padding: 10% 5% 0 5%;
+          font-size: 22px;
+        }
+      }
       h2{
         margin-top: 90px;
+        @include mobile-only{
+          margin: 0;
+          font-size: 22px;
+        }
+      }
+      .teaTaste__button--submit{
+        @include mobile-only{           
+          width: 140px;
+          height: 50px;
+          left: 50%;
+          transform: translateX(-50%)
+        }
       }
       form{
         margin-top: 30px;
@@ -182,11 +323,25 @@ body{
         input{
           display: none;
         }
+        @include mobile-only{
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(6, 1fr);
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          width: 80%;
+          height: auto;
+        }
+      }
+
+
       #teaTaste__fruitty+ ::before{
         grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Fruité';
         background-color: #B39D6F;
+        @include mobile-only{
+          grid-area: 1 / 1 / 2 / 2; 
+        }
       }
       #teaTaste__fruitty:checked + ::before{
         font-weight: 600;
@@ -197,6 +352,9 @@ body{
         @include inputBtn;
         content:'Epicé';
         background-color: #F2843A;
+        @include mobile-only{
+          grid-area: 2 / 1 / 3 / 2; 
+        }
       }
       #teaTaste__spicy:checked + ::before{
         font-weight: 600;
@@ -207,6 +365,9 @@ body{
         @include inputBtn;
         content:'Floral / Végétal';
         background-color: #F28DDC;
+        @include mobile-only{
+          grid-area: 3 / 1 / 4 / 2; 
+        }
       }
       #teaTaste__floral:checked + ::before{
         font-weight: 600;
@@ -217,6 +378,9 @@ body{
         @include inputBtn;
         content:'Gourmand';
         background-color: #F25C57;
+        @include mobile-only{
+          grid-area: 4 / 1 / 5 / 2; 
+        }
       }
       #teaTaste__gourmet:checked + ::before{
         font-weight: 600;
@@ -227,6 +391,9 @@ body{
         @include inputBtn;
         content:'Nature';
         background-color: #42994E;
+        @include mobile-only{
+          grid-area: 5 / 1 / 6 / 2; 
+        }
       }
       #teaTaste__nature:checked + ::before{
         font-weight: 600;
@@ -237,6 +404,9 @@ body{
         @include inputBtn;
         content:'Tous';
         background-color: #B3C5F2;
+        @include mobile-only{
+          grid-area: 6 / 1 / 7 / 2; 
+        }
       }
       #tea__all:checked + ::before{
         font-weight: 600;
@@ -264,11 +434,21 @@ body{
       input{
         display: none;
       }
+      @include mobile-only{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px; 
+        padding-top: 45px;
+      }
       #teaColorChoice__black+ ::before{
         grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Noir';
         background-color: #313634;
+        @include mobile-only{
+          grid-area : 1 / 1 / 2 / 2;
+        }
       }
       #teaColorChoice__black:checked + ::before{
         font-weight: 600;
@@ -279,6 +459,9 @@ body{
         @include inputBtn;
         content:'Bleu';
         background-color: #45A0F5;
+        @include mobile-only{
+          grid-area: 2 / 1 / 3 / 2; 
+        }
       }
       #teaColorChoice__blue:checked + ::before{
         font-weight: 600;
@@ -290,6 +473,9 @@ body{
         content:'Blanc';
         background-color: #f1f1f1;
         color:black;
+        @include mobile-only{
+          grid-area: 3 / 1 / 4 / 2; 
+        }
       }
       #teaColorChoice__white:checked + ::before{
         font-weight: 600;
@@ -300,6 +486,9 @@ body{
         @include inputBtn;
         content:'Puerh';
         background-color: #9E5F18;
+        @include mobile-only{
+          grid-area: 4 / 1 / 5 / 2;
+        }
       }
       #teaColorChoice__puerh:checked + ::before{
         font-weight: 600;
@@ -310,6 +499,9 @@ body{
         @include inputBtn;
         content:'Vert';
         background-color: #147533;
+        @include mobile-only{
+          grid-area: 5 / 1 / 6 / 2; 
+        }
       }
       #teaColorChoice__green:checked + ::before{
         font-weight: 600;
@@ -320,6 +512,9 @@ body{
         @include inputBtn;
         content:'Tous les thés';
         background-color: $secondaryColor;
+        @include mobile-only{
+          grid-area:  6 / 1 / 7 / 2; 
+        }
       }
       #color__all:checked + ::before{
         font-weight: 600;
@@ -331,6 +526,10 @@ body{
     @include block;
     h2{
       margin-top: 100px;
+      @include mobile-only {
+        padding: 10% 5% 15% 5%;
+        font-size: 22px;
+      }
     }
     form{
       margin-top: 30px;
@@ -372,6 +571,10 @@ body{
     @include block;
     h2{
       margin-top: 100px;
+      @include mobile-only {
+        padding: 10% 5% 15% 5%;
+        font-size: 22px;
+      }
     }
     form{
       margin-top: 30px;
@@ -386,11 +589,22 @@ body{
       input{
         display: none;
       }
+      @include mobile-only{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        width: 80%;
+        height: auto;
+      }
       #infusionTaste__gourmet+ ::before{
         grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Gourmand';
         background-color: #F25C57;
+        @include mobile-only{
+          grid-area: 1 / 1 / 2 / 2; 
+        }
       }
       #infusionTaste__gourmet:checked + ::before{
         font-weight: 600;
@@ -401,6 +615,9 @@ body{
         @include inputBtn;
         content:'Epicé';
         background-color: #F2843A;
+        @include mobile-only{
+          grid-area: 2 / 1 / 3 / 2; 
+        }
       }
       #infusionTaste__spicy:checked + ::before{
         font-weight: 600;
@@ -411,6 +628,9 @@ body{
         @include inputBtn;
         content:'Floral';
         background-color: #F28DDC;
+        @include mobile-only{
+          grid-area: 3 / 1 / 4 / 2; 
+        }
       }
       #infusionTaste__floral:checked + ::before{
         font-weight: 600;
@@ -421,6 +641,9 @@ body{
         @include inputBtn;
         content:'Fruité';
         background-color: #B39D6F;
+        @include mobile-only{
+          grid-area: 4 / 1 / 5 / 2; 
+        }
       }
       #infusionTaste__fruitty:checked + ::before{
         font-weight: 600;
@@ -431,6 +654,9 @@ body{
         @include inputBtn;
         content:'Nature';
         background-color: #42994E;
+        @include mobile-only{
+          grid-area: 5 / 1 / 6 / 2; 
+        }
       }
       #infusionTaste__nature:checked + ::before{
         font-weight: 600;
@@ -441,6 +667,9 @@ body{
         @include inputBtn;
         content:'Toutes';
         background-color: #42994E;
+        @include mobile-only{
+          grid-area: 6 / 1 / 7 / 2; 
+        }
       }
       #inf__all:checked + ::before{
         font-weight: 600;
@@ -465,11 +694,22 @@ body{
       input{
         display: none;
       }
+      @include mobile-only{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        width: 80%;
+        height: auto;
+      }
       #rooibosTaste__gourmet+ ::before{
         grid-area: 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Gourmand';
         background-color: #F25C57;
+        @include mobile-only{
+          grid-area : 1 / 1 / 2 / 2;
+        }
       }
       #rooibosTaste__gourmet:checked + ::before{
         font-weight: 600;
@@ -480,6 +720,9 @@ body{
         @include inputBtn;
         content:'Nature';
         background-color: #42994E;
+        @include mobile-only{
+          grid-area : 2 / 1 /3 / 2 ;
+        }
       }
       #rooibosTaste__nature:checked + ::before{
         font-weight: 600;
@@ -490,6 +733,9 @@ body{
         @include inputBtn;
         content:'Epicé';
         background-color: #F2843A;
+        @include mobile-only{
+          grid-area : 3 / 1 / 4 / 2;
+        }
       }
       #rooibosTaste__spicy:checked + ::before{
         font-weight: 600;
@@ -500,6 +746,9 @@ body{
         @include inputBtn;
         content:'Fruité';
         background-color: #B39D6F;
+        @include mobile-only{
+          grid-area : 4 / 1 / 5 / 2;
+        }
       }
       #rooibosTaste__fruitty:checked + ::before{
         font-weight: 600;
@@ -510,6 +759,9 @@ body{
         @include inputBtn;
         content:'Tous';
         background-color: #F25C57;
+        @include mobile-only{
+          grid-area :  5 / 1 / 6 / 2;
+        }
       }
       #roob__all:checked + ::before{
         font-weight: 600;
@@ -519,6 +771,8 @@ body{
   }
   .wellnessTaste{
     @include block;
+    height: 120%!important;
+
     h2{
       margin-top: 20px;
     }
@@ -532,6 +786,10 @@ body{
       overflow-y: scroll;
       width: 60%;
       height: 50%;
+      @include mobile-only{
+        overflow-y: visible;
+        margin-top: 80px!important;
+      }
       input{
         display: none;
       }
@@ -543,6 +801,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__breath:checked + ::before{
         font-weight: 600;
@@ -556,6 +818,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__lightLegs:checked + ::before{
         font-weight: 600;
@@ -569,6 +835,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__toSleep:checked + ::before{
         font-weight: 600;
@@ -582,6 +852,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__breastfeeding:checked + ::before{
         font-weight: 600;
@@ -595,6 +869,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__looseWeight:checked + ::before{
         font-weight: 600;
@@ -608,6 +886,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__digestive:checked + ::before{
         font-weight: 600;
@@ -620,7 +902,11 @@ body{
         background-color: #B3C5F2;
         width: 400px;
         height: 40px;
-        text-align: center;
+        text-align: center;        
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #wellnessTaste__sugarLess:checked+ ::before{
         font-weight: 600;
@@ -634,6 +920,10 @@ body{
         width: 400px;
         height: 40px;
         text-align: center;
+        @include mobile-only{
+          width: 100%;
+          height: 50px;
+        }
       }
       #well__all:checked + ::before{
         font-weight: 600;
@@ -652,6 +942,11 @@ body{
     align-items: center;
     justify-content: flex-start;
     margin-top: 40px;
+    @include mobile-only{
+      margin-top: 0;
+      width: auto;
+      height: 100%;
+    }
     #allTastesIcons{
       display: flex;
       flex-wrap: wrap;
@@ -661,10 +956,19 @@ body{
       height: 60%;
       overflow-y: scroll;
       padding: 0 10% 0 10%;
+      @include mobile-only{
+        padding: 0 5% 0 5%;
+        width: auto;
+        height: 50%;
+      }
     }
     h1{
       padding: 0 20%;
       text-align: center;
+      @include mobile-only {
+        padding: 10% 5% 15% 5%;
+        font-size: 22px;
+      }
     }
     figure{
       display: flex;
@@ -672,9 +976,17 @@ body{
       justify-content: center;
       flex-direction: column;
       margin : 5px 10px;
+      width: 100px;
+      @include mobile-only{
+        margin : 2px 5px;
+      }
       img{
         width: 40px;
         height: 40px;
+        @include mobile-only{
+          width: 35px;
+          height: 35px;
+        }
         cursor: pointer;
         &:hover{
           transform: scale(1.1);
@@ -686,6 +998,11 @@ body{
       figcaption{
         text-align: center;
         font-size: 16px;
+        @include mobile-only{
+          font-size: 14px
+        }
+      };
+      figcaption:first-letter{
         text-transform: capitalize;
       }
     }
@@ -698,9 +1015,15 @@ body{
     align-items: center;
     justify-content: flex-start;
     margin-top: 40px;
+    @include mobile-only{
+      margin: 0 10% 0 10%;
+      height: 100%;
+      width: 100%;
+    }
 
-
-
+    .result--suggestParagraph{
+      padding: 12.5% 20px 0 20px;
+    }
 
     .reloadText{
       color: $secondaryColor;
@@ -713,14 +1036,30 @@ body{
       align-items: center;
       justify-content: flex-start;
       margin : 40px 20px 80px 20px;
+      @include mobile-only{
+        width: auto;
+        margin : 40px 5% 40px 5%;
+        flex-direction: column;
+        overflow: none;
+        p{
+          padding: 0 5% 0 5%;
+        }
+  
+      }
 
       .article-left{
         overflow: hidden;
         width: 200px;
-        img{
+        @include mobile-only{
+          width: 150px;
+        }
+        .img__wrapper{
           border-radius: 5px;
           width: 200px;
           transition: all 300ms ease-out;
+          @include mobile-only{
+            width: 150px;
+          }
           &:hover{
             transform: scale(1.1);
             
@@ -733,12 +1072,21 @@ body{
         align-items: flex-start;
         justify-content: center;
         margin: 10px 0 10px 20px;
+        @include mobile-only{
+        margin : 0;
+        }
         .top{
           h4{
             font-size: 20px;
-            text-transform: capitalize;
             display: block;
             margin: 0;
+            @include mobile-only{
+              text-align: center;
+              font-size: 18px;
+            }
+            &::first-letter{
+              text-transform: capitalize;
+            }
           }
           p{
             font-size: 16px;
@@ -749,9 +1097,16 @@ body{
         }
         .bottom{
           display: flex;
+          @include mobile-only{
+            width: 100%;
+            justify-content: center;
+          }
           .bottom-left{
             display: flex;
             flex-direction: column;
+            @include mobile-only{
+              width: 50%;
+            }
             p{
               margin-left: 10px;
               font-size: 14px;
@@ -846,6 +1201,9 @@ body{
             display: flex;
             flex-direction: column;
             align-items: center;
+            @include mobile-only{
+              width: 50%;
+            }
             img{
               width: 35px;
               position: relative;
@@ -874,6 +1232,12 @@ body{
       }
     }
   }
+
+.results--title{
+  @include mobile-only{
+    margin-top: 50px!important;
+    padding: 0 10% 0 10%;
+  }
 }
 
 .slider{
@@ -883,6 +1247,11 @@ body{
   overflow-x: hidden;
   scrollbar-color : $fontColor; 
   scrollbar-width: thin;
+  @include mobile-only{
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
 }
 
 .progressBlock{
@@ -892,30 +1261,48 @@ body{
   top : 10px;
   left: 50%;
   transform: translateX(-50%);
+  @include mobile-only{
+    left: 5px;
+    transform: translateX(0);
+    flex-direction: column;
+  }
   p{
     display: block;
     font-size: 16px;
     color : #f1f1f1;
     text-align: center;
+    @include mobile-only{
+      font-size: 14px;
+    }
+
   }
   .progressBlock__Progress{
-    min-width: 120px;
-    width: auto;
+    width: 120px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap; 
     border-radius: 5px;
-
+    text-overflow: ellipsis;
+    overflow: hidden;
+    @include mobile-only{
+      width: 90px;
+      height: 25px;
+      margin : 2px;
+    }
   }
   .progressBlock__title{
     color: $primaryColor;
     font-weight: 700;
-    width: 150px;
+    min-width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+      @include mobile-only{
+        display: none;
+      }
+    }
 }
 
 .btnNext, .btnShowResults {
@@ -932,6 +1319,11 @@ body{
   align-items: center;
   justify-content: center;
   transition: all 200ms ease-out;
+  @include mobile-only{       
+      width: 140px;
+      height: 50px;
+      left: 32%;
+  }
   span{
     color: white;
     align-content: center;
@@ -945,6 +1337,9 @@ body{
 }
 .btnNext:hover{
   transform: scale(1.1);
+  @include mobile-only{
+    transform: none;
+  }
 }
 
 .btnPrevious {
@@ -956,21 +1351,17 @@ body{
   bottom: 2vh;
   left: 1vw;
   border : none;
-  img{
-    margin-top: 5px;
-    margin-left: -5px;
-    width: 30px;
+  cursor: pointer;
+  font-size: 30px;
+  transition: all .3s ease-out;
+  &:hover{
+    color: #F25C57;
   }
-}
-.btnPrevious:hover{
-  transition: 200ms;
-  transform: scale(1.5);
-  background-color :$secondaryColor;
 }
 
 .btnReload{
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   background-color : transparent;
   border-radius: 50%;
   position: absolute;
@@ -978,16 +1369,35 @@ body{
   right: 1vw;
   border : none;
   transition : all 0.4s ease-out;
+  font-size: 24px;
+  cursor : pointer;
+  color: #F25C57;
 
-  img{
-    margin-right: 10px;
-    width: 30px;
+  .btnReload-restart{
+    font-size: 12px;
+    opacity: 0;
+    transition : all 0.5s ease-out;
+    font-style: italic;
+  }
+  .fa-rotate{
+    animation: ReloadRotate 30s linear infinite forwards;
+    transition: all 0.1s ease-out;
+    &:hover{
+      font-size: 30px;
+    }
+    &:hover + .btnReload-restart{
+      opacity: 1;
+    }
+  }
+
+
+}
+.btnPrevious__ResultsPage{
+  @include mobile-only{
+    position : relative;
+    margin-right: auto;
   }
 }
-.btnReload:hover{
-  transform: scale(1.1);
-}
-
 
 .btnReload--result{
   width: 160px;
@@ -1001,6 +1411,10 @@ body{
   transition : all 0.4s ease-out;
   display: flex;
   align-items: center;
+  @include mobile-only{
+    top: 0;
+    right: 0;
+  }
   p{
     color: #F25C57;
     font-size: 18px;
@@ -1008,8 +1422,38 @@ body{
   }
 }
 
+.suggestBtn{
+  @include inputBtn;
+  width: 250px;
+  background-color: #45A0F5;
+  cursor: pointer;
+  border: none;
+  &:hover{
+    transform: scale(1.1);
+  }
+}
 
-@keyframes btnAnim {
 
-  
+@keyframes displayTitle {
+
+    0%{
+      transform: translateX(-9999px);
+      opacity: 0;
+    }
+    90%{
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+@keyframes ReloadRotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(720deg);
+  }
 }

@@ -11,6 +11,7 @@ const btnReload = document.querySelector('.btnReload');
 const results = document.querySelector('.app__results');
 const startBtn = document.querySelector(".startBtn");
 const tasteBtn = document.querySelector('.tasteBtn');
+const suggestBtn = document.querySelector('.suggestBtn')
 const ResultsPreviousBtn = document.querySelector('.results__button--previous');
 const resultBtnReload = document.querySelector('.results__button--reload');
 const progressBlock = document.querySelector('.progressBlock');
@@ -20,7 +21,9 @@ const progressColor = document.querySelector('.progressBlock__ProgressColor');
 const slider = document.querySelector('.slider')
 const tasteChoice = document.querySelector('.allTastes');
 const allTastesDiv = document.getElementById('allTastesIcons');
-const resultTitle = document.querySelector('.results--title')
+const resultTitle = document.querySelector('.results--title');
+const resultParagraph = document.querySelector('.result--suggestParagraph')
+const btnPreviousResultPage = document.querySelector('.btnPrevious__ResultsPage')
 
 
 // Family values 
@@ -61,11 +64,14 @@ class Color extends Drink {
 };
 
 const tea = new Drink("Thés",'#42994E');
-const infusions = new Drink ('Infusions', '#F25C57')
+const infusions = new Drink ('Toutes nos infusions', '#F25C57')
 const infusion = new Drink("Infusion",'#F25C57');
 const rooibos = new Drink("Rooïbos",'#F5540F');
 const wellness = new Drink("Bien-être",'#F5B36C');
-const allTastes = new Drink('Tous les gouts','#2FC080')
+const allTastes = new Drink('Tous les gouts','#2FC080');
+const rooibosAll = new Drink('Tous les rooïbos', '#F5540F');
+const teaTasteAll = new Drink('Tous les thés', '#2FC080');
+const infusionAll = new Drink('Toutes les infusions', '#F25C57');
 
 const gourmet = new Taste("Gourmand","#F25C57");
 const spicy = new Taste("Epicé", '#F2843A');
@@ -97,7 +103,7 @@ const ginger = new Taste ('Gingembre', '#BF8C6F');
 const lemon = new Taste ('Citron', '#F2D129');
 const rose = new Taste('Rose', '#BF0426');
 const plum = new Taste('Mirabelle', '#520316');
-const lemongrass = new Taste('Citronelle','#607846');
+const lemongrass = new Taste('Citronnelle','#607846');
 const dates = new Taste('Dates','#590202');
 const strawberry = new Taste ('Fraise', '#BF0413');
 const leetchee = new Taste('Litchi','#BF4C41');
@@ -165,11 +171,12 @@ const allDrinks = [
         family: 'tea',
         tastes: ['floral'],
         colors: ['green'],
-        linkImage: './assets/images/greenteaMint.webp',
+        linkImage: './assets/images/greenMint.webp',
         title: 'The vert à la menthe',
         description: 'Intense, frais et authentique, ce thé vert à la menthe sous forme de sachets ne vous laissera pas indifférent. Au bureau ou en voyage vous pourrez l\'amener partout !',
         taste: ['mint'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/the-vert-a-la-menthe'
     },
     {
         name: 'greenJasmin',
@@ -181,6 +188,7 @@ const allDrinks = [
         description: 'Les Fleurs de Jasmin sont cueillies immédiatement après la floraison et sont déposées dès le lendemain sur les feuilles de thé lors du flétrissage. Toutes les huiles essentielles des feuilles se gorgent ainsi des arômes délicats du jasmin pour un goût intense. Ce Thé vert au Jasmin est une merveille pour le palais.',
         taste: ['jasmin'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/the-au-jasmin'
     },
     {
         name: 'greenVolga',
@@ -191,7 +199,8 @@ const allDrinks = [
         title: 'Balade sur la Volga',
         description: 'Balade sur la Volga est un thé vert élégant et original. Issu d’un jardin de renom, il est agrémenté de dés de mangues et de zestes d’orange.',
         taste: ['mango', 'orange'], 
-        price: 6,
+        price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/balade-sur-la-volga'
     },
     {
         name: 'greenDouceFrance',
@@ -203,6 +212,7 @@ const allDrinks = [
         description: 'Le Douce France est une composition subtile de thé vert Sencha, framboises, et boutons de bleuets blancs. Cette création extrêmement raffinée vous envoûtera dès la première gorgée avec ses légères notes crémeuses.',
         taste: ['raspberry', 'blueCornFlower'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/douce-france'
     },
     {
         name: 'greenBourbonFlowers',
@@ -214,6 +224,7 @@ const allDrinks = [
         description: 'Fleur de Bourbon est un thé vert intemporel. Alliant la douceur du thé vert et les épices de la vanille, cette création gourmande saura ravir les palais les plus exigeants.',
         taste: ['vanilla'], 
         price: 6.5,
+        link : 'https://www.larbreathe.fr/product-page/fleur-de-bourbon'
     },
     {
         name: 'greenGenmaicha',
@@ -225,6 +236,7 @@ const allDrinks = [
         description: 'Le Genmaïcha est un thé vert japonais surprenant. Composé de bancha et agrémenté de grains de blé et riz soufflé, il est idéal pour la digestion.',
         taste: [], 
         price: 12.5,
+        link : 'https://www.larbreathe.fr/product-page/genmaicha'
     },
     {
         name: 'greenMatcha',
@@ -236,6 +248,7 @@ const allDrinks = [
         description: 'Le Matcha est un thé vert en poudre traditionnel aux multiples utilisations : pâtisserie, cuisine, infusion. Découvrez-le !',
         taste: [], 
         price: 9.5,
+        link : 'https://www.larbreathe.fr/product-page/matcha'
     },
     {
         name: 'greenMarrakech',
@@ -247,6 +260,7 @@ const allDrinks = [
         description: 'Ce thé vert Sencha est agrémenté de zestes d’orange, de badiane et de cardamone. Nuit à Marrakech est un thé magique et envoûtant aux notes de pain d\'épices.',
         taste: ['spice'], 
         price: 7,
+        link : 'https://www.larbreathe.fr/product-page/nuit-a-marrakech'
     },
     {
         name: 'greenNy',
@@ -258,6 +272,7 @@ const allDrinks = [
         description: 'Le thé Escale à New-York vous fera fondre grâce à ses notes caramélisées ! Avec son caramel, ses amandes et ses noix, découvrez une tasse gourmande à souhait ! Alors, qu\'attendez-vous pour le découvrir ? ',
         taste: ['caramel', 'almond', 'nut'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/escale-a-new-york'
     },
     {
         name: 'greenPondichery',
@@ -267,8 +282,9 @@ const allDrinks = [
         linkImage: './assets/images/greenPondichery.webp',
         title: 'Pondichery Chéri',
         description: 'Pondichery Chéri, une composition subtile de thé vert Sencha aux notes délicates de mirabelles et dés de mangues. Une tasse qui laisse entrevoir la douceur des îles du pacifique',
-        taste: ['mango'], 
+        taste: ['mango', 'plum'], 
         price: 7.5,
+        link: 'https://www.larbreathe.fr/product-page/pondichery-cheri'
     },
     {
         name: 'greenCasablanca',
@@ -280,6 +296,7 @@ const allDrinks = [
         description: 'Le thé vert Casablanca saura éveiller votre palais grâce à son bon goût de menthe. Une vraie dose de fraîcheur qui saura réveiller votre palais !',
         taste: ['mint', 'redBerries'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/casablanca'
     },
     {
         name: 'greenIndiaMemories',
@@ -291,6 +308,7 @@ const allDrinks = [
         description: 'Composé de gingembre, d\'écorces de citron et de fleurs de souci, le thé vert  Souvenir des Indes vous offre un véritable instant de fraîcheur qui saura vous dynamiser pour toute la journée.',
         taste: ['ginger', 'lemon'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/souvenir-des-indes'
     },
     {
         name: 'greenRukeri',
@@ -300,8 +318,9 @@ const allDrinks = [
         linkImage: './assets/images/greenRukeri.webp',
         title: 'Op Rukeri',
         description: 'Originaire du Rwanda, le Op Rukeri est un thé rare aux notes citronnées, il se révèle aromatique et corsé aux accents frais et épicés',
-        taste: [], 
+        taste: ['spice'], 
         price: 12.50,
+        link : 'https://www.larbreathe.fr/product-page/op-rukeri'
     },
     {
         name: 'greenSenchaLaiChau',
@@ -313,6 +332,8 @@ const allDrinks = [
         description: 'Thé vert idéal pour la découverte du thé vietnamien, le Sencha Lai Chau est à la fois facile d\'accès et suffisamment complexe pour un grand moment de dégustation et de détente.',
         taste: [], 
         price: 10,
+        link : 'https://www.larbreathe.fr/product-page/sencha-lai-chau'
+
     },
     {
         name: 'greenAntiguaRosa',
@@ -322,8 +343,9 @@ const allDrinks = [
         linkImage: './assets/images/greenAntiguaRosa.webp',
         title: 'Antigua Rosa',
         description: 'Antigua Rosa est un thé à la fois très fruité et délicat grâce à ses arômes de rose et ses fruits exotiques. Une vraie petite perle qu\'on aimera déguster en début d\'après-midi pour retrouver calme et poésie.',
-        taste: ['rose', 'plum'], 
+        taste: ['rose', 'plum', 'mango', 'passionFruit', 'guava'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/antigua-rosa'
     },
     {
         name: 'greenAlexandrie',
@@ -335,6 +357,7 @@ const allDrinks = [
         description: 'Merveilles d\'Alexandrie est un thé vert frais avec ses dattes, sa citronnelle, son maté et ses écorces de citron. Avec ses ingrédients principalement issus de l\'agriculture biologique et son côté rafraîchissant, il sera l\'allié de votre printemps/été.',
         taste: ['lemongrass', 'dates', 'lemon'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/merveilles-d-alexandrie'
     },
     {
         name: 'greenCilaos',
@@ -346,6 +369,7 @@ const allDrinks = [
         description: 'Vous avez envie d\'être surpris ? Bonne nouvelle, notre thé vert Flâner à Cilaos est là pour vous satisfaire. Avec ses litchis, ses fleurs de jasmin et ses pétales de rose, il sera idéal pour ceux qui recherche un peu de douceur et d\'exotisme. ',
         taste : ['strawberry', 'leetchee', 'rose'],
         price: 7,
+        link : 'https://www.larbreathe.fr/product-page/fl%C3%A2ner-%C3%A0-cilaos'
     },
     //black teas
     {
@@ -358,6 +382,7 @@ const allDrinks = [
         description: 'Balade à Versailles est un thé noir de Ceylan de grande qualité. Accompagné de pistaches, de pétales de fleurs et de boules de massepain fondant pendant l\'infusion, il vous offre une tasse élégante, et gourmande',
         taste : ['almond', 'pistachio'],
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/balade-a-versailles'
     },
     {
         name: 'blackChai',
@@ -369,6 +394,7 @@ const allDrinks = [
         description: 'Un mélange de thé noir et d\'épices telles que la cardamone, le clou de girofle, le poivre noir et le gingembre pour une tasse tonique.',
         taste: ['pepper', 'cloves', 'ginger'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/the-chai'
     },
     {
         name: 'blackDarjeeling',
@@ -380,6 +406,7 @@ const allDrinks = [
         description: 'Provenant d\'un grand jardin de Darjeeling, le Margaret\'s Hope est un thé nature extrêmement aromatique et fruité. D\'une grande douceur, le Darjeeling Maraget\'s Hope TGFOP1 est un thé à offrir ou à s\'offrir pour partager des moments chaleureux.',
         taste: [], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/darjeeling-margaret-s-hope-tgfop1'
     },
     {
         name: 'blackProvence',
@@ -402,6 +429,7 @@ const allDrinks = [
         description: 'Un thé emblématique connu pour ses notes à la fois corsées, douces et crémeuses. Ce Earl Grey Bergamote est mélange haute qualité de thés noirs du Yunnan et Ceylan',
         taste: ['bergamote'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/earl-grey-bergamote'
     },
     {
         name: 'blackLondon',
@@ -413,6 +441,7 @@ const allDrinks = [
         description: 'Grâce à sa menthe et à son chocolat, London after tea vous offre une tasse terriblement gourmande et riche en saveurs !',
         taste: ['mint', 'chocolat'], 
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/london-after-tea'
     },
     {
         name: 'blackKemi',
@@ -424,6 +453,8 @@ const allDrinks = [
         description: 'Édition limitée, le Kemi est un thé noir au goût réconfortant de chocolat truffé. Composé de nougatine, de morceaux de fèves et de coques de cacao ce thé résolument gourmand saura plaire aux palais les plus gourmands.',
         taste : ['chocolat'],
         price: 7.5,
+        link: 'https://www.larbreathe.fr/product-page/kemi'
+
     },
     {
         name: 'blackLapsang',
@@ -435,6 +466,7 @@ const allDrinks = [
         description: 'Le Tarry Lapsang Souchong est un thé bio fumé, provenant de la province du Fujian. Son aspect ambré et sa texture lisse lui confèrent un caractère qui se retrouve en tasse avec une légère amertume.',
         taste : ['smoked'],
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/tarry-lapsang-souchong'
     },
     {
         name: 'blackAcapulco',
@@ -446,6 +478,7 @@ const allDrinks = [
         description: 'Souvenir d\'Acapulco est un thé noir issu d’un jardin du Yunnan. Également composé de 20% de thé vert Sencha et agrémenté de dés de papayes et de baies légèrement épicées, c\'est une création originale avec du caractère.',
         taste: ['papaya', 'rose'], 
         price: 6.5,
+        link : 'https://www.larbreathe.fr/product-page/souvenir-d-acapulco'
     },
     // Blue teas
     {
@@ -458,6 +491,7 @@ const allDrinks = [
         description: 'Ce thé bleu, ou Oolong, aux agrumes vous transportera rapidement au Maroc. Ses notes délicieusement fruitées d\'orange et de fleurs d\'oranger, compensées par la douceur du thé bleu offrent un voyage gustatif garanti. Laissez vous tenter sans tarder',
         taste: ['orange', 'orangeBlossom'], 
         price: 7.5 ,
+        link : 'https://www.larbreathe.fr/product-page/sur-un-air-marocain'
     },
     {
         name: 'blueQuebec',
@@ -469,6 +503,7 @@ const allDrinks = [
         description: 'Un Thé oolong, bleu-noir, avec des dés de pommes caramélisées, de la cannelle. Il est parfait pour l\'après midi ! Fermez les yeux vous êtes déjà à Noël.',
         taste: ['apple', 'canelle', 'caramel'], 
         price: 8.5,
+        link : 'https://www.larbreathe.fr/product-page/no%C3%ABl-%C3%A0-qu%C3%A9bec'
     },
     {
         name: 'blueWulong',
@@ -480,6 +515,7 @@ const allDrinks = [
         description: 'Le Wulong Milky nous offre un goût très doux aux notes crémeuses de beurre. Ce thé nature est tout simplement exceptionnel.',
         taste: ['sourCream'], 
         price: 8.5,
+        link: 'https://www.larbreathe.fr/product-page/wulong-milky'
     },
     {
         name: 'blueTokyo',
@@ -491,6 +527,7 @@ const allDrinks = [
         description: 'Le wulong Hiver à Tokyo est un thé bleu agrémenté de dés de Yuzu et de minis chamallows infusés au citron japonais. Un thé aux notes d’agrumes exquises et délicates.',
         taste: ['lemon', 'yuzu'],
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/hiver-a-tokyo'
     },
     {
         name: 'blueHongKong',
@@ -502,6 +539,7 @@ const allDrinks = [
         description: 'Le thé Hong-Kong Paradise est un Oolong aux notes à la fois fleuries et épicées, caractéristiques des Oolong Chinois.Hong-Kong Paradise est un thé élégant qui vous laissera une longueur en bouche très agréable grâce à ses notes de pêche et d\'abricot',
         taste: ['peach', 'apricot', 'rose'], 
         price: 7.5,
+        link: 'https://www.larbreathe.fr/product-page/hong-kong-paradise'
     },
     //white teas
     {
@@ -514,6 +552,7 @@ const allDrinks = [
         description: 'Ce thé blanc a été sélectionné personnellement par notre cliente historique, Krystalle. Il est composé de thé blanc, thé vert, papaye, noix de coco, ananas et fleurs de carthame. Une vraie pause exotique.',
         taste : ['pineapple', 'coconut', 'papaya'],
         price: 7.5,
+        link : 'https://www.larbreathe.fr/product-page/lille-sous-les-tropiques'
     },
     {
         name: 'whiteSagano',
@@ -525,6 +564,7 @@ const allDrinks = [
         description: 'Avec ses feuilles de bambou, Promenade à Sagano s\'illustre comme un thé doux et original. Particulièrement élégant, il saura ravir les palais les plus rafinés avec ses boutons des roses.',
         taste: ['mint', 'rose'], 
         price: 14.5,
+        link: 'https://www.larbreathe.fr/product-page/promenade-a-sagano'
     },
     {
         name: 'whiteIndia',
@@ -536,6 +576,7 @@ const allDrinks = [
         description: 'Douceur Indienne est un grand « cru » de thé blanc Pai Mu Dan agrémenté de fleurs de jasmin, de bleuets, et d’essence de citron pour un thé extrêmement délicat et élégant.',
         taste: ['rose', 'herbs'], 
         price: 8.5,
+        link: 'https://www.larbreathe.fr/product-page/douceur-indienne'
     },
     {
         name: 'whiteCopacabana',
@@ -547,6 +588,7 @@ const allDrinks = [
         description: 'Résolument exotique grâce à ses fruits tropicaux, le thé blanc Copacabana qui vous fera voyager jusqu\'au Brésil en un rien de temps !',
         taste: ['pineapple', 'mango'], 
         price: 8.5,
+        link : 'https://www.larbreathe.fr/product-page/copacabana'
     },
     //rooibos
     {
@@ -559,6 +601,7 @@ const allDrinks = [
         description: 'Une tasse gourmande qui rappelle les doux goûters de notre enfance. La saveur onctueuse et veloutée de Rooïbos associée à la douceur du caramel vous transporteront dans un monde de gourmandises.',
         taste: ['caramel'], 
         price: 6.5 ,
+        link: 'https://www.larbreathe.fr/product-page/rooIbos-caramel'
     },
     {
         name: 'rooibosGreen',
@@ -570,6 +613,7 @@ const allDrinks = [
         description: 'Le Rooïbos vert est un rooïbos nature, simplement séché qui délivre tout son goût naturel lors de l\'infusion.',
         taste: [], 
         price: 6.5,
+        link: ''
     },
     {
         name: 'rooibosPomelos',
@@ -581,6 +625,7 @@ const allDrinks = [
         description: 'Le rooïbos Grenade Pamplemousse vous offre une tasse sans théine et particulièrement fruitée. Parfait pour les soirs d\'été, il se révele être particulièrement frais et d\'un agréable dynamisme.',
         taste: ['pomelos', 'orange', 'grenade'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/rooibos-vert'
     },
     {
         name: 'rooibosGinger',
@@ -592,6 +637,7 @@ const allDrinks = [
         description: 'Le rooïbos Gingembre Citron est sans théine. Il peut se consommer à n\'importe quel moment de la journée ; sa tasse fraîche et dynamique sera parfaite si vous souhaitez commencer la journée du bon pied !',
         taste: ['ginger', 'lemon'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/roo%C3%AFbos-gingembre-citron'
     },
     {
         name: 'rooibosAmaretto',
@@ -603,6 +649,7 @@ const allDrinks = [
         description: 'Le Rooïbos Amaretto est un rooïbos rouge gourmand au bon goût d\'amandes. Souvenir d\'enfance sur les bancs de l\'école garanti !',
         taste: ['almond'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/rooibos-amaretto'
     },
     // infusion
     {
@@ -615,6 +662,7 @@ const allDrinks = [
         description: 'Manosque est une infusion fraîche et légère au bon goût de mangue et de citron. Parfaite en début de soirée, elle saura vous rafraîchir après une journée ensoleillée.',
         taste: ['mango', 'lemon', 'verbena'], 
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/manosque'
     },
     {
         name: 'infusionBroadway',
@@ -626,6 +674,7 @@ const allDrinks = [
         description: 'Broadway est une infusion gourmande au léger côté régressif ; elle attire les "becs sucrés" ne voulant pas culpabiliser et avec ses pop corns, elle fait la joie des enfants. A tester de toute urgence !',
         taste: ['apple', 'popcorn' ,'canelle'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/broadway'
     },
     {
         name: 'infusionKimbe',
@@ -637,6 +686,7 @@ const allDrinks = [
         description: 'Parfait pour l\'après-midi, l\'infusion bio Kimbe saura vous surprendre avec ses morceaux de fraises et de bananes. Résolument régressive, cette petite merveille se déguste à tout âge !',
         taste: ['apple', 'banana', 'strawberry'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/kimbe'
     },
     {
         name: 'infusionDelhi',
@@ -648,6 +698,7 @@ const allDrinks = [
         description: 'Avec ses dés de pommes,  ses oranges et ses fraises , Royal Delhi est assurément une infusion qui vous fera voyager ! Évadez-vous pour les plus belles contrées d\'Inde avec cette infusion fruitée et rafraîchissante. À consommer également froide, c\'est un régal !',
         taste: ['hibiscus', 'apple', 'orange'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/royal-delhi'
     },
     {
         name: 'infusionSaoPaulo',
@@ -659,6 +710,7 @@ const allDrinks = [
         description: 'Créée d\'abord édition limitée, São Paulo  est très vite devenue l\'un de nos Best Seller. Cette infusion fruitée et gourmande composée de framboises et de saveurs exotiques telles que l\'ananas, le citron vert se consomme glacée, sans modération, tout au long de la journée. Un bain de fraicheur et d’exotisme qui vous fera voyager !',
         taste: ['raspeberry', 'pineapple'],
         price: 10.50,
+        link: 'https://www.larbreathe.fr/product-page/the-glace-sao-paulo'
     },
     {
         name: 'infusionLouxor',
@@ -670,6 +722,7 @@ const allDrinks = [
         description: 'Louxor J\'adore est une subtile création composée de verveine, d\'oranges, de pommes caramélisées et de fleurs d\'hibiscus. Une tasse dynamique  à consommer aussi bien chaude que froide.',
         taste: ['orange', 'verbena', 'apple'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/louxor-jadore'
     },
     {
         name: 'infusionCopenhaguen',
@@ -681,6 +734,7 @@ const allDrinks = [
         description: 'Résolument rafraîchissante, Délice de Copenhague est une infusion au bon goût de canneberge et d\'argousier. Une tasse parfaite pour ceux qui aiment les infusions avec du caractère et beaucoup d\'énergie !',
         taste: ['canneberge', 'orangeBerries'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/delice-de-copenhague'
     },
     {
         name: 'infusionLaponie',
@@ -692,6 +746,7 @@ const allDrinks = [
         description: 'Découvrez notre infusion de Noël ! Une infusion pour petits et grands, à base de pommes, ananas, raisins de Corinthe, pépins de citrouille grillés, cannelle, chips de coco et flocons de framboise. La magie peut commencer.',
         taste: ['apple', 'coconut', 'pineapple'],
         price: 6.5,
+        link: 'https://www.larbreathe.fr/product-page/noel-en-laponie'
     },
     {
         name: 'infusionBarrow',
@@ -703,6 +758,7 @@ const allDrinks = [
         description: 'Cette infusion est idéale pour ceux qui rêvent de nuits calmes et paisibles, elle deviendra vite votre alliée du soir avant le coucher.',
         taste: ['fennel', 'mint', 'lemongrass'],
         price: 7.5,
+        link: 'https://www.larbreathe.fr/product-page/nuit-a-barrow'
     },
     //Breath
     {
@@ -715,6 +771,7 @@ const allDrinks = [
         description: 'Cette infusion au goût délicieux est décongestionnante ce qui facilite la respiration. Les arômes stimulants qui la composent vous procurent immédiatement un réconfort. ',
         taste : ['thym', 'eucalyptus', 'lavandin'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-respirante'
     },
     //lightLegs
     {
@@ -727,6 +784,7 @@ const allDrinks = [
         description: 'Cette infusion vous aidera à favoriser une bonne circulation veineuse, grâce à l\'association de différentes plantes, telles que la vigne rouge, l\'origan ou l\'angélique. Associée à un bon équilibre alimentaire et, si possible, à la pratique d\'un sport, elle vous permettra de retrouver des jambes légères.',
         taste : ['rosmary', 'ginger', 'grappes'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-jambes-legeres'
     },
     {
         name: 'wellnessLooseWeight',
@@ -738,6 +796,7 @@ const allDrinks = [
         description: 'L\'infusion Silhouette parfaite est élaborée avec des plantes médicinales BIO comme la Vigne rouge qui aide au contrôle du poids, à réduire l\'aspect cellulite et à redéfinir la silhouette. Ce mélange permet un drainage général ainsi l\'assimilation des nutriments. ',
         taste : ['rosmary', 'mint', 'orange'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-silhouette-parfaite'
     },
     //breastfeeding    
     {
@@ -750,6 +809,7 @@ const allDrinks = [
         description : 'Cette infusion à base d\'anis, de cumin et de fenouil a été spécifiquement adaptée pour favoriser la lactation. Elle permet une bonne hydratation, étape indispensable d\'un allaitement réussi.',
         taste : ['anis', 'cumin', 'fennel'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-allaitement'
     },
     //looseWeight
     {
@@ -762,6 +822,7 @@ const allDrinks = [
         description : 'Si vous souhaitez maitriser votre taux de sucre dans le sang, nous avons la solution. Nous vous proposons un mélange de plantes qui permet à la fois de diminer l\'absorption des sucres et de réguler son assimilation. Un régime alimentaire équilibré est recommandé car l\'infusion seule ne fera rien sans un petit coup de pouce de votre part.',
         taste : ['eucalyptus', 'bloodOrange', 'mint2'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-sucre-moins'
     },
     //digestive
     {
@@ -774,6 +835,7 @@ const allDrinks = [
         description : 'Délicieuse et légère, cette infusion Après-Repas vous aidera à améliorer la digestion. De quoi retrouver le cours de votre journée ou de votre soirée en toute liberté !',
         taste : ['anis', 'rosmary', 'thym'],
         price: 7,
+        link: 'https://www.larbreathe.fr/product-page/infusion-apr%C3%A8s-repas'
     }
 ]
 
@@ -808,11 +870,11 @@ const tastes = [
         title: 'bergamote',
         imageUrl : './assets/images/tastes/bergamote.webp' ,
     },
-    {
-        name : 'blackberry',
-        title : 'mûre',
-        imageUrl : './assets/images/tastes/blackberry.webp' ,
-    },
+    // {
+    //     name : 'blackberry',
+    //     title : 'mûre',
+    //     imageUrl : './assets/images/tastes/blackberry.webp' ,
+    // },
     {
         name : 'blueCornFlower',
         title: 'bleuet blanc',
@@ -825,7 +887,7 @@ const tastes = [
     },
     {
         name : 'canelle',
-        title : 'canelle',
+        title : 'cannelle',
         imageUrl : './assets/images/tastes/canelle.webp',
     },
     {
@@ -833,11 +895,11 @@ const tastes = [
         title : 'canneberge',
         imageUrl : './assets/images/tastes/canneberge.webp',
     },
-    {
-        name : 'chamomille',
-        title : 'camomille' ,
-        imageUrl : './assets/images/tastes/chamomille.webp' ,
-    },
+    // {
+    //     name : 'chamomille',
+    //     title : 'camomille' ,
+    //     imageUrl : './assets/images/tastes/chamomille.webp' ,
+    // },
     {
         name : 'coconut',
         title : 'noix de coco' ,
@@ -881,7 +943,7 @@ const tastes = [
     {
         name : 'grappes',
         title : 'raisin' ,
-        imageUrl : './assets/images/tastes/grappes.webp' ,
+        imageUrl : './assets/images/tastes/grapes.webp' ,
     },
     {
         name : 'grenade',
@@ -889,10 +951,15 @@ const tastes = [
         imageUrl : './assets/images/tastes/grenade.webp' ,
     },
     {
-        name : 'groseille',
-        title: 'groseille',
-        imageUrl : './assets/images/tastes/groseille.webp' ,
+        name : 'guava',
+        title: 'goyave',
+        imageUrl : './assets/images/tastes/guava.webp' ,
     },
+    // {
+    //     name : 'groseille',
+    //     title: 'groseille',
+    //     imageUrl : './assets/images/tastes/groseille.webp' ,
+    // },
     {
         name : 'herbs',
         title : 'herbe',
@@ -918,11 +985,11 @@ const tastes = [
         title : 'lavandin' ,
         imageUrl : './assets/images/tastes/lavender.webp' ,
     },
-    {
-        name : 'lavender',
-        title: 'lavende',
-        imageUrl : './assets/images/tastes/lavender.webp' ,
-    },
+    // {
+    //     name : 'lavender',
+    //     title: 'lavende',
+    //     imageUrl : './assets/images/tastes/lavender.webp' ,
+    // },
     {
         name : 'leetchee',
         title: 'litchi',
@@ -935,7 +1002,7 @@ const tastes = [
     },
     {
         name : 'lemongrass',
-        title: 'citronelle',
+        title: 'citronnelle',
         imageUrl : './assets/images/tastes/lemongrass.webp' ,
     },
     {
@@ -971,12 +1038,17 @@ const tastes = [
     {
         name : 'orangeBlossom',
         title: 'fleur d\'oranger',
-        imageUrl: './assets/images/tastes/orangeBlossom.webp'
+        imageUrl: './assets/images/tastes/orangeBlossom.webp' ,
     },
     {
         name : 'papaya',
-        title: 'papaille',
+        title: 'papaye',
         imageUrl : './assets/images/tastes/papaya.webp' ,
+    },
+    {
+        name : 'passionFruit',
+        title: 'Fruits de la passion',
+        imageUrl : './assets/images/tastes/passionFruit.webp' ,
     },
     {
         name : 'peach',
@@ -1035,7 +1107,7 @@ const tastes = [
     },
     {
         name: 'smoked',
-        title: 'fumées',
+        title: 'fumé',
         imageUrl : './assets/images/tastes/smoked.webp'
     },
     {
@@ -1071,7 +1143,7 @@ const tastes = [
     {
         name : 'yuzu',
         title : 'yuzu',
-        imageUrl : './assets/images/tastes/lemon.webp',
+        imageUrl : './assets/images/tastes/yuzu.webp',
     }
 
 
