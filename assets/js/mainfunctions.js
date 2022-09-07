@@ -52,7 +52,7 @@ function findProduct(taste) {
 // return the total number of tastes in the Title
 function displayNumberFlavors(flavors) {
     const numberOfFlavors = flavors.length + 1;
-    document.querySelector('.numberOfTastes').innerText = `Choississez le goût de votre choix parmis nos ${numberOfFlavors} goûts uniques`
+    document.querySelector('.numberOfTastes').innerText = `Choississez le goût de votre choix parmi nos ${numberOfFlavors} goûts uniques`
 }
 
 // display all Tastes page
@@ -67,68 +67,32 @@ function showAllTastesPage() {
 //******    Manage texts on the result page      ******//
 
 // Any products are matching, suggest other product who has the same taste
-function showSuggestProducts(taste) {
-    createSuggestParagraph();
-    let suggestBtn = document.createElement('button');
-    let tasteName = eval(taste).name
-    let familyName = eval(userChoice[0]).name
-    suggestBtn.classList.add('suggestBtn');
-    slider.style.overflowY = 'hidden';
-    // slider.style.height = '50px'
-    suggestBtn.innerText = `Découvrir des ${familyName} ${tasteName}`
-    results.append(suggestBtn)
-    document.querySelector('.suggestBtn').addEventListener('click', (e) => {
-        e.preventDefault()
-        resultTitle.style.display = 'block';
-        slider.style.display = 'block'
-        slider.style.overflowY = 'scroll'
-        userChoice.length === 3 ? userChoice.pop() : null;
-        document.querySelector('.suggestBtn').style.display = 'none'
-        progressColor.style.display = 'none';
-        btnPreviousResultPage.style.display = 'none'
+function showSuggestComponent(taste) {
+    results.style.display = 'none'
+    suggestResults.style.display = "flex";
+    // Infusions case
+    if (userChoice[1] === 'infusion'){
+        allDrinks.filter(product => product.family.includes(userChoice[1]))
+        .forEach(product => {
+            console.log(product)
+            addContent(product)
+        })
+    } else {
         allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(taste))
         .forEach(product => {
-            showResultTitle()
+            console.log(product)
             addContent(product)
-            removeSuggestParagraph()
         })
-    })
-}
-
-function removeSuggestParagraph(){
-    if (document.querySelector('.result--suggestParagraph') !== null){
-    document.querySelector('.result--suggestParagraph').style.display = 'none';
-    // document.querySelector('.suggestBtn').style.display = 'none';
     }
-}
-
-function createSuggestParagraph() {
-    
-    console.log(document.querySelector('.results--title'))
-    if (document.querySelector('.results--title') ==  null){
-        return
-    }//else if ()
-    else {
-        let paragraph = document.createElement('p');
-        paragraph.classList.add('result--suggestParagraph')
-        paragraph.textContent = 'Aucuns produits ne corresponds à votre recherches, essayez de chercher un autre goût.'
-        resultTitle.style.display = 'none'
-        slider.style.display = 'none'
-        results.append(paragraph)
+    let tasteName = eval(taste).name.toLowerCase()
+    let familyName = eval(userChoice[0]).name.toLowerCase()
+    if(familyName == 'toutes nos infusions'){
+        suggestTitle.innerText+= ` ${tasteName} .`
+    }else {
+        suggestTitle.innerText +=` ${familyName} ${tasteName} .`
     }
     
-   
-}
 
-// display the result title
-function showResultTitle(){
-    if (results.getElementsByTagName('h2').length == 0){
-        slider.insertAdjacentHTML('beforebegin', `
-        <h2 class=\'results--title\'>Voici ce que nous avons sélectionné pour vous :</h2>
-        `)
-    }else{
-    resultTitle.textContent = 'Voici ce que nous avons sélectionné pour vous :';
-    }
 }
 
 //******    add Tea cards to the result page       ******//
@@ -176,7 +140,12 @@ function addContent(product) {
     articleLeft.append(img);
     articleRight.append(top, bottom)
     newArticle.append(articleLeft, articleRight);
-    slider.append(newArticle);
+    if( suggestResults.style.display == 'flex'){
+        suggestSlider.append(newArticle)
+    }else {
+        slider.append(newArticle);
+    }
+    
 
     for (let i = 0; i < product.taste.length; i++) {
         tastes.filter(taste => taste.name.includes(`${product.taste[i]}`))
@@ -204,9 +173,7 @@ function findProductsFromUserChoice() {
     if (userChoice[2] == 'infusionAll' || userChoice[2] == 'rooibosAll' || userChoice[2] == 'wellnessAll') {
         allDrinks.filter(product => product.family.includes(userChoice[1]))
             .forEach(product => {
-                showResultTitle();
                 addContent(product)
-                removeSuggestParagraph();
             })
             return
     }
@@ -214,9 +181,7 @@ function findProductsFromUserChoice() {
     if (userChoice[1] == 'teaTasteAll') {
         allDrinks.filter(product => product.family.includes(userChoice[0]))
             .forEach(product => {
-                showResultTitle()
                 addContent(product)
-                removeSuggestParagraph()
             })
             return
     }
@@ -224,9 +189,7 @@ function findProductsFromUserChoice() {
     if (userChoice[2] == 'teaAll') {
         allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(userChoice[1]))
             .forEach(product => {
-                showResultTitle()
                 addContent(product)
-                removeSuggestParagraph()
             })
             return
     }
@@ -238,13 +201,13 @@ function findProductsFromUserChoice() {
             return
         }
         if (products.length == 0) {
-            showSuggestProducts(userChoice[1])
+            showSuggestComponent(userChoice[1])
+            userChoice.pop()
+            userChoice.push('suggested')
             return
         } else {
             products.forEach(product => {
-                showResultTitle()
                 addContent(product)
-                removeSuggestParagraph()
             })
             return
         }
@@ -252,13 +215,13 @@ function findProductsFromUserChoice() {
         const products = allDrinks.filter(product => product.family.includes(userChoice[0]) && product.tastes.includes(userChoice[1]) && product.colors.includes(userChoice[2]) && userChoice[2]!=='teaAll'  && userChoice[2]!=='rooibosAll');
         console.log(products.length)
         if (products.length == 0) {
-            showSuggestProducts(userChoice[1])
+            showSuggestComponent(userChoice[1])
+            userChoice.pop()
+            userChoice.push('suggested')
             return
         } else {
             products.forEach(product => {
-                showResultTitle()
                 addContent(product)
-                removeSuggestParagraph()
             })
             return
         }
@@ -337,6 +300,9 @@ function showPage(element, className) {
     }
     if (className.includes('btnPrevious')) {
         showLastPageVisited(element)
+        console.log("elememt : " + element)
+        suggestTitle.textContent = 'Desolé il n\'y a pas de produits correspondants à votre recherche, nous vous invitons à découvrir d\'autres produits de la gamme';
+
     }
     if (className.includes('btnNext')) {
         let choiceId = checkedChoice.id
@@ -364,7 +330,6 @@ function showPage(element, className) {
         showNextPage('appHome', element.closest('div'))
         currentPage = 'appHome';
         hideProgressBar();
-        removeSuggestParagraph();
         resultTitle.style.display = 'block';
         suggestBtn.style.display = 'none';
         resultParagraph.style.display = 'none'
@@ -393,7 +358,6 @@ function showNextPage(checkedElement, currentPageshown) {
 function showLastPageVisited(element) {
     element.closest('div').style.display = 'none'
     displayElementOfProgressBar();
-    removeSuggestParagraph();
     switch (currentPage) {
         case 'allTastes':
             appHome.style.display = 'flex';

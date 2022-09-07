@@ -9,6 +9,7 @@ const wellnessTaste = document.querySelector(".wellnessTaste");
 const previousBtn = document.querySelector(".previous");
 const btnReload = document.querySelector('.btnReload');
 const results = document.querySelector('.app__results');
+const suggestResults = document.querySelector('.app__suggestedResults');
 const startBtn = document.querySelector(".startBtn");
 const tasteBtn = document.querySelector('.tasteBtn');
 const suggestBtn = document.querySelector('.suggestBtn')
@@ -18,13 +19,14 @@ const progressBlock = document.querySelector('.progressBlock');
 const progressChoice = document.querySelector('.progressBlock__ProgressChoice');
 const progressTaste = document.querySelector('.progressBlock__ProgressTaste');
 const progressColor = document.querySelector('.progressBlock__ProgressColor');
-const slider = document.querySelector('.slider')
+const slider = document.querySelector('.slider');
+const suggestSlider = document.querySelector('.suggestedResults--slider')
 const tasteChoice = document.querySelector('.allTastes');
 const allTastesDiv = document.getElementById('allTastesIcons');
 const resultTitle = document.querySelector('.results--title');
-const resultParagraph = document.querySelector('.result--suggestParagraph')
-const btnPreviousResultPage = document.querySelector('.btnPrevious__ResultsPage')
-
+const resultParagraph = document.querySelector('.result--suggestParagraph');
+const btnPreviousResultPage = document.querySelector('.btnPrevious__ResultsPage');
+const suggestTitle = document.querySelector('.suggestedResults--title');
 
 // Family values 
 class Drink {
@@ -68,15 +70,16 @@ const infusions = new Drink ('Toutes nos infusions', '#F25C57')
 const infusion = new Drink("Infusion",'#F25C57');
 const rooibos = new Drink("Rooïbos",'#F5540F');
 const wellness = new Drink("Bien-être",'#F5B36C');
-const allTastes = new Drink('Tous les gouts','#2FC080');
+const allTastes = new Drink('Tous les goûts','#F5540F');
 const rooibosAll = new Drink('Tous les rooïbos', '#F5540F');
 const teaTasteAll = new Drink('Tous les thés', '#2FC080');
 const infusionAll = new Drink('Toutes les infusions', '#F25C57');
+const suggested = new Drink('Produits suggérés', '#4D4CF5')
 
 const gourmet = new Taste("Gourmand","#F25C57");
 const spicy = new Taste("Epicé", '#F2843A');
 const floral = new Taste('Florale', '#F28DDC');
-const fruitty = new Taste('Fruitté', '#B39D6F');
+const fruitty = new Taste('Fruité', '#B39D6F');
 const nature = new Taste('Nature', '#42994E');
 const all = new Taste('Tous', '#42994E');
 const breath = new Taste('Respirer', '#B39D6F');
@@ -129,7 +132,7 @@ const grenade = new Taste('Grenade','#590219');
 const verbana = new Taste('Verveine','#B078BF');
 const popcorn = new Taste('PopCorn','#F2D0A7');
 const banana = new Taste('Banane','#F2B66D');
-const hibiscus = new Taste('Hibiscus', '#f1f1f1');
+const hibiscus = new Taste('Hibiscus', '#f1f1f1', '#f1f1f1');
 const canneberge = new Taste('Canneberge', '#8C0303');
 const orangeBerries = new Taste('Argousier','#F28705');
 const fennel = new Taste('Fenouil', '#489C4A');
@@ -142,12 +145,14 @@ const anis = new Taste('Anis', '#732210');
 const cumin = new Taste('Cumin', '#733E1F');
 const mint2 = new Taste('Menthe poivrée', '#265902');
 const bloodOrange = new Taste('Orange sanguine','#8C030E');
-
+const verbena = new Taste ('Verveine','#67EB9B');
+const canelle = new Taste ('Canelle', '#705822')
+const guava = new Taste ('Goyave', '#F2668B');
+const passionFruit = new Taste ('Fruits de la passion', '#F09C18')
 
 const black = new Color('Noir','#313634', '#f1f1f1');
 const blue = new Color('Bleu', '#45A0F5', null);
 const white = new Color('Blanc','#F1F1F1','black');
-const puerh = new Color('Puerh','#9E5F18', null);
 const green = new Color('Vert','#147533', null);
 const teaAll = new Color('Tous','#147533', null);
 
@@ -418,6 +423,7 @@ const allDrinks = [
         description: 'Dans le Été en Provence, les notes pétillantes et poétiques de pêches et d\'abricots se marient magnifiquement bien avec la subtilité des fleurs de mauves et de bleuets. Vous retrouverez en ce thé toutes les caractéristiques d\'une tasse délicate et sensible.',
         taste : ['peach', 'apricot'],
         price: 7.5,
+        link :'https://www.larbreathe.fr/product-page/ete-en-provence'
     },
     {
         name: 'blackBergamote',

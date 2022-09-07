@@ -103,12 +103,12 @@ body{
       border-radius: 0;
       padding-top: 0;
       box-shadow: none;
+      display: block;
     }
     
     .logo{
       width: 140px;
       height: 140px;
-      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -116,7 +116,11 @@ body{
       left: 10px;
       top : 10px;
       @include mobile-only{
+        height: 80px;
         position: relative;
+        img{
+          width: 80px;
+        }
       }
     }
 
@@ -131,10 +135,13 @@ body{
     // CONTENT BLOC MOBILE 
     .content_block{
       @include mobile-only{
+        height: auto;
         justify-content: flex-start;
+        min-height: 100%;
         h1{
           padding: 10% 5% 0 5%;
           font-size: 22px;
+	       
         }
         h2{
           margin: 0;
@@ -146,20 +153,15 @@ body{
           flex-direction: column;
           width: 80%;
           align-items: center;
-          position: absolute;
-          top: 50%;
-          left : 50%;
-          transform: translate(-50%, -50%);
+          // position: absolute;
+          // top: 50%;
+          // left : 50%;
+          // transform: translate(-50%, -50%);
           height: auto;
+          padding-bottom: 30px;
         }
         label{
           width: 100%;
-        }
-        .logo{
-          position: relative;
-          padding-top: 70px;
-          width: 100px;
-          height: 100px;
         }
       }
     }
@@ -193,17 +195,17 @@ body{
       }
 
       .appHome-title{
-        animation: displayTitle 1s 1 forwards normal ease-out;
-        opacity: 0;
-        transform: translateX(-9999px);
         @include mobile-only {
           padding: 10% 5% 15% 5%;
           font-size: 22px;
         }
       }
 
-      .tasteTitle{
+      .taste-title{
         padding-top: 40px;
+        @include mobile-only{
+          padding-bottom: 10px;
+        }
       }
       h2{
         @include mobile-only {
@@ -284,7 +286,6 @@ body{
     .teaTaste{
       @include block;
       @include mobile-only{
-        min-height: 100%;
         height: auto;
       }
       h1{
@@ -325,7 +326,7 @@ body{
         }
         @include mobile-only{
           grid-template-columns: 1fr;
-          grid-template-rows: repeat(6, 1fr);
+          grid-template-rows: repeat(6, 65px);
           grid-column-gap: 0px;
           grid-row-gap: 0px;
           width: 80%;
@@ -418,17 +419,16 @@ body{
   .teaColorChoice{
     @include block;
     h2{
-      margin-top: 90px;
+      margin-top: 100px;
     }
     form{
       margin-top: 30px;
       display: grid;
       justify-content: center;
-      align-items: center;
-      grid-template-columns: repeat(3, 130px);
-      grid-template-rows: repeat(2, 50px);
+      grid-template-columns: repeat(5, 130px);
+      grid-template-rows: 70px; 
       grid-column-gap: 30px;
-      grid-row-gap: 30px; 
+      grid-row-gap: 0px; 
       width: 60%;
       height: 150px;
       input{
@@ -436,19 +436,16 @@ body{
       }
       @include mobile-only{
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
+        grid-template-rows: repeat(5, 65px);
         grid-column-gap: 0px;
         grid-row-gap: 0px; 
-        padding-top: 45px;
+        padding-top: 0;
       }
       #teaColorChoice__black+ ::before{
-        grid-area: 1 / 1 / 2 / 2;
+        grid-area : 1 / 1 / 2 / 2;
         @include inputBtn;
         content:'Noir';
         background-color: #313634;
-        @include mobile-only{
-          grid-area : 1 / 1 / 2 / 2;
-        }
       }
       #teaColorChoice__black:checked + ::before{
         font-weight: 600;
@@ -459,9 +456,9 @@ body{
         @include inputBtn;
         content:'Bleu';
         background-color: #45A0F5;
-        @include mobile-only{
-          grid-area: 2 / 1 / 3 / 2; 
-        }
+        // @include mobile-only{
+        //   grid-area: 2 / 1 / 3 / 2; 
+        // }
       }
       #teaColorChoice__blue:checked + ::before{
         font-weight: 600;
@@ -473,48 +470,35 @@ body{
         content:'Blanc';
         background-color: #f1f1f1;
         color:black;
-        @include mobile-only{
-          grid-area: 3 / 1 / 4 / 2; 
-        }
+        // @include mobile-only{
+        //   grid-area: 3 / 1 / 4 / 2; 
+        // }
       }
       #teaColorChoice__white:checked + ::before{
         font-weight: 600;
         transform: scale(1.1);
-        }
-      #teaColorChoice__puerh+ ::before{
-        grid-area: 2 / 1 / 3 / 2;
-        @include inputBtn;
-        content:'Puerh';
-        background-color: #9E5F18;
-        @include mobile-only{
-          grid-area: 4 / 1 / 5 / 2;
-        }
       }
-      #teaColorChoice__puerh:checked + ::before{
-        font-weight: 600;
-        transform: scale(1.1);
-        }
       #teaColorChoice__green+ ::before{
-        grid-area: 2 / 2 / 3 / 3;
+        grid-area: 1 / 4 / 2 / 5;
         @include inputBtn;
         content:'Vert';
         background-color: #147533;
-        @include mobile-only{
-          grid-area: 5 / 1 / 6 / 2; 
-        }
+        // @include mobile-only{
+        //   grid-area: 5 / 1 / 6 / 2; 
+        // }
       }
       #teaColorChoice__green:checked + ::before{
         font-weight: 600;
         transform: scale(1.1);
         }  
       #color__all+ ::before{
-        grid-area: 2 / 3 / 3 / 4;
+        grid-area: 1 / 5 / 2 / 6;
         @include inputBtn;
         content:'Tous les thés';
         background-color: $secondaryColor;
-        @include mobile-only{
-          grid-area:  6 / 1 / 7 / 2; 
-        }
+        // @include mobile-only{
+        //   grid-area:  6 / 1 / 7 / 2; 
+        // }
       }
       #color__all:checked + ::before{
         font-weight: 600;
@@ -527,7 +511,6 @@ body{
     h2{
       margin-top: 100px;
       @include mobile-only {
-        padding: 10% 5% 15% 5%;
         font-size: 22px;
       }
     }
@@ -572,7 +555,6 @@ body{
     h2{
       margin-top: 100px;
       @include mobile-only {
-        padding: 10% 5% 15% 5%;
         font-size: 22px;
       }
     }
@@ -771,8 +753,10 @@ body{
   }
   .wellnessTaste{
     @include block;
-    height: 120%!important;
-
+    height: 100%;
+    @include mobile-only{
+      height: auto!important;
+    }
     h2{
       margin-top: 20px;
     }
@@ -789,6 +773,7 @@ body{
       @include mobile-only{
         overflow-y: visible;
         margin-top: 80px!important;
+        grid-template-rows: repeat(8, 65px);
       }
       input{
         display: none;
@@ -930,6 +915,12 @@ body{
         transform: scale(1.1);
         }
     }
+    .tasteChoicePreviousBtn{
+      @include mobile-only{
+        position: relative;
+        margin-right: auto
+      }
+    }
   }
 
   }
@@ -957,9 +948,9 @@ body{
       overflow-y: scroll;
       padding: 0 10% 0 10%;
       @include mobile-only{
-        padding: 0 5% 0 5%;
+        padding: 0 ;
         width: auto;
-        height: 50%;
+        height: 100%;
       }
     }
     h1{
@@ -1007,7 +998,7 @@ body{
       }
     }
   }
-  .app__results{
+  .app__results, .app__suggestedResults{
     width: 980px;
     height: 620px;
     display: none;
@@ -1016,9 +1007,10 @@ body{
     justify-content: flex-start;
     margin-top: 40px;
     @include mobile-only{
-      margin: 0 10% 0 10%;
+      // margin: 0 10% 0 10%;
       height: 100%;
       width: 100%;
+      margin-top: 0;
     }
 
     .result--suggestParagraph{
@@ -1093,6 +1085,9 @@ body{
             width:380px;
             text-align: justify;
             display: block;
+            @include mobile-only{
+              width: 90%;
+            }
           }
         }
         .bottom{
@@ -1106,10 +1101,12 @@ body{
             flex-direction: column;
             @include mobile-only{
               width: 50%;
+              align-items: flex-end;
             }
             p{
               margin-left: 10px;
               font-size: 14px;
+              text-align: center;
             }
             button {
               width: 130px;
@@ -1155,15 +1152,30 @@ body{
             button:hover{
               color: rgba(34, 61, 125);
               background: transparent;
+              @include mobile-only{
+                color: #f1f1f1;
+                background: linear-gradient(0deg, rgba(34, 61, 125, 0.8)  0%, rgba(34, 61, 125) 100%);
+              }
             }
             button:hover:before {
               height: 100%;
+              @include mobile-only{
+                height: 0%;
+                width: 2px;
+              }
             }
             button:hover:after {
               width: 100%;
+              @include mobile-only{
+                width: 0%;
+                height: 2px;
+              }
             }
             button span:hover{
-              color: rgba(34, 61, 125)
+              color: rgba(34, 61, 125);
+              @include mobile-only{
+                color: #f1f1f1;
+              }
             }
             button span:before,
             button span:after {
@@ -1216,31 +1228,20 @@ body{
               width: 100%;
               text-transform: capitalize;
             }
-              // &::after{
-              //   content: '';
-              //   width: 50px;
-              //   height: 10px;
-              //   border: 1px solid rgba(34, 61, 125);
-              //   background-color: #003C00;
-              //   display: block;
-              // }
-              // &:hover:after{
-              //   width: 50px;
-              // }
           }
         }
       }
     }
   }
 
-.results--title{
+.results--title, .suggestedResults--title{
   @include mobile-only{
     margin-top: 50px!important;
     padding: 0 10% 0 10%;
   }
 }
 
-.slider{
+.slider, .suggestedResults--slider{
   width: 80%;
   height: 400px;
   overflow-y: scroll;
@@ -1268,16 +1269,19 @@ body{
   }
   p{
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color : #f1f1f1;
     text-align: center;
     @include mobile-only{
-      font-size: 14px;
+      font-size: 12px;
     }
 
   }
   .progressBlock__Progress{
-    width: 120px;
+    min-width: 120px;
+    width: fit-content;
+    padding: 0 5px;
+    margin : auto 2px;
     height: 30px;
     display: flex;
     align-items: center;
@@ -1287,7 +1291,6 @@ body{
     text-overflow: ellipsis;
     overflow: hidden;
     @include mobile-only{
-      width: 90px;
       height: 25px;
       margin : 2px;
     }
@@ -1295,7 +1298,7 @@ body{
   .progressBlock__title{
     color: $primaryColor;
     font-weight: 700;
-    min-width: 150px;
+    min-width: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1322,17 +1325,17 @@ body{
   @include mobile-only{       
       width: 140px;
       height: 50px;
-      left: 32%;
+      position: relative;
+      margin-top: auto;
+      left: 0;
+      bottom: 0;
+      margin-bottom: 5%;
   }
   span{
     color: white;
     align-content: center;
     font-family: 'Proxima';
     font-size: 18px;
-  }
-  img{
-    padding-left: 10px;
-    width: 35px;
   }
 }
 .btnNext:hover{
@@ -1356,6 +1359,9 @@ body{
   transition: all .3s ease-out;
   &:hover{
     color: #F25C57;
+  }
+  @include mobile-only{
+    margin-top: auto;
   }
 }
 
@@ -1392,9 +1398,10 @@ body{
 
 
 }
-.btnPrevious__ResultsPage{
+.btnPrevious__ResultsPage, .allTastesPreviousBtn, .wellnessTastePreviousBtn, .infusionTastePreviousBtn, .rooibosTastePreviousBtn{
   @include mobile-only{
     position : relative;
+    margin-top: auto;
     margin-right: auto;
   }
 }
@@ -1422,32 +1429,15 @@ body{
   }
 }
 
-.suggestBtn{
-  @include inputBtn;
-  width: 250px;
-  background-color: #45A0F5;
-  cursor: pointer;
-  border: none;
-  &:hover{
-    transform: scale(1.1);
-  }
+.suggestedResults--title{
+  padding: 0 15%;
+  text-align: center;
 }
 
-
-@keyframes displayTitle {
-
-    0%{
-      transform: translateX(-9999px);
-      opacity: 0;
-    }
-    90%{
-      opacity: 0;
-    }
-    100%{
-      transform: translateX(0);
-      opacity: 1;
-    }
+.suggestedResults--slider{
+  height: 375px;
 }
+
 
 @keyframes ReloadRotate {
   0%{

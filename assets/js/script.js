@@ -693,7 +693,7 @@ function findDrink(tastes, colors) {
 
         default:
             // let notFound = document.createElement('p');
-            // notFound.textContent = 'Désolé aucuns produits ne correspond à votre recherche';
+            // notFound.textContent = 'Désolé aucuns produit ne correspond à votre recherche';
             // slider.append(notFound)
             break;
     }
