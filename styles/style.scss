@@ -65,7 +65,7 @@ body{
   position: absolute;
   left : 50%;
   top : 50%;
-  width: 980px;
+  width: 850px;
   min-height: 620px;
   transform: translate(-50%, -50%);
   display: flex;
@@ -82,7 +82,7 @@ body{
   }
 
   #appBlock{
-    width: 980px;
+    width: 850px;
     height: 620px;
     border: 1px solid grey;
     border-radius: 30px;
@@ -510,6 +510,7 @@ body{
     @include block;
     h2{
       margin-top: 100px;
+      text-align: center;
       @include mobile-only {
         font-size: 22px;
       }
@@ -554,6 +555,7 @@ body{
     @include block;
     h2{
       margin-top: 100px;
+  
       @include mobile-only {
         font-size: 22px;
       }

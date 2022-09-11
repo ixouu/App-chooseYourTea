@@ -20,7 +20,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 980px;
+  width: 850px;
   min-height: 620px;
   transform: translate(-50%, -50%);
   display: flex;
@@ -39,7 +39,7 @@ body {
   font-family: "Playfair Display", serif;
 }
 #wrapper #appBlock {
-  width: 980px;
+  width: 850px;
   height: 620px;
   border: 1px solid grey;
   border-radius: 30px;
@@ -684,6 +684,7 @@ body {
 }
 #wrapper .infusionFamily h2 {
   margin-top: 100px;
+  text-align: center;
 }
 @media screen and (max-width: 450px) {
   #wrapper .infusionFamily h2 {

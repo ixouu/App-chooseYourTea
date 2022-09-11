@@ -756,8 +756,8 @@ const allDrinks = [
     },
     {
         name: 'infusionBarrow',
-        family: 'infusion',
-        tastes: ['floral', 'fruitty'],
+        family: ['wellness', 'infusion'],
+        tastes: ['floral', 'fruitty', 'toSleep'],
         colors: [],
         linkImage: './assets/images/infusionBarrow.webp',
         title: 'Nuit à Barrow',
